@@ -46,9 +46,7 @@ Summarize your observations from the plot.
 Comment on the basics: range, typical outcomes, shape.
 (Any theories about what might explain this non-normal shape?)
 
--   Based on this plot there is an approx.
-    range of scores 825 to 1250.
-    Most scores are closer to 900, with the data being right skewed.
+-   Based on this plot there is an approx. range of scores 825 to 1250. Most scores are closer to 900, with the data being right skewed.
 
 ### Exercise 2: SAT Scores vs Per Pupil Spending & SAT Scores vs Salaries {.unnumbered}
 
@@ -79,8 +77,7 @@ ggplot(education, aes(x = salary, y = sat)) +
 What are the relationship trends between SAT scores and spending?
 Is there anything that surprises you?
 
--   These charts show a weak relationship between the variables in both cases, but they indicate that as spending increases scores actually decrease.
-    This doesn't sound like it would make sense, but I wonder if there is increased spending in areas where the scores are already lower which would make sense.
+-   These charts show a weak relationship between the variables in both cases, but they indicate that as spending increases scores actually decrease. This doesn't sound like it would make sense, but I wonder if there is increased spending in areas where the scores are already lower which would make sense.
 
 ### Exercise 3: SAT Scores vs Per Pupil Spending *and* Teacher Salaries {.unnumbered}
 
@@ -141,8 +138,7 @@ ggplot(education, aes(x = sat, fill = fracCat)) +
 
 ```
 
--   The more students in a state that take the SAT, the lower the average scores tend to be.
-    This is likely because if it is rarer to take the test, students who can score higher are going to be the only ones taking it.
+-   The more students in a state that take the SAT, the lower the average scores tend to be. This is likely because if it is rarer to take the test, students who can score higher are going to be the only ones taking it.
 
 #### Part c {.unnumbered}
 
@@ -158,14 +154,11 @@ ggplot(education, aes(x = expend, y = sat, color = fracCat)) +
   geom_smooth(method = "lm")
 ```
 
--   This graphic helps show that as expenditure increases, the score does increase, so long as you take into account the percent of students in the state whom take the test.
-    Once you separate the percent of participation, spending is shown to increase scores.
-    This shows why it is important to have accurate visualizations and take into account all potential variables.
+-   This graphic helps show that as expenditure increases, the score does increase, so long as you take into account the percent of students in the state whom take the test. Once you separate the percent of participation, spending is shown to increase scores. This shows why it is important to have accurate visualizations and take into account all potential variables.
 
 #### Part d {.unnumbered}
 
 Putting all of this together, explain this example of **Simpson’s Paradox**.
 That is, why did it appear that SAT scores decrease as spending increases even though the *opposite* is true?
 
--   In states with lower participation in the SAT, expenditure is also lower.
-    These states have higher SAT scores because of self-selection.
+-   In states with lower participation in the SAT, expenditure is also lower. These states have higher SAT scores because of self-selection.
