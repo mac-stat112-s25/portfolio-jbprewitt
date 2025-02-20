@@ -29,8 +29,8 @@ world_boundaries <- ne_countries(returnclass = "sf")
 #| warning: false
 #| error: false
 
-#|fig-cap: "A map of Starbucks Store locaitons accross the world - Made by Julia Prewitt"
-#|fig-alt: "A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia."
+#| fig-cap: "A map of Starbucks Store locaitons accross the world - Made by Julia Prewitt"
+#| fig-alt: "A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia."
 
 ggplot(world_boundaries) + 
   geom_sf(fill = "lightgray", color = "white", size = 0.2)  +
