@@ -1,5 +1,44 @@
 ---
 title: "Trivariate Viz"
+output: html_document
 ---
-
 Use this file to generate a professional looking **trivariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+##load tidyverse
+
+library(tidyverse)
+
+# Import and check out data
+education <- read.csv("https://mac-stat.github.io/data/sat.csv")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+#|fig-cap: "A figure of SAT Expendature vs SAT Score by Percent of Participation - Made by Julia Prewitt"
+#|fig-alt: "A point plot of SAT expendature vs sat score by percent of participation. The x axis is expendature on sat scores, the y axis is sat score, and the plot is separated into 3 categories for the actual points representing percent of students participating in the sat, with red being 0 to 15 percent, purple being 15 to 45 percent, and blue being 45 to 100 percent. Each color is separated out and has a linear plot and grey area around each line to represent the trend. THe overall plot ullustrates how within each of the participation rate categories, as expendature goes up so too does the score. "
+
+#Make the plot
+ggplot(education, aes(x = expend, y = sat, color = fracCat)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+    scale_color_manual(
+    values = c("(0,15]" = "red", "(15,45]" = "purple", "(45,100]" = "blue"),
+    labels = c("(0,15]" = "0%-15%", "(15,45]" = "15%-45%", "(45,100]" = "45%-100%")) +
+  labs(x = "Expendature on SAT Scores", y = "SAT Score", title = "SAT Expendature vs SAT Score by Percent of Parcipation", color = "Percent of SAT Participation") + 
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),  
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.position = "top")
+```

@@ -1,5 +1,52 @@
 ---
 title: "Spatial Viz"
+output: html_document
 ---
 
 Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+
+library(mosaic)
+library(tidyverse)
+library(leaflet)
+library(gplots)
+library(rnaturalearth)
+
+
+starbucks <- read.csv("https://mac-stat.github.io/data/starbucks.csv")
+
+world_boundaries <- ne_countries(returnclass = "sf")
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+#|fig-cap: "A map of Starbucks Store locaitons accross the world - Made by Julia Prewitt"
+#|fig-alt: "A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia."
+
+ggplot(world_boundaries) + 
+  geom_sf(fill = "lightgray", color = "white", size = 0.2)  +
+  geom_point(
+    data = starbucks,
+    aes(x = Longitude, y = Latitude),
+    alpha = 0.3, size = 0.2, color = "darkgreen") +
+  labs(title = "Starbucks Locations Across the World") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5, color ="darkgreen"),
+    axis.title = element_blank(),  
+    axis.text = element_blank(),  
+    panel.grid = element_blank(),  
+    panel.border = element_blank(),  
+    legend.position = "none"
+    )
+
+```

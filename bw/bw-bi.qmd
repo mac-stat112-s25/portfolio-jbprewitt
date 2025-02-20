@@ -1,5 +1,45 @@
 ---
 title: "Bivariate Viz"
+output: html_document
 ---
 
 Use this file to generate a professional looking **bivariate** visualization.  The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+##load tidyverse
+library(tidyverse)
+
+# Load data
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#|fig-cap: "A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt"
+#|fig-alt: "A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. "
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density(alpha = .6) +
+  scale_fill_manual(
+    values = c("blue", "purple", "red"),
+    labels = c("Democratic-leaning", "Swing state", "Republican-leaning") ) +  
+  labs(title ="Percent of Republican Support by County in 2020 by State Trends", 
+       y = "Density", 
+       x = "Republican Support in 2020 by County",
+        fill = "Historical State Voting Trends") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),  
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.position = "top"  
+  )
+```

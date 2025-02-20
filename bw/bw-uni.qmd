@@ -1,5 +1,41 @@
 ---
 title: "Univariate Viz"
+output: html_document
 ---
 
-Use this file to generate a professional looking **univariate** visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+Use this file to generate a professional looking **univariate** visualization.
+The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+
+```{r}
+#| eval: true
+#| echo: false
+#| warning: false
+#| error: false
+
+# Import data
+hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+
+##load tidyverse
+
+library(tidyverse)
+```
+
+
+```{r}
+#| echo: false
+#| warning: false
+#|fig-cap: "A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt"
+#|fig-alt: "A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal."
+
+ggplot(hikes, aes(x = elevation)) +
+  geom_density(color = "black", fill = "darkgreen") +
+  labs(x = "Elevation in Feet", y = "Density", title = "Hiking Trail Elevation in the Adirondack Mountains of NY") +
+  theme(
+    plot.title = element_text(
+      colour = "#006000", size = 12, face = "bold"),
+    axis.title.x = element_text(
+      colour = "black", size = 10, face = "bold"),
+    axis.title.y = element_text(
+      colour = "black", size = 10, face = "bold")
+  )
+```

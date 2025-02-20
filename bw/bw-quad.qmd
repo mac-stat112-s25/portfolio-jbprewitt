@@ -1,5 +1,52 @@
 ---
 title: "Quadvariate Viz"
+output: html_document
 ---
 
 Use this file to generate a professional looking **quadvariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+library(stringr)
+library(tidyverse)
+library(dplyr)
+
+# Add dataset
+agencies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-02-18/agencies.csv', show_col_types = FALSE)
+
+# Create a new dataset with just top 6 reporting states
+topReporters <- agencies |> 
+  filter(state %in% c("Texas", "Ohio", "California", "Illinois", "Michigan", "Missouri"))
+
+topReporters <- topReporters %>%
+  mutate(is_nibrs = ifelse(is_nibrs == TRUE, "Yes", "No"))
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+#|fig-cap: "A figure of whether agencies in 6 states report to NIBRS broken down by agency type - Made by Julia Prewitt"
+#|fig-alt: "A visual of government agencies of California, Illinois, Michigan, Missouri, Ohio, and Texas. It is called Number of NIBRS Reporting Agencies in High Reporting States. They are broken down into agency type for each bar. For all the states, of their government agencies, the majority do report, and it is typically the city agencies who do."
+
+ggplot(topReporters, aes(x = is_nibrs, fill = agency_type)) +
+  geom_bar() +
+  facet_wrap(~state) +
+  labs(x = "Does the agency report to NIBRS?", 
+       y = "Number of Agencies", 
+       title = "Number of NIBRS Reporting Agencies in High Reporting States", 
+       fill = "Agency Type") +
+  scale_fill_brewer(palette = "Set2", na.value="grey") +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),  
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.position = "right")
+
+```
