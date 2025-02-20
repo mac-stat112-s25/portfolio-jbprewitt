@@ -251,9 +251,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><p>Use this file to generate a professional looking <strong>bivariate</strong> visualization. The visualization will not perfect the first time but you are expected to improve it throughout the semester especially after covering advanced topics such as effective viz.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="bw-bi_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="bw-bi_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. " width="672"></p>
+<figcaption>A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt</figcaption></figure>
 </div>
 </div>
 </div>
@@ -915,8 +915,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-25"><a href="#cb1-25"></a><span class="co">#| echo: false</span></span>
 <span id="cb1-26"><a href="#cb1-26"></a><span class="co">#| warning: false</span></span>
 <span id="cb1-27"><a href="#cb1-27"></a><span class="co">#| error: false</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="co">#|fig-cap: "A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt"</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#|fig-alt: "A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. "</span></span>
+<span id="cb1-28"><a href="#cb1-28"></a><span class="co">#| fig-cap: "A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt"</span></span>
+<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#| fig-alt: "A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. "</span></span>
 <span id="cb1-30"><a href="#cb1-30"></a></span>
 <span id="cb1-31"><a href="#cb1-31"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_20, <span class="at">fill =</span> historical)) <span class="sc">+</span></span>
 <span id="cb1-32"><a href="#cb1-32"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>

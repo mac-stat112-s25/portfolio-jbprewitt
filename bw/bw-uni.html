@@ -251,9 +251,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header><p>Use this file to generate a professional looking <strong>univariate</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure"><p><img src="bw-uni_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="bw-uni_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal." width="672"></p>
+<figcaption>A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt</figcaption></figure>
 </div>
 </div>
 </div>
@@ -918,8 +918,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-28"><a href="#cb1-28"></a><span class="in">```{r}</span></span>
 <span id="cb1-29"><a href="#cb1-29"></a><span class="co">#| echo: false</span></span>
 <span id="cb1-30"><a href="#cb1-30"></a><span class="co">#| warning: false</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#|fig-cap: "A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt"</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#|fig-alt: "A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal."</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#| fig-cap: "A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt"</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#| fig-alt: "A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal."</span></span>
 <span id="cb1-33"><a href="#cb1-33"></a></span>
 <span id="cb1-34"><a href="#cb1-34"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
 <span id="cb1-35"><a href="#cb1-35"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
