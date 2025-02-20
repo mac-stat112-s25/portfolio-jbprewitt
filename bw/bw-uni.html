@@ -918,20 +918,21 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <span id="cb1-28"><a href="#cb1-28"></a><span class="in">```{r}</span></span>
 <span id="cb1-29"><a href="#cb1-29"></a><span class="co">#| echo: false</span></span>
 <span id="cb1-30"><a href="#cb1-30"></a><span class="co">#| warning: false</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a></span>
-<span id="cb1-32"><a href="#cb1-32"></a></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation in Feet"</span>, <span class="at">y =</span> <span class="st">"Density"</span>, <span class="at">title =</span> <span class="st">"Hiking Trail Elevation in the Adirondack Mountains of NY"</span>) <span class="sc">+</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-37"><a href="#cb1-37"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb1-38"><a href="#cb1-38"></a>      <span class="at">colour =</span> <span class="st">"#006000"</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb1-39"><a href="#cb1-39"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
-<span id="cb1-40"><a href="#cb1-40"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb1-41"><a href="#cb1-41"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(</span>
-<span id="cb1-42"><a href="#cb1-42"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb1-43"><a href="#cb1-43"></a>  )</span>
-<span id="cb1-44"><a href="#cb1-44"></a><span class="in">```</span></span>
+<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#|fig-cap: "A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt"</span></span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#|fig-alt: "A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal."</span></span>
+<span id="cb1-33"><a href="#cb1-33"></a></span>
+<span id="cb1-34"><a href="#cb1-34"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb1-36"><a href="#cb1-36"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation in Feet"</span>, <span class="at">y =</span> <span class="st">"Density"</span>, <span class="at">title =</span> <span class="st">"Hiking Trail Elevation in the Adirondack Mountains of NY"</span>) <span class="sc">+</span></span>
+<span id="cb1-37"><a href="#cb1-37"></a>  <span class="fu">theme</span>(</span>
+<span id="cb1-38"><a href="#cb1-38"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
+<span id="cb1-39"><a href="#cb1-39"></a>      <span class="at">colour =</span> <span class="st">"#006000"</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-40"><a href="#cb1-40"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb1-41"><a href="#cb1-41"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb1-42"><a href="#cb1-42"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(</span>
+<span id="cb1-43"><a href="#cb1-43"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb1-44"><a href="#cb1-44"></a>  )</span>
+<span id="cb1-45"><a href="#cb1-45"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
