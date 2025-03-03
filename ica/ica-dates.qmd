@@ -287,8 +287,8 @@ NOTE: Name the column with total births so that it's easier to wrangle and plot.
 
 ```{r}
 
-daily_births <- Birthdays |>
-  mutatue() 
+# daily_births <- Birthdays |>
+#   mutatue() 
 
 # wday(today, label = TRUE)
 ```
