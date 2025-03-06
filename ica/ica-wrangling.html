@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>11&nbsp; Wrangling Data – COMP/STAT112 Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../ica/ica-dates.html" rel="next">
+<link href="../ica/ica-effective.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link rel="stylesheet" href="../style/custom.css">
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/ica-uni.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-wrangling.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Wrangling Data</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Julia Prewitt</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Best Work</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-tri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Trivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-quad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadvariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">In-class Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Mulivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-effective.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Effective Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-wrangling.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Wrangling Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-dates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Reshaping Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Joining Data</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li>
+<a href="#exercises" id="toc-exercises" class="nav-link active" data-scroll-target="#exercises"><span class="header-section-number">11.1</span> Exercises</a>
+  <ul class="collapse">
+<li><a href="#exercise-1-select-practice" id="toc-exercise-1-select-practice" class="nav-link" data-scroll-target="#exercise-1-select-practice">Exercise 1: <code>select</code> Practice</a></li>
+  <li><a href="#exercise-2-filter-demo" id="toc-exercise-2-filter-demo" class="nav-link" data-scroll-target="#exercise-2-filter-demo">Exercise 2: <code>filter</code> Demo</a></li>
+  <li><a href="#exercise-3-arrange-demo" id="toc-exercise-3-arrange-demo" class="nav-link" data-scroll-target="#exercise-3-arrange-demo">Exercise 3: <code>arrange</code> Demo</a></li>
+  <li><a href="#exercise-4-mutate-demo" id="toc-exercise-4-mutate-demo" class="nav-link" data-scroll-target="#exercise-4-mutate-demo">Exercise 4: <code>mutate</code> Demo</a></li>
+  <li><a href="#exercise-5-pipe-series" id="toc-exercise-5-pipe-series" class="nav-link" data-scroll-target="#exercise-5-pipe-series">Exercise 5: Pipe Series</a></li>
+  <li><a href="#exercise-6-diy-pipe-series" id="toc-exercise-6-diy-pipe-series" class="nav-link" data-scroll-target="#exercise-6-diy-pipe-series">Exercise 6: DIY Pipe Series</a></li>
+  <li><a href="#exercise-7-summarize-demo" id="toc-exercise-7-summarize-demo" class="nav-link" data-scroll-target="#exercise-7-summarize-demo">Exercise 7: <code>summarize</code> Demo</a></li>
+  <li><a href="#exercise-8-summarize-group_by-demo" id="toc-exercise-8-summarize-group_by-demo" class="nav-link" data-scroll-target="#exercise-8-summarize-group_by-demo">Exercise 8: <code>summarize</code> + <code>group_by</code> demo</a></li>
+  <li><a href="#exercise-9-diy" id="toc-exercise-9-diy" class="nav-link" data-scroll-target="#exercise-9-diy">Exercise 9: DIY</a></li>
+  <li><a href="#exercise-10-practice-on-new-data" id="toc-exercise-10-practice-on-new-data" class="nav-link" data-scroll-target="#exercise-10-practice-on-new-data">Exercise 10: Practice on New Data</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../ica/ica-uni.html">In-class Activities</a></li><li class="breadcrumb-item"><a href="../ica/ica-wrangling.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Wrangling Data</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">
+<span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Wrangling Data</span>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><section id="exercises" class="level2" data-number="11.1"><h2 data-number="11.1" class="anchored" data-anchor-id="exercises">
+<span class="header-section-number">11.1</span> Exercises</h2>
+<section id="exercise-1-select-practice" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-1-select-practice">Exercise 1: <code>select</code> Practice</h3>
+<p>Use <code>select()</code> to create a simplified dataset that we’ll use throughout the exercises below.</p>
+<ul>
+<li>Store this dataset as <code>elections_small</code>.</li>
+<li>Only keep the following variables: <code>state_name</code>, <code>county_name</code>, <code>total_votes_20</code>, <code>repub_pct_20</code>, <code>dem_pct_20</code>, <code>total_votes_16</code>, <code>dem_pct_16</code>
+</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Load tidyverse &amp; data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># Define elections_small</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>elections_small <span class="ot">&lt;-</span> elections <span class="sc">|&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">select</span>(state_name,county_name, total_votes_20, repub_pct_20, dem_pct_20, total_votes_16, dem_pct_16)</span>
+<span id="cb14-4"><a href="#cb14-4"></a></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="co"># Check out the first 6 rows to confirm your code did what you think it did!</span></span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="fu">head</span>(elections_small)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name    county_name total_votes_20 repub_pct_20 dem_pct_20
+1    Alabama Autauga County          27770        71.44      27.02
+2    Alabama Baldwin County         109679        76.17      22.41
+3    Alabama Barbour County          10518        53.45      45.79
+4    Alabama    Bibb County           9595        78.43      20.70
+5    Alabama  Blount County          27588        89.57       9.57
+6    Alabama Bullock County           4613        24.84      74.70
+  total_votes_16 dem_pct_16
+1          24661      23.96
+2          94090      19.57
+3          10390      46.66
+4           8748      21.42
+5          25384       8.47
+6           4701      75.09</code></pre>
+</div>
+</div>
+</section><section id="exercise-2-filter-demo" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-2-filter-demo">Exercise 2: <code>filter</code> Demo</h3>
+<p>Whereas <code>select()</code> selects certain <em>variables</em> or columns, <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> keeps certain <em>units of observation</em> or rows relative to their outcome on certain variables. To this end, we must:</p>
+<ul>
+<li><p>Identify the variable(s) that are relevant to the filter.</p></li>
+<li>
+<p>Use a “logical comparison operator” to define which values of the variable to <em>keep</em>:</p>
+<table class="caption-top table">
+<thead><tr class="header">
+<th style="text-align: left;">symbol</th>
+<th style="text-align: left;">meaning</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>==</code></td>
+<td style="text-align: left;">equal to</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>!=</code></td>
+<td style="text-align: left;">not equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&gt;</code></td>
+<td style="text-align: left;">greater than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&gt;=</code></td>
+<td style="text-align: left;">greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>&lt;</code></td>
+<td style="text-align: left;">less than</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>&lt;=</code></td>
+<td style="text-align: left;">less than or equal to</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>%in% c(???, ???)</code></td>
+<td style="text-align: left;">a list of multiple values</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li><p>Use quotes <code>""</code> when specifying outcomes of interest for a categorical variable.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Commenting/Uncommenting Code">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Commenting/Uncommenting Code
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To comment/uncomment several lines of code at once, highlight them then click <kbd>ctrl/cmd+shift+c</kbd>.</p>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co"># Keep only data on counties in Hawaii</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a> <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Hawaii"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name     county_name total_votes_20 repub_pct_20 dem_pct_20
+1     Hawaii   Hawaii County          87814        30.63      66.88
+2     Hawaii Honolulu County         382114        35.66      62.51
+3     Hawaii    Kauai County          33497        34.58      63.36
+4     Hawaii     Maui County          71044        31.14      66.59
+  total_votes_16 dem_pct_16
+1          64865      63.61
+2         285683      61.48
+3          26335      62.49
+4          51942      64.45</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># What does this do? - lists multiple variables, in this case only Hawaii and Delaware state names are left in</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  <span class="fu">filter</span>(state_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Hawaii"</span>, <span class="st">"Delaware"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name       county_name total_votes_20 repub_pct_20 dem_pct_20
+1   Delaware       Kent County          87025        47.12      51.19
+2   Delaware New Castle County         287633        30.72      67.81
+3   Delaware     Sussex County         129352        55.07      43.82
+4     Hawaii     Hawaii County          87814        30.63      66.88
+5     Hawaii   Honolulu County         382114        35.66      62.51
+6     Hawaii      Kauai County          33497        34.58      63.36
+7     Hawaii       Maui County          71044        31.14      66.59
+  total_votes_16 dem_pct_16
+1          74253      44.91
+2         261468      62.30
+3         105814      37.17
+4          64865      63.61
+5         285683      61.48
+6          26335      62.49
+7          51942      64.45</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># Keep only data on counties where the Republican got MORE THAN 93.97% of the vote in 2020</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="co"># THINK: What variable is relevant here?</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a>  <span class="fu">filter</span>(repub_pct_20 <span class="sc">&gt;</span> <span class="fl">93.97</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name    county_name total_votes_20 repub_pct_20 dem_pct_20
+1      Texas  Borden County            416        95.43       3.85
+2      Texas    King County            159        94.97       5.03
+3      Texas Roberts County            550        96.18       3.09
+  total_votes_16 dem_pct_16
+1            365       8.49
+2            159       3.14
+3            550       3.64</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a><span class="co"># Keep only data on counties where the Republican got AT LEAST 93.97% of the vote in 2020</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="co"># This should have 1 more row (observation) than your answer above</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a>  <span class="fu">filter</span>(repub_pct_20 <span class="sc">&gt;=</span> <span class="fl">93.97</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name     county_name total_votes_20 repub_pct_20 dem_pct_20
+1    Montana Garfield County            813        93.97       5.04
+2      Texas   Borden County            416        95.43       3.85
+3      Texas     King County            159        94.97       5.03
+4      Texas  Roberts County            550        96.18       3.09
+  total_votes_16 dem_pct_16
+1            715       4.76
+2            365       8.49
+3            159       3.14
+4            550       3.64</code></pre>
+</div>
+</div>
+<p>We can also filter with respect to 2 rules! Here, think what variables are relevant.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Keep only data on counties in Texas where the Democrat got more than 65% of the vote in 2020</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="co"># Do this 2 ways.</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="co"># Method 1: 2 filters with 1 condition each</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a> <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Texas"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a> <span class="fu">filter</span>(dem_pct_20 <span class="sc">&gt;</span> <span class="dv">65</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name     county_name total_votes_20 repub_pct_20 dem_pct_20
+1      Texas  El Paso County         267215        31.56      66.66
+2      Texas Presidio County           2217        32.52      65.99
+3      Texas   Travis County         610349        26.43      71.41
+4      Texas   Zavala County           4379        34.03      65.40
+  total_votes_16 dem_pct_16
+1         210458      69.14
+2           2203      66.18
+3         462511      66.26
+4           3390      77.67</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a><span class="co"># Method 2: 1 filter with 2 conditions</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a> <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Texas"</span>, dem_pct_20 <span class="sc">&gt;</span> <span class="dv">65</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name     county_name total_votes_20 repub_pct_20 dem_pct_20
+1      Texas  El Paso County         267215        31.56      66.66
+2      Texas Presidio County           2217        32.52      65.99
+3      Texas   Travis County         610349        26.43      71.41
+4      Texas   Zavala County           4379        34.03      65.40
+  total_votes_16 dem_pct_16
+1         210458      69.14
+2           2203      66.18
+3         462511      66.26
+4           3390      77.67</code></pre>
+</div>
+</div>
+</section><section id="exercise-3-arrange-demo" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-3-arrange-demo">Exercise 3: <code>arrange</code> Demo</h3>
+<p><code>arrange()</code> arranges or sorts the <em>rows</em> in a dataset according to a given column or variable, in ascending or descending order:</p>
+<p><code>arrange(variable)</code>, <code>arrange(desc(variable))</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Arrange the counties in elections_small from lowest to highest percentage of 2020 Republican support</span></span>
+<span id="cb28-2"><a href="#cb28-2"></a><span class="co"># Print out just the first 6 rows</span></span>
+<span id="cb28-3"><a href="#cb28-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">arrange</span>(repub_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb28-5"><a href="#cb28-5"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            state_name            county_name total_votes_20 repub_pct_20
+1 District of Columbia   District of Columbia         344356         5.40
+2             Maryland Prince George's County         424855         8.73
+3             Maryland         Baltimore city         237461        10.69
+4             Virginia        Petersburg city          14118        11.22
+5             New York        New York County         694904        12.26
+6           California   San Francisco County         443458        12.72
+  dem_pct_20 total_votes_16 dem_pct_16
+1      92.15         280272      92.85
+2      89.26         351091      89.33
+3      87.28         208980      85.44
+4      87.75          13717      87.52
+5      86.78         591368      87.17
+6      85.27         365295      85.53</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># Arrange the counties in elections_small from highest to lowest percentage of 2020 Republican support</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a><span class="co"># Print out just the first 6 rows</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(repub_pct_20)) <span class="sc">|&gt;</span></span>
+<span id="cb30-5"><a href="#cb30-5"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name      county_name total_votes_20 repub_pct_20 dem_pct_20
+1      Texas   Roberts County            550        96.18       3.09
+2      Texas    Borden County            416        95.43       3.85
+3      Texas      King County            159        94.97       5.03
+4    Montana  Garfield County            813        93.97       5.04
+5      Texas Glasscock County            653        93.57       5.97
+6   Nebraska     Grant County            402        93.28       4.98
+  total_votes_16 dem_pct_16
+1            550       3.64
+2            365       8.49
+3            159       3.14
+4            715       4.76
+5            602       5.65
+6            394       5.08</code></pre>
+</div>
+</div>
+</section><section id="exercise-4-mutate-demo" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-4-mutate-demo">Exercise 4: <code>mutate</code> Demo</h3>
+<p><code>mutate()</code> can either transform / mutate an existing variable (column), or define a new variable based on existing ones.</p>
+<section id="part-a" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a">Part a</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1"></a><span class="co"># What did this code do? - added a column called diff_20 which takes the republican percent of votes in 2020 and subtracts the democratic percent of votes in 2020 to see how far apart the support in each county was. </span></span>
+<span id="cb32-2"><a href="#cb32-2"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb32-3"><a href="#cb32-3"></a>  <span class="fu">mutate</span>(<span class="at">diff_20 =</span> repub_pct_20 <span class="sc">-</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name    county_name total_votes_20 repub_pct_20 dem_pct_20
+1    Alabama Autauga County          27770        71.44      27.02
+2    Alabama Baldwin County         109679        76.17      22.41
+3    Alabama Barbour County          10518        53.45      45.79
+4    Alabama    Bibb County           9595        78.43      20.70
+5    Alabama  Blount County          27588        89.57       9.57
+6    Alabama Bullock County           4613        24.84      74.70
+  total_votes_16 dem_pct_16 diff_20
+1          24661      23.96   44.42
+2          94090      19.57   53.76
+3          10390      46.66    7.66
+4           8748      21.42   57.73
+5          25384       8.47   80.00
+6           4701      75.09  -49.86</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="co"># What did this code do? - this creates a new column of data. It finds how many republican votes there were in each county by rounding the value of the republican percent multiplied by the total votes, divided by 100 (to account for repub_pct_20 being a percent not a decimal)</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a></span>
+<span id="cb34-3"><a href="#cb34-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb34-4"><a href="#cb34-4"></a>  <span class="fu">mutate</span>(<span class="at">repub_votes_20 =</span> <span class="fu">round</span>(total_votes_20 <span class="sc">*</span> repub_pct_20<span class="sc">/</span><span class="dv">100</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb34-5"><a href="#cb34-5"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name    county_name total_votes_20 repub_pct_20 dem_pct_20
+1    Alabama Autauga County          27770        71.44      27.02
+2    Alabama Baldwin County         109679        76.17      22.41
+3    Alabama Barbour County          10518        53.45      45.79
+4    Alabama    Bibb County           9595        78.43      20.70
+5    Alabama  Blount County          27588        89.57       9.57
+6    Alabama Bullock County           4613        24.84      74.70
+  total_votes_16 dem_pct_16 repub_votes_20
+1          24661      23.96          19839
+2          94090      19.57          83542
+3          10390      46.66           5622
+4           8748      21.42           7525
+5          25384       8.47          24711
+6           4701      75.09           1146</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="co"># What did this code do? - makes a new column with true or false values representing is republicans won the county (true) or if democrats did (false)</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a></span>
+<span id="cb36-3"><a href="#cb36-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb36-4"><a href="#cb36-4"></a>  <span class="fu">mutate</span>(<span class="at">repub_win_20 =</span> repub_pct_20 <span class="sc">&gt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb36-5"><a href="#cb36-5"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name    county_name total_votes_20 repub_pct_20 dem_pct_20
+1    Alabama Autauga County          27770        71.44      27.02
+2    Alabama Baldwin County         109679        76.17      22.41
+3    Alabama Barbour County          10518        53.45      45.79
+4    Alabama    Bibb County           9595        78.43      20.70
+5    Alabama  Blount County          27588        89.57       9.57
+6    Alabama Bullock County           4613        24.84      74.70
+  total_votes_16 dem_pct_16 repub_win_20
+1          24661      23.96         TRUE
+2          94090      19.57         TRUE
+3          10390      46.66         TRUE
+4           8748      21.42         TRUE
+5          25384       8.47         TRUE
+6           4701      75.09        FALSE</code></pre>
+</div>
+</div>
+</section><section id="part-b" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b">Part b</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="co"># You try</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a><span class="co"># Define a variable that calculates the change in Dem support in 2020 vs 2016</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a></span>
+<span id="cb38-4"><a href="#cb38-4"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb38-5"><a href="#cb38-5"></a> <span class="fu">mutate</span>(dem_pct_20<span class="sc">-</span>dem_pct_16) <span class="sc">|&gt;</span></span>
+<span id="cb38-6"><a href="#cb38-6"></a> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name    county_name total_votes_20 repub_pct_20 dem_pct_20
+1    Alabama Autauga County          27770        71.44      27.02
+2    Alabama Baldwin County         109679        76.17      22.41
+3    Alabama Barbour County          10518        53.45      45.79
+4    Alabama    Bibb County           9595        78.43      20.70
+5    Alabama  Blount County          27588        89.57       9.57
+6    Alabama Bullock County           4613        24.84      74.70
+  total_votes_16 dem_pct_16 dem_pct_20 - dem_pct_16
+1          24661      23.96                    3.06
+2          94090      19.57                    2.84
+3          10390      46.66                   -0.87
+4           8748      21.42                   -0.72
+5          25384       8.47                    1.10
+6           4701      75.09                   -0.39</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="co"># You try</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a><span class="co"># Define a variable that determines whether the Dem support was higher in 2020 than in 2016 (TRUE/FALSE)</span></span>
+<span id="cb40-3"><a href="#cb40-3"></a></span>
+<span id="cb40-4"><a href="#cb40-4"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb40-5"><a href="#cb40-5"></a> <span class="fu">mutate</span>(<span class="at">dem_increase_20 =</span> dem_pct_20 <span class="sc">&gt;</span> dem_pct_16) <span class="sc">|&gt;</span></span>
+<span id="cb40-6"><a href="#cb40-6"></a> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name    county_name total_votes_20 repub_pct_20 dem_pct_20
+1    Alabama Autauga County          27770        71.44      27.02
+2    Alabama Baldwin County         109679        76.17      22.41
+3    Alabama Barbour County          10518        53.45      45.79
+4    Alabama    Bibb County           9595        78.43      20.70
+5    Alabama  Blount County          27588        89.57       9.57
+6    Alabama Bullock County           4613        24.84      74.70
+  total_votes_16 dem_pct_16 dem_increase_20
+1          24661      23.96            TRUE
+2          94090      19.57            TRUE
+3          10390      46.66           FALSE
+4           8748      21.42           FALSE
+5          25384       8.47            TRUE
+6           4701      75.09           FALSE</code></pre>
+</div>
+</div>
+</section></section><section id="exercise-5-pipe-series" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-5-pipe-series">Exercise 5: Pipe Series</h3>
+<p>Let’s now combine these verbs into a pipe series!</p>
+<section id="part-a-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-1">Part a</h4>
+<div class="callout callout-style-default callout-important callout-titled" title="Think then Run">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Think then Run
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>BEFORE running the below chunk, what do you think it will produce?</p>
+<ul>
+<li>For Wisconsin only data, of counties where democrats won, sort by most to least amount of people who voted</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Wisconsin"</span>,</span>
+<span id="cb42-3"><a href="#cb42-3"></a>         repub_pct_20 <span class="sc">&lt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb42-4"><a href="#cb42-4"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_votes_20)) <span class="sc">|&gt;</span></span>
+<span id="cb42-5"><a href="#cb42-5"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name       county_name total_votes_20 repub_pct_20 dem_pct_20
+1  Wisconsin  Milwaukee County         458971        29.27      69.13
+2  Wisconsin       Dane County         344791        22.85      75.46
+3  Wisconsin       Rock County          85360        43.51      54.66
+4  Wisconsin  La Crosse County          67884        42.25      55.75
+5  Wisconsin Eau Claire County          58275        43.49      54.26
+6  Wisconsin    Portage County          40603        47.53      50.31
+  total_votes_16 dem_pct_16
+1         434970      66.44
+2         304729      71.38
+3          75043      52.42
+4          62785      51.61
+5          54080      50.43
+6          38123      48.59</code></pre>
+</div>
+</div>
+</section><section id="part-b-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-1">Part b</h4>
+<div class="callout callout-style-default callout-important callout-titled" title="Think then Run">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Think then Run
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>BEFORE trying, what do you think will happen if you change the order of filter and arrange:</p>
+<ul>
+<li>the results will be the same - THE CORRECT ANSWER</li>
+<li>we’ll get an error</li>
+<li>we won’t get an error, but the results will be different</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="co"># Now try it. Change the order of filter and arrange below.</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_votes_20)) <span class="sc">|&gt;</span></span>
+<span id="cb44-4"><a href="#cb44-4"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Wisconsin"</span>,</span>
+<span id="cb44-5"><a href="#cb44-5"></a>         repub_pct_20 <span class="sc">&lt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb44-6"><a href="#cb44-6"></a>  <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name       county_name total_votes_20 repub_pct_20 dem_pct_20
+1  Wisconsin  Milwaukee County         458971        29.27      69.13
+2  Wisconsin       Dane County         344791        22.85      75.46
+3  Wisconsin       Rock County          85360        43.51      54.66
+4  Wisconsin  La Crosse County          67884        42.25      55.75
+5  Wisconsin Eau Claire County          58275        43.49      54.26
+6  Wisconsin    Portage County          40603        47.53      50.31
+  total_votes_16 dem_pct_16
+1         434970      66.44
+2         304729      71.38
+3          75043      52.42
+4          62785      51.61
+5          54080      50.43
+6          38123      48.59</code></pre>
+</div>
+</div>
+</section><section id="part-c" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-c">Part c</h4>
+<p>So the order of <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code> and <code>arrange()</code> did <em>not</em> matter – rerranging them produces the same results. BUT what is one <em>advantage</em> of filtering before arranging?</p>
+<ul>
+<li>Cleaning up the data first helps to cut down on unnecessary computing steps</li>
+</ul></section><section id="part-d" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-d">Part d</h4>
+<div class="callout callout-style-default callout-important callout-titled" title="Think then Run">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Think then Run
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>BEFORE running the below chunk, what do you think it will produce?</p>
+<ul>
+<li>Of Delaware states, create a variable repub_win_20 which returns TRUE if republicans got more votes in 2020 than democrats, looking only at county name, republican percent of votes, democrat percent of votes, and if republicans won in 2020 (true if so),</li>
+</ul>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Delaware"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb46-3"><a href="#cb46-3"></a>  <span class="fu">mutate</span>(<span class="at">repub_win_20 =</span> repub_pct_20 <span class="sc">&gt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb46-4"><a href="#cb46-4"></a>  <span class="fu">select</span>(county_name, repub_pct_20, dem_pct_20, repub_win_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        county_name repub_pct_20 dem_pct_20 repub_win_20
+1       Kent County        47.12      51.19        FALSE
+2 New Castle County        30.72      67.81        FALSE
+3     Sussex County        55.07      43.82         TRUE</code></pre>
+</div>
+</div>
+</section><section id="part-e" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-e">Part e</h4>
+<div class="callout callout-style-default callout-important callout-titled" title="Think then Run">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Think then Run
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>BEFORE trying, what do you think will happen if you change the order of mutate and select:</p>
+<ol type="1">
+<li>the results will be the same (MY GUESS)</li>
+<li>we’ll get an error</li>
+<li>we won’t get an error, but the results will be different</li>
+</ol>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1"></a><span class="co"># Now try it. Change the order of mutate and select below.</span></span>
+<span id="cb48-2"><a href="#cb48-2"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Delaware"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb48-4"><a href="#cb48-4"></a>  <span class="fu">mutate</span>(<span class="at">repub_win_20 =</span> repub_pct_20 <span class="sc">&gt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb48-5"><a href="#cb48-5"></a>  <span class="fu">select</span>(county_name, repub_pct_20, dem_pct_20, repub_win_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>        county_name repub_pct_20 dem_pct_20 repub_win_20
+1       Kent County        47.12      51.19        FALSE
+2 New Castle County        30.72      67.81        FALSE
+3     Sussex County        55.07      43.82         TRUE</code></pre>
+</div>
+</div>
+</section></section><section id="exercise-6-diy-pipe-series" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-6-diy-pipe-series">Exercise 6: DIY Pipe Series</h3>
+<p>We’ve now learned 4 of the 6 wrangling verbs: <code>select</code>, <code>filter</code>, <code>mutate</code>, <code>arrange.</code> Let’s practice combining these into pipe series. Here are some hot tips:</p>
+<ul>
+<li>Before writing any code, translate the prompt: how many distinct wrangling steps are needed and what verb do we need in each step?</li>
+<li>Add each verb one at a time – don’t try writing a whole chunk at once.</li>
+</ul>
+<section id="part-a-2" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-2">Part a</h4>
+<p>Show just the counties in Minnesota and their Democratic 2020 vote percentage, from highest to lowest. Your answer should have just 2 columns.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">select</span>(state_name, dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb50-3"><a href="#cb50-3"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Minnesota"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb50-4"><a href="#cb50-4"></a>  <span class="fu">arrange</span>(dem_pct_20)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   state_name dem_pct_20
+1   Minnesota      22.33
+2   Minnesota      24.79
+3   Minnesota      25.33
+4   Minnesota      25.98
+5   Minnesota      26.35
+6   Minnesota      26.44
+7   Minnesota      26.76
+8   Minnesota      27.87
+9   Minnesota      28.43
+10  Minnesota      28.58
+11  Minnesota      28.60
+12  Minnesota      29.45
+13  Minnesota      29.60
+14  Minnesota      29.69
+15  Minnesota      29.91
+16  Minnesota      29.98
+17  Minnesota      29.99
+18  Minnesota      30.02
+19  Minnesota      30.02
+20  Minnesota      30.03
+21  Minnesota      30.08
+22  Minnesota      30.54
+23  Minnesota      30.64
+24  Minnesota      30.71
+25  Minnesota      31.47
+26  Minnesota      31.98
+27  Minnesota      32.48
+28  Minnesota      32.48
+29  Minnesota      32.56
+30  Minnesota      32.70
+31  Minnesota      32.85
+32  Minnesota      33.47
+33  Minnesota      33.65
+34  Minnesota      33.65
+35  Minnesota      33.67
+36  Minnesota      33.73
+37  Minnesota      33.87
+38  Minnesota      33.96
+39  Minnesota      34.15
+40  Minnesota      34.17
+41  Minnesota      34.35
+42  Minnesota      34.42
+43  Minnesota      34.49
+44  Minnesota      34.68
+45  Minnesota      34.88
+46  Minnesota      35.27
+47  Minnesota      35.29
+48  Minnesota      35.41
+49  Minnesota      35.46
+50  Minnesota      35.58
+51  Minnesota      35.78
+52  Minnesota      35.79
+53  Minnesota      35.94
+54  Minnesota      35.98
+55  Minnesota      36.12
+56  Minnesota      37.47
+57  Minnesota      37.48
+58  Minnesota      37.58
+59  Minnesota      37.80
+60  Minnesota      38.12
+61  Minnesota      38.20
+62  Minnesota      38.41
+63  Minnesota      40.61
+64  Minnesota      40.80
+65  Minnesota      40.96
+66  Minnesota      41.23
+67  Minnesota      42.42
+68  Minnesota      45.52
+69  Minnesota      46.00
+70  Minnesota      46.37
+71  Minnesota      47.24
+72  Minnesota      47.79
+73  Minnesota      48.26
+74  Minnesota      48.76
+75  Minnesota      49.07
+76  Minnesota      49.58
+77  Minnesota      50.31
+78  Minnesota      50.64
+79  Minnesota      50.74
+80  Minnesota      50.84
+81  Minnesota      53.46
+82  Minnesota      54.16
+83  Minnesota      55.73
+84  Minnesota      56.64
+85  Minnesota      65.58
+86  Minnesota      70.46
+87  Minnesota      71.50</code></pre>
+</div>
+</div>
+</section><section id="part-b-2" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-2">Part b</h4>
+<p>Create a new dataset named <code>mn_wi</code> that sorts the counties in Minnesota and Wisconsin from lowest to highest in terms of the <em>change</em> in Democratic vote percentage in 2020 vs 2016. This dataset should include the following variables (and only these variables): <code>state_name</code>, <code>county_name</code>, <code>dem_pct_20</code>, <code>dem_pct_16</code>, and a variable measuring the change in Democratic vote percentage in 2020 vs 2016.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1"></a><span class="co"># Define the dataset</span></span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="co"># Only store the results once you're confident that they're correct</span></span>
+<span id="cb52-3"><a href="#cb52-3"></a>mn_wi <span class="ot">&lt;-</span> elections_small <span class="sc">|&gt;</span></span>
+<span id="cb52-4"><a href="#cb52-4"></a>  <span class="fu">filter</span>(state_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Minnesota"</span>, <span class="st">"Wisconsin"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb52-5"><a href="#cb52-5"></a>  <span class="fu">mutate</span>(<span class="at">dem_increase_20 =</span> dem_pct_20<span class="sc">-</span>dem_pct_16) <span class="sc">|&gt;</span></span>
+<span id="cb52-6"><a href="#cb52-6"></a>  <span class="fu">select</span>(state_name, county_name, dem_pct_20, dem_pct_16, dem_increase_20) <span class="sc">|&gt;</span></span>
+<span id="cb52-7"><a href="#cb52-7"></a>  <span class="fu">arrange</span>(dem_increase_20)</span>
+<span id="cb52-8"><a href="#cb52-8"></a></span>
+<span id="cb52-9"><a href="#cb52-9"></a><span class="co"># Check out the first 6 rows to confirm your results</span></span>
+<span id="cb52-10"><a href="#cb52-10"></a><span class="fu">head</span>(mn_wi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  state_name        county_name dem_pct_20 dem_pct_16 dem_increase_20
+1  Minnesota     Stevens County      37.80      39.55           -1.75
+2  Wisconsin      Forest County      34.06      35.12           -1.06
+3  Wisconsin    Kewaunee County      32.87      33.73           -0.86
+4  Wisconsin       Clark County      30.37      31.19           -0.82
+5  Wisconsin       Adams County      36.63      37.40           -0.77
+6  Wisconsin Trempealeau County      40.86      41.57           -0.71</code></pre>
+</div>
+</div>
+</section><section id="part-c-1" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-c-1">Part c</h4>
+<p>Construct and discuss a plot of the county-level change in Democratic vote percent in 2020 vs 2016, and how this differs between Minnesota and Wisconsin.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1"></a><span class="co"># will complete if time at end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="exercise-7-summarize-demo" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-7-summarize-demo">Exercise 7: <code>summarize</code> Demo</h3>
+<p>6 verbs: <code>select</code>, <code>filter</code>, <code>arrange</code>, <code>mutate</code>, <code>summarize</code>, <code>group_by</code></p>
+<p>Let’s talk about the last 2 verbs. <code>summarize()</code> (or equivalently <code>summarise()</code>) takes an entire data frame as input and outputs a single row with one or more summary statistics. For each chunk below, indicate what the code does.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1"></a><span class="co"># What does this do? - return the median value of republican percent of vote in 2020</span></span>
+<span id="cb55-2"><a href="#cb55-2"></a></span>
+<span id="cb55-3"><a href="#cb55-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb55-4"><a href="#cb55-4"></a>  <span class="fu">summarize</span>(<span class="fu">median</span>(repub_pct_20))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  median(repub_pct_20)
+1                68.29</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="co"># What does this do? - create a new value median_repub which represents the median value of republican percent of vote in 2020</span></span>
+<span id="cb57-2"><a href="#cb57-2"></a></span>
+<span id="cb57-3"><a href="#cb57-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb57-4"><a href="#cb57-4"></a>  <span class="fu">summarize</span>(<span class="at">median_repub =</span> <span class="fu">median</span>(repub_pct_20))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  median_repub
+1        68.29</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1"></a><span class="co"># What does this do? - create a new value median_repub which represents the median value of republican percent of vote in 2020, and a new value total_votes which is the sum of total_votes_20</span></span>
+<span id="cb59-2"><a href="#cb59-2"></a></span>
+<span id="cb59-3"><a href="#cb59-3"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb59-4"><a href="#cb59-4"></a>  <span class="fu">summarize</span>(<span class="at">median_repub =</span> <span class="fu">median</span>(repub_pct_20), <span class="at">total_votes =</span> <span class="fu">sum</span>(total_votes_20))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  median_repub total_votes
+1        68.29   157949293</code></pre>
+</div>
+</div>
+</section><section id="exercise-8-summarize-group_by-demo" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-8-summarize-group_by-demo">Exercise 8: <code>summarize</code> + <code>group_by</code> demo</h3>
+<p>Finally, <code>group_by()</code> groups the units of observation or rows of a data frame by a specified set of variables. Alone, this function doesn’t change the appearance of our dataset or seem to do anything at all:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb61-2"><a href="#cb61-2"></a>  <span class="fu">group_by</span>(state_name)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 3,109 × 7
+# Groups:   state_name [50]
+   state_name county_name  total_votes_20 repub_pct_20 dem_pct_20 total_votes_16
+   &lt;chr&gt;      &lt;chr&gt;                 &lt;int&gt;        &lt;dbl&gt;      &lt;dbl&gt;          &lt;int&gt;
+ 1 Alabama    Autauga Cou…          27770         71.4      27.0           24661
+ 2 Alabama    Baldwin Cou…         109679         76.2      22.4           94090
+ 3 Alabama    Barbour Cou…          10518         53.4      45.8           10390
+ 4 Alabama    Bibb County            9595         78.4      20.7            8748
+ 5 Alabama    Blount Coun…          27588         89.6       9.57          25384
+ 6 Alabama    Bullock Cou…           4613         24.8      74.7            4701
+ 7 Alabama    Butler Coun…           9488         57.5      41.8            8685
+ 8 Alabama    Calhoun Cou…          50983         68.8      29.8           47376
+ 9 Alabama    Chambers Co…          15284         57.3      41.6           13778
+10 Alabama    Cherokee Co…          12301         86.0      13.2           10503
+# ℹ 3,099 more rows
+# ℹ 1 more variable: dem_pct_16 &lt;dbl&gt;</code></pre>
+</div>
+</div>
+<p>Though it does change the underlying structure of the dataset:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1"></a><span class="co"># Check out the structure before and after group_by</span></span>
+<span id="cb63-2"><a href="#cb63-2"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb63-3"><a href="#cb63-3"></a>  <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb65-2"><a href="#cb65-2"></a>  <span class="fu">group_by</span>(state_name) <span class="sc">|&gt;</span></span>
+<span id="cb65-3"><a href="#cb65-3"></a>  <span class="fu">class</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "grouped_df" "tbl_df"     "tbl"        "data.frame"</code></pre>
+</div>
+</div>
+<p>Where it really shines is in partnership with <code>summarize()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1"></a><span class="co"># What does this do? - this makes each sate one row and its values are the summarized values median_repub and total_votes</span></span>
+<span id="cb67-2"><a href="#cb67-2"></a><span class="co"># (What if we didn't use group_by?) - it would just give the total values for the entire dataset</span></span>
+<span id="cb67-3"><a href="#cb67-3"></a></span>
+<span id="cb67-4"><a href="#cb67-4"></a>elections_small <span class="sc">|&gt;</span> </span>
+<span id="cb67-5"><a href="#cb67-5"></a>   <span class="fu">group_by</span>(state_name) <span class="sc">|&gt;</span></span>
+<span id="cb67-6"><a href="#cb67-6"></a>   <span class="fu">summarize</span>(<span class="at">median_repub =</span> <span class="fu">median</span>(repub_pct_20), <span class="at">total_votes =</span> <span class="fu">sum</span>(total_votes_20)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 50 × 3
+   state_name           median_repub total_votes
+   &lt;chr&gt;                       &lt;dbl&gt;       &lt;int&gt;
+ 1 Alabama                      70.6     2323304
+ 2 Arizona                      57.9     3387326
+ 3 Arkansas                     72.1     1219069
+ 4 California                   44.8    17495906
+ 5 Colorado                     56.2     3256953
+ 6 Connecticut                  41.0     1824280
+ 7 Delaware                     47.1      504010
+ 8 District of Columbia          5.4      344356
+ 9 Florida                      64.6    11067456
+10 Georgia                      68       4997716
+# ℹ 40 more rows</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled" title="Reflect">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Reflect
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Notice that <code>group_by()</code> with <code>summarize()</code> produces new data frame or tibble! But the units of observation are now states instead of counties within states.</p>
+</div>
+</div>
+</section><section id="exercise-9-diy" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-9-diy">Exercise 9: DIY</h3>
+<p>Let’s practice (some of) our 6 verbs: <code>select</code>, <code>filter</code>, <code>arrange</code>, <code>mutate</code>, <code>summarize</code>, <code>group_by</code> Remember:</p>
+<ul>
+<li>Before writing any code, translate the given prompts: how many distinct wrangling steps are needed and what verb do we need in each step?</li>
+<li>Add each verb one at a time.</li>
+</ul>
+<section id="part-a-3" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-a-3">Part a</h4>
+<p>NOTE: Part a is a challenge exercise. If you get really stuck, move on to Part b which is the same overall question, but with hints.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1"></a><span class="co"># Sort the *states* from the most to least total votes cast in 2020</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1"></a><span class="co"># In 2020, what were the total number of votes for the Democratic candidate and the total number of votes for the Republican candidate in each *state*?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="co"># What states did the Democratic candidate win in 2020?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section><section id="part-b-3" class="level4 unnumbered"><h4 class="unnumbered anchored" data-anchor-id="part-b-3">Part b</h4>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1"></a><span class="co"># Sort the states from the most to least total votes cast in 2020</span></span>
+<span id="cb72-2"><a href="#cb72-2"></a><span class="co"># HINT: Calculate the total number of votes in each state, then sort</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1"></a><span class="co"># In 2020, what were the total number of votes for the Democratic candidate and the total number of votes for the Republican candidate in each state?</span></span>
+<span id="cb73-2"><a href="#cb73-2"></a><span class="co"># HINT: First calculate the number of Dem and Repub votes in each *county*</span></span>
+<span id="cb73-3"><a href="#cb73-3"></a><span class="co"># Then group and summarize these by state</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1"></a><span class="co"># What states did the Democratic candidate win in 2020?</span></span>
+<span id="cb74-2"><a href="#cb74-2"></a><span class="co"># HINT: Start with the results from the previous chunk, and then keep only some rows</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section></section><section id="exercise-10-practice-on-new-data" class="level3 unnumbered"><h3 class="unnumbered anchored" data-anchor-id="exercise-10-practice-on-new-data">Exercise 10: Practice on New Data</h3>
+<p>Recall the World Cup football/soccer data from TidyTuesday:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a>world_cup <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>You can find a codebook <a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-11-29">here</a>. Use (some of) our 6 verbs (<code>select</code>, <code>filter</code>, <code>arrange</code>, <code>mutate</code>, <code>summarize</code>, <code>group_by</code>) and data viz to address the following prompts.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1"></a><span class="co"># In what years did Brazil win the World Cup?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a><span class="co"># What were the 6 World Cups with the highest attendance?</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="co"># Construct a univariate plot of goals_scored (no wrangling necessary)</span></span>
+<span id="cb78-2"><a href="#cb78-2"></a><span class="co"># This provides a visual summary of how the number of goals_scored varies from World Cup to World Cup</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="co"># Let's follow up the plot with some more precise numerical summaries</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a><span class="co"># Calculate the min, median, and max number of goals_scored across all World Cups</span></span>
+<span id="cb79-3"><a href="#cb79-3"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Visually compare these numerical summaries to what you observed in the plot</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="co"># Construct a bivariate plot of how the number of goals_scored in the World Cup has changed over the years</span></span>
+<span id="cb80-2"><a href="#cb80-2"></a><span class="co"># No wrangling necessary</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1"></a><span class="co"># Our above summaries might be a bit misleading.</span></span>
+<span id="cb81-2"><a href="#cb81-2"></a><span class="co"># The number of games played at the World Cup varies.</span></span>
+<span id="cb81-3"><a href="#cb81-3"></a><span class="co"># Construct a bivariate plot of how the typical number of goals per game has changed over the years</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+<!-- -->
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../ica/ica-effective.html" class="pagination-link" aria-label="Effective Viz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Effective Viz</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../ica/ica-dates.html" class="pagination-link" aria-label="Dates">
+        <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Dates</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb82" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb82-1"><a href="#cb82-1"></a><span class="co">---</span></span>
+<span id="cb82-2"><a href="#cb82-2"></a><span class="an">title:</span><span class="co"> "Wrangling Data"</span></span>
+<span id="cb82-3"><a href="#cb82-3"></a><span class="an">editor:</span><span class="co"> </span></span>
+<span id="cb82-4"><a href="#cb82-4"></a><span class="co">  markdown: </span></span>
+<span id="cb82-5"><a href="#cb82-5"></a><span class="co">    wrap: sentence</span></span>
+<span id="cb82-6"><a href="#cb82-6"></a><span class="co">---</span></span>
+<span id="cb82-7"><a href="#cb82-7"></a></span>
+<span id="cb82-8"><a href="#cb82-8"></a><span class="fu">## Exercises</span></span>
+<span id="cb82-9"><a href="#cb82-9"></a></span>
+<span id="cb82-10"><a href="#cb82-10"></a><span class="fu">### Exercise 1: `select` Practice {.unnumbered}</span></span>
+<span id="cb82-11"><a href="#cb82-11"></a></span>
+<span id="cb82-12"><a href="#cb82-12"></a>Use <span class="in">`select()`</span> to create a simplified dataset that we'll use throughout the exercises below.</span>
+<span id="cb82-13"><a href="#cb82-13"></a></span>
+<span id="cb82-14"><a href="#cb82-14"></a><span class="ss">-   </span>Store this dataset as <span class="in">`elections_small`</span>.</span>
+<span id="cb82-15"><a href="#cb82-15"></a><span class="ss">-   </span>Only keep the following variables: <span class="in">`state_name`</span>, <span class="in">`county_name`</span>, <span class="in">`total_votes_20`</span>, <span class="in">`repub_pct_20`</span>, <span class="in">`dem_pct_20`</span>, <span class="in">`total_votes_16`</span>, <span class="in">`dem_pct_16`</span></span>
+<span id="cb82-16"><a href="#cb82-16"></a></span>
+<span id="cb82-19"><a href="#cb82-19"></a><span class="in">```{r}</span></span>
+<span id="cb82-20"><a href="#cb82-20"></a><span class="co"># Load tidyverse &amp; data</span></span>
+<span id="cb82-21"><a href="#cb82-21"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb82-22"><a href="#cb82-22"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
+<span id="cb82-23"><a href="#cb82-23"></a><span class="in">```</span></span>
+<span id="cb82-24"><a href="#cb82-24"></a></span>
+<span id="cb82-27"><a href="#cb82-27"></a><span class="in">```{r}</span></span>
+<span id="cb82-28"><a href="#cb82-28"></a><span class="co"># Define elections_small</span></span>
+<span id="cb82-29"><a href="#cb82-29"></a>elections_small <span class="ot">&lt;-</span> elections <span class="sc">|&gt;</span></span>
+<span id="cb82-30"><a href="#cb82-30"></a>  <span class="fu">select</span>(state_name,county_name, total_votes_20, repub_pct_20, dem_pct_20, total_votes_16, dem_pct_16)</span>
+<span id="cb82-31"><a href="#cb82-31"></a></span>
+<span id="cb82-32"><a href="#cb82-32"></a><span class="co"># Check out the first 6 rows to confirm your code did what you think it did!</span></span>
+<span id="cb82-33"><a href="#cb82-33"></a><span class="fu">head</span>(elections_small)</span>
+<span id="cb82-34"><a href="#cb82-34"></a></span>
+<span id="cb82-35"><a href="#cb82-35"></a><span class="in">```</span></span>
+<span id="cb82-36"><a href="#cb82-36"></a></span>
+<span id="cb82-37"><a href="#cb82-37"></a><span class="fu">### Exercise 2: `filter` Demo {.unnumbered}</span></span>
+<span id="cb82-38"><a href="#cb82-38"></a></span>
+<span id="cb82-39"><a href="#cb82-39"></a>Whereas <span class="in">`select()`</span> selects certain *variables* or columns, `filter()` keeps certain *units of observation* or rows relative to their outcome on certain variables.</span>
+<span id="cb82-40"><a href="#cb82-40"></a>To this end, we must:</span>
+<span id="cb82-41"><a href="#cb82-41"></a></span>
+<span id="cb82-42"><a href="#cb82-42"></a><span class="ss">-   </span>Identify the variable(s) that are relevant to the filter.</span>
+<span id="cb82-43"><a href="#cb82-43"></a></span>
+<span id="cb82-44"><a href="#cb82-44"></a><span class="ss">-   </span>Use a "logical comparison operator" to define which values of the variable to *keep*:</span>
+<span id="cb82-45"><a href="#cb82-45"></a></span>
+<span id="cb82-46"><a href="#cb82-46"></a>    | symbol             | meaning                   |</span>
+<span id="cb82-47"><a href="#cb82-47"></a>    |:-------------------|:--------------------------|</span>
+<span id="cb82-48"><a href="#cb82-48"></a>    | <span class="in">`==`</span>               | equal to                  |</span>
+<span id="cb82-49"><a href="#cb82-49"></a>    | <span class="in">`!=`</span>               | not equal to              |</span>
+<span id="cb82-50"><a href="#cb82-50"></a>    | <span class="in">`&gt;`</span>                | greater than              |</span>
+<span id="cb82-51"><a href="#cb82-51"></a>    | <span class="in">`&gt;=`</span>               | greater than or equal to  |</span>
+<span id="cb82-52"><a href="#cb82-52"></a>    | <span class="in">`&lt;`</span>                | less than                 |</span>
+<span id="cb82-53"><a href="#cb82-53"></a>    | <span class="in">`&lt;=`</span>               | less than or equal to     |</span>
+<span id="cb82-54"><a href="#cb82-54"></a>    | <span class="in">`%in% c(???, ???)`</span> | a list of multiple values |</span>
+<span id="cb82-55"><a href="#cb82-55"></a></span>
+<span id="cb82-56"><a href="#cb82-56"></a><span class="ss">-   </span>Use quotes <span class="in">`""`</span> when specifying outcomes of interest for a categorical variable.</span>
+<span id="cb82-57"><a href="#cb82-57"></a></span>
+<span id="cb82-58"><a href="#cb82-58"></a>::: {.callout-tip title="Commenting/Uncommenting Code"}</span>
+<span id="cb82-59"><a href="#cb82-59"></a>To comment/uncomment several lines of code at once, highlight them then click &lt;kbd&gt;ctrl/cmd+shift+c&lt;/kbd&gt;.</span>
+<span id="cb82-60"><a href="#cb82-60"></a>:::</span>
+<span id="cb82-61"><a href="#cb82-61"></a></span>
+<span id="cb82-64"><a href="#cb82-64"></a><span class="in">```{r}</span></span>
+<span id="cb82-65"><a href="#cb82-65"></a><span class="co"># Keep only data on counties in Hawaii</span></span>
+<span id="cb82-66"><a href="#cb82-66"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-67"><a href="#cb82-67"></a> <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Hawaii"</span>)</span>
+<span id="cb82-68"><a href="#cb82-68"></a><span class="in">```</span></span>
+<span id="cb82-69"><a href="#cb82-69"></a></span>
+<span id="cb82-72"><a href="#cb82-72"></a><span class="in">```{r}</span></span>
+<span id="cb82-73"><a href="#cb82-73"></a><span class="co"># What does this do? - lists multiple variables, in this case only Hawaii and Delaware state names are left in</span></span>
+<span id="cb82-74"><a href="#cb82-74"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-75"><a href="#cb82-75"></a>  <span class="fu">filter</span>(state_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Hawaii"</span>, <span class="st">"Delaware"</span>))</span>
+<span id="cb82-76"><a href="#cb82-76"></a><span class="in">```</span></span>
+<span id="cb82-77"><a href="#cb82-77"></a></span>
+<span id="cb82-80"><a href="#cb82-80"></a><span class="in">```{r}</span></span>
+<span id="cb82-81"><a href="#cb82-81"></a><span class="co"># Keep only data on counties where the Republican got MORE THAN 93.97% of the vote in 2020</span></span>
+<span id="cb82-82"><a href="#cb82-82"></a><span class="co"># THINK: What variable is relevant here?</span></span>
+<span id="cb82-83"><a href="#cb82-83"></a></span>
+<span id="cb82-84"><a href="#cb82-84"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-85"><a href="#cb82-85"></a>  <span class="fu">filter</span>(repub_pct_20 <span class="sc">&gt;</span> <span class="fl">93.97</span>)</span>
+<span id="cb82-86"><a href="#cb82-86"></a><span class="in">```</span></span>
+<span id="cb82-87"><a href="#cb82-87"></a></span>
+<span id="cb82-90"><a href="#cb82-90"></a><span class="in">```{r}</span></span>
+<span id="cb82-91"><a href="#cb82-91"></a><span class="co"># Keep only data on counties where the Republican got AT LEAST 93.97% of the vote in 2020</span></span>
+<span id="cb82-92"><a href="#cb82-92"></a><span class="co"># This should have 1 more row (observation) than your answer above</span></span>
+<span id="cb82-93"><a href="#cb82-93"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-94"><a href="#cb82-94"></a>  <span class="fu">filter</span>(repub_pct_20 <span class="sc">&gt;=</span> <span class="fl">93.97</span>)</span>
+<span id="cb82-95"><a href="#cb82-95"></a><span class="in">```</span></span>
+<span id="cb82-96"><a href="#cb82-96"></a></span>
+<span id="cb82-97"><a href="#cb82-97"></a>We can also filter with respect to 2 rules!</span>
+<span id="cb82-98"><a href="#cb82-98"></a>Here, think what variables are relevant.</span>
+<span id="cb82-99"><a href="#cb82-99"></a></span>
+<span id="cb82-102"><a href="#cb82-102"></a><span class="in">```{r}</span></span>
+<span id="cb82-103"><a href="#cb82-103"></a><span class="co"># Keep only data on counties in Texas where the Democrat got more than 65% of the vote in 2020</span></span>
+<span id="cb82-104"><a href="#cb82-104"></a></span>
+<span id="cb82-105"><a href="#cb82-105"></a><span class="co"># Do this 2 ways.</span></span>
+<span id="cb82-106"><a href="#cb82-106"></a><span class="co"># Method 1: 2 filters with 1 condition each</span></span>
+<span id="cb82-107"><a href="#cb82-107"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-108"><a href="#cb82-108"></a> <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Texas"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-109"><a href="#cb82-109"></a> <span class="fu">filter</span>(dem_pct_20 <span class="sc">&gt;</span> <span class="dv">65</span>)</span>
+<span id="cb82-110"><a href="#cb82-110"></a></span>
+<span id="cb82-111"><a href="#cb82-111"></a><span class="co"># Method 2: 1 filter with 2 conditions</span></span>
+<span id="cb82-112"><a href="#cb82-112"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-113"><a href="#cb82-113"></a> <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Texas"</span>, dem_pct_20 <span class="sc">&gt;</span> <span class="dv">65</span>)</span>
+<span id="cb82-114"><a href="#cb82-114"></a><span class="in">```</span></span>
+<span id="cb82-115"><a href="#cb82-115"></a></span>
+<span id="cb82-116"><a href="#cb82-116"></a><span class="fu">### Exercise 3: `arrange` Demo {.unnumbered}</span></span>
+<span id="cb82-117"><a href="#cb82-117"></a></span>
+<span id="cb82-118"><a href="#cb82-118"></a><span class="in">`arrange()`</span> arranges or sorts the *rows* in a dataset according to a given column or variable, in ascending or descending order:</span>
+<span id="cb82-119"><a href="#cb82-119"></a></span>
+<span id="cb82-120"><a href="#cb82-120"></a><span class="in">`arrange(variable)`</span>, <span class="in">`arrange(desc(variable))`</span></span>
+<span id="cb82-121"><a href="#cb82-121"></a></span>
+<span id="cb82-124"><a href="#cb82-124"></a><span class="in">```{r}</span></span>
+<span id="cb82-125"><a href="#cb82-125"></a><span class="co"># Arrange the counties in elections_small from lowest to highest percentage of 2020 Republican support</span></span>
+<span id="cb82-126"><a href="#cb82-126"></a><span class="co"># Print out just the first 6 rows</span></span>
+<span id="cb82-127"><a href="#cb82-127"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-128"><a href="#cb82-128"></a>  <span class="fu">arrange</span>(repub_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-129"><a href="#cb82-129"></a>  <span class="fu">head</span>()</span>
+<span id="cb82-130"><a href="#cb82-130"></a><span class="in">```</span></span>
+<span id="cb82-131"><a href="#cb82-131"></a></span>
+<span id="cb82-134"><a href="#cb82-134"></a><span class="in">```{r}</span></span>
+<span id="cb82-135"><a href="#cb82-135"></a><span class="co"># Arrange the counties in elections_small from highest to lowest percentage of 2020 Republican support</span></span>
+<span id="cb82-136"><a href="#cb82-136"></a><span class="co"># Print out just the first 6 rows</span></span>
+<span id="cb82-137"><a href="#cb82-137"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-138"><a href="#cb82-138"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(repub_pct_20)) <span class="sc">|&gt;</span></span>
+<span id="cb82-139"><a href="#cb82-139"></a>  <span class="fu">head</span>()</span>
+<span id="cb82-140"><a href="#cb82-140"></a><span class="in">```</span></span>
+<span id="cb82-141"><a href="#cb82-141"></a></span>
+<span id="cb82-142"><a href="#cb82-142"></a><span class="fu">### Exercise 4: `mutate` Demo {.unnumbered}</span></span>
+<span id="cb82-143"><a href="#cb82-143"></a></span>
+<span id="cb82-144"><a href="#cb82-144"></a><span class="in">`mutate()`</span> can either transform / mutate an existing variable (column), or define a new variable based on existing ones.</span>
+<span id="cb82-145"><a href="#cb82-145"></a></span>
+<span id="cb82-146"><a href="#cb82-146"></a><span class="fu">#### Part a {.unnumbered}</span></span>
+<span id="cb82-147"><a href="#cb82-147"></a></span>
+<span id="cb82-150"><a href="#cb82-150"></a><span class="in">```{r}</span></span>
+<span id="cb82-151"><a href="#cb82-151"></a><span class="co"># What did this code do? - added a column called diff_20 which takes the republican percent of votes in 2020 and subtracts the democratic percent of votes in 2020 to see how far apart the support in each county was. </span></span>
+<span id="cb82-152"><a href="#cb82-152"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-153"><a href="#cb82-153"></a>  <span class="fu">mutate</span>(<span class="at">diff_20 =</span> repub_pct_20 <span class="sc">-</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-154"><a href="#cb82-154"></a>  <span class="fu">head</span>()</span>
+<span id="cb82-155"><a href="#cb82-155"></a><span class="in">```</span></span>
+<span id="cb82-156"><a href="#cb82-156"></a></span>
+<span id="cb82-159"><a href="#cb82-159"></a><span class="in">```{r}</span></span>
+<span id="cb82-160"><a href="#cb82-160"></a><span class="co"># What did this code do? - this creates a new column of data. It finds how many republican votes there were in each county by rounding the value of the republican percent multiplied by the total votes, divided by 100 (to account for repub_pct_20 being a percent not a decimal)</span></span>
+<span id="cb82-161"><a href="#cb82-161"></a></span>
+<span id="cb82-162"><a href="#cb82-162"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-163"><a href="#cb82-163"></a>  <span class="fu">mutate</span>(<span class="at">repub_votes_20 =</span> <span class="fu">round</span>(total_votes_20 <span class="sc">*</span> repub_pct_20<span class="sc">/</span><span class="dv">100</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb82-164"><a href="#cb82-164"></a>  <span class="fu">head</span>()</span>
+<span id="cb82-165"><a href="#cb82-165"></a><span class="in">```</span></span>
+<span id="cb82-166"><a href="#cb82-166"></a></span>
+<span id="cb82-169"><a href="#cb82-169"></a><span class="in">```{r}</span></span>
+<span id="cb82-170"><a href="#cb82-170"></a><span class="co"># What did this code do? - makes a new column with true or false values representing is republicans won the county (true) or if democrats did (false)</span></span>
+<span id="cb82-171"><a href="#cb82-171"></a></span>
+<span id="cb82-172"><a href="#cb82-172"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-173"><a href="#cb82-173"></a>  <span class="fu">mutate</span>(<span class="at">repub_win_20 =</span> repub_pct_20 <span class="sc">&gt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-174"><a href="#cb82-174"></a>  <span class="fu">head</span>()</span>
+<span id="cb82-175"><a href="#cb82-175"></a><span class="in">```</span></span>
+<span id="cb82-176"><a href="#cb82-176"></a></span>
+<span id="cb82-177"><a href="#cb82-177"></a><span class="fu">#### Part b {.unnumbered}</span></span>
+<span id="cb82-178"><a href="#cb82-178"></a></span>
+<span id="cb82-181"><a href="#cb82-181"></a><span class="in">```{r}</span></span>
+<span id="cb82-182"><a href="#cb82-182"></a><span class="co"># You try</span></span>
+<span id="cb82-183"><a href="#cb82-183"></a><span class="co"># Define a variable that calculates the change in Dem support in 2020 vs 2016</span></span>
+<span id="cb82-184"><a href="#cb82-184"></a></span>
+<span id="cb82-185"><a href="#cb82-185"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-186"><a href="#cb82-186"></a> <span class="fu">mutate</span>(dem_pct_20<span class="sc">-</span>dem_pct_16) <span class="sc">|&gt;</span></span>
+<span id="cb82-187"><a href="#cb82-187"></a> <span class="fu">head</span>()</span>
+<span id="cb82-188"><a href="#cb82-188"></a><span class="in">```</span></span>
+<span id="cb82-189"><a href="#cb82-189"></a></span>
+<span id="cb82-192"><a href="#cb82-192"></a><span class="in">```{r}</span></span>
+<span id="cb82-193"><a href="#cb82-193"></a><span class="co"># You try</span></span>
+<span id="cb82-194"><a href="#cb82-194"></a><span class="co"># Define a variable that determines whether the Dem support was higher in 2020 than in 2016 (TRUE/FALSE)</span></span>
+<span id="cb82-195"><a href="#cb82-195"></a></span>
+<span id="cb82-196"><a href="#cb82-196"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-197"><a href="#cb82-197"></a> <span class="fu">mutate</span>(<span class="at">dem_increase_20 =</span> dem_pct_20 <span class="sc">&gt;</span> dem_pct_16) <span class="sc">|&gt;</span></span>
+<span id="cb82-198"><a href="#cb82-198"></a> <span class="fu">head</span>()</span>
+<span id="cb82-199"><a href="#cb82-199"></a><span class="in">```</span></span>
+<span id="cb82-200"><a href="#cb82-200"></a></span>
+<span id="cb82-201"><a href="#cb82-201"></a><span class="fu">### Exercise 5: Pipe Series {.unnumbered}</span></span>
+<span id="cb82-202"><a href="#cb82-202"></a></span>
+<span id="cb82-203"><a href="#cb82-203"></a>Let's now combine these verbs into a pipe series!</span>
+<span id="cb82-204"><a href="#cb82-204"></a></span>
+<span id="cb82-205"><a href="#cb82-205"></a><span class="fu">#### Part a {.unnumbered}</span></span>
+<span id="cb82-206"><a href="#cb82-206"></a></span>
+<span id="cb82-207"><a href="#cb82-207"></a>::: {.callout-important title="Think then Run"}</span>
+<span id="cb82-208"><a href="#cb82-208"></a>BEFORE running the below chunk, what do you think it will produce?</span>
+<span id="cb82-209"><a href="#cb82-209"></a></span>
+<span id="cb82-210"><a href="#cb82-210"></a><span class="ss">-   </span>For Wisconsin only data, of counties where democrats won, sort by most to least amount of people who voted</span>
+<span id="cb82-211"><a href="#cb82-211"></a>:::</span>
+<span id="cb82-212"><a href="#cb82-212"></a></span>
+<span id="cb82-215"><a href="#cb82-215"></a><span class="in">```{r}</span></span>
+<span id="cb82-216"><a href="#cb82-216"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-217"><a href="#cb82-217"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Wisconsin"</span>,</span>
+<span id="cb82-218"><a href="#cb82-218"></a>         repub_pct_20 <span class="sc">&lt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-219"><a href="#cb82-219"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_votes_20)) <span class="sc">|&gt;</span></span>
+<span id="cb82-220"><a href="#cb82-220"></a>  <span class="fu">head</span>()</span>
+<span id="cb82-221"><a href="#cb82-221"></a><span class="in">```</span></span>
+<span id="cb82-222"><a href="#cb82-222"></a></span>
+<span id="cb82-223"><a href="#cb82-223"></a><span class="fu">#### Part b {.unnumbered}</span></span>
+<span id="cb82-224"><a href="#cb82-224"></a></span>
+<span id="cb82-225"><a href="#cb82-225"></a>::: {.callout-important title="Think then Run"}</span>
+<span id="cb82-226"><a href="#cb82-226"></a>BEFORE trying, what do you think will happen if you change the order of filter and arrange:</span>
+<span id="cb82-227"><a href="#cb82-227"></a></span>
+<span id="cb82-228"><a href="#cb82-228"></a><span class="ss">-   </span>the results will be the same - THE CORRECT ANSWER</span>
+<span id="cb82-229"><a href="#cb82-229"></a><span class="ss">-   </span>we'll get an error</span>
+<span id="cb82-230"><a href="#cb82-230"></a><span class="ss">-   </span>we won't get an error, but the results will be different</span>
+<span id="cb82-231"><a href="#cb82-231"></a>:::</span>
+<span id="cb82-232"><a href="#cb82-232"></a></span>
+<span id="cb82-235"><a href="#cb82-235"></a><span class="in">```{r}</span></span>
+<span id="cb82-236"><a href="#cb82-236"></a><span class="co"># Now try it. Change the order of filter and arrange below.</span></span>
+<span id="cb82-237"><a href="#cb82-237"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-238"><a href="#cb82-238"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(total_votes_20)) <span class="sc">|&gt;</span></span>
+<span id="cb82-239"><a href="#cb82-239"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Wisconsin"</span>,</span>
+<span id="cb82-240"><a href="#cb82-240"></a>         repub_pct_20 <span class="sc">&lt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-241"><a href="#cb82-241"></a>  <span class="fu">head</span>()</span>
+<span id="cb82-242"><a href="#cb82-242"></a><span class="in">```</span></span>
+<span id="cb82-243"><a href="#cb82-243"></a></span>
+<span id="cb82-244"><a href="#cb82-244"></a><span class="fu">#### Part c {.unnumbered}</span></span>
+<span id="cb82-245"><a href="#cb82-245"></a></span>
+<span id="cb82-246"><a href="#cb82-246"></a>So the order of <span class="in">`filter()`</span> and <span class="in">`arrange()`</span> did *not* matter -- rerranging them produces the same results.</span>
+<span id="cb82-247"><a href="#cb82-247"></a>BUT what is one *advantage* of filtering before arranging?</span>
+<span id="cb82-248"><a href="#cb82-248"></a></span>
+<span id="cb82-249"><a href="#cb82-249"></a><span class="ss">-   </span>Cleaning up the data first helps to cut down on unnecessary computing steps</span>
+<span id="cb82-250"><a href="#cb82-250"></a></span>
+<span id="cb82-251"><a href="#cb82-251"></a><span class="fu">#### Part d {.unnumbered}</span></span>
+<span id="cb82-252"><a href="#cb82-252"></a></span>
+<span id="cb82-253"><a href="#cb82-253"></a>::: {.callout-important title="Think then Run"}</span>
+<span id="cb82-254"><a href="#cb82-254"></a>BEFORE running the below chunk, what do you think it will produce?</span>
+<span id="cb82-255"><a href="#cb82-255"></a></span>
+<span id="cb82-256"><a href="#cb82-256"></a><span class="ss">-   </span>Of Delaware states, create a variable repub_win_20 which returns TRUE if republicans got more votes in 2020 than democrats, looking only at county name, republican percent of votes, democrat percent of votes, and if republicans won in 2020 (true if so),</span>
+<span id="cb82-257"><a href="#cb82-257"></a>:::</span>
+<span id="cb82-258"><a href="#cb82-258"></a></span>
+<span id="cb82-261"><a href="#cb82-261"></a><span class="in">```{r}</span></span>
+<span id="cb82-262"><a href="#cb82-262"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-263"><a href="#cb82-263"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Delaware"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-264"><a href="#cb82-264"></a>  <span class="fu">mutate</span>(<span class="at">repub_win_20 =</span> repub_pct_20 <span class="sc">&gt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-265"><a href="#cb82-265"></a>  <span class="fu">select</span>(county_name, repub_pct_20, dem_pct_20, repub_win_20)</span>
+<span id="cb82-266"><a href="#cb82-266"></a><span class="in">```</span></span>
+<span id="cb82-267"><a href="#cb82-267"></a></span>
+<span id="cb82-268"><a href="#cb82-268"></a><span class="fu">#### Part e {.unnumbered}</span></span>
+<span id="cb82-269"><a href="#cb82-269"></a></span>
+<span id="cb82-270"><a href="#cb82-270"></a>::: {.callout-important title="Think then Run"}</span>
+<span id="cb82-271"><a href="#cb82-271"></a>BEFORE trying, what do you think will happen if you change the order of mutate and select:</span>
+<span id="cb82-272"><a href="#cb82-272"></a></span>
+<span id="cb82-273"><a href="#cb82-273"></a><span class="ss">1.  </span>the results will be the same (MY GUESS)</span>
+<span id="cb82-274"><a href="#cb82-274"></a><span class="ss">2.  </span>we'll get an error</span>
+<span id="cb82-275"><a href="#cb82-275"></a><span class="ss">3.  </span>we won't get an error, but the results will be different</span>
+<span id="cb82-276"><a href="#cb82-276"></a>:::</span>
+<span id="cb82-277"><a href="#cb82-277"></a></span>
+<span id="cb82-280"><a href="#cb82-280"></a><span class="in">```{r}</span></span>
+<span id="cb82-281"><a href="#cb82-281"></a><span class="co"># Now try it. Change the order of mutate and select below.</span></span>
+<span id="cb82-282"><a href="#cb82-282"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-283"><a href="#cb82-283"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Delaware"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-284"><a href="#cb82-284"></a>  <span class="fu">mutate</span>(<span class="at">repub_win_20 =</span> repub_pct_20 <span class="sc">&gt;</span> dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-285"><a href="#cb82-285"></a>  <span class="fu">select</span>(county_name, repub_pct_20, dem_pct_20, repub_win_20)</span>
+<span id="cb82-286"><a href="#cb82-286"></a><span class="in">```</span></span>
+<span id="cb82-287"><a href="#cb82-287"></a></span>
+<span id="cb82-288"><a href="#cb82-288"></a><span class="fu">### Exercise 6: DIY Pipe Series {.unnumbered}</span></span>
+<span id="cb82-289"><a href="#cb82-289"></a></span>
+<span id="cb82-290"><a href="#cb82-290"></a>We've now learned 4 of the 6 wrangling verbs: <span class="in">`select`</span>, <span class="in">`filter`</span>, <span class="in">`mutate`</span>, <span class="in">`arrange.`</span> Let's practice combining these into pipe series.</span>
+<span id="cb82-291"><a href="#cb82-291"></a>Here are some hot tips:</span>
+<span id="cb82-292"><a href="#cb82-292"></a></span>
+<span id="cb82-293"><a href="#cb82-293"></a><span class="ss">-   </span>Before writing any code, translate the prompt: how many distinct wrangling steps are needed and what verb do we need in each step?</span>
+<span id="cb82-294"><a href="#cb82-294"></a><span class="ss">-   </span>Add each verb one at a time -- don't try writing a whole chunk at once.</span>
+<span id="cb82-295"><a href="#cb82-295"></a></span>
+<span id="cb82-296"><a href="#cb82-296"></a><span class="fu">#### Part a {.unnumbered}</span></span>
+<span id="cb82-297"><a href="#cb82-297"></a></span>
+<span id="cb82-298"><a href="#cb82-298"></a>Show just the counties in Minnesota and their Democratic 2020 vote percentage, from highest to lowest.</span>
+<span id="cb82-299"><a href="#cb82-299"></a>Your answer should have just 2 columns.</span>
+<span id="cb82-300"><a href="#cb82-300"></a></span>
+<span id="cb82-303"><a href="#cb82-303"></a><span class="in">```{r}</span></span>
+<span id="cb82-304"><a href="#cb82-304"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-305"><a href="#cb82-305"></a>  <span class="fu">select</span>(state_name, dem_pct_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-306"><a href="#cb82-306"></a>  <span class="fu">filter</span>(state_name <span class="sc">==</span> <span class="st">"Minnesota"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb82-307"><a href="#cb82-307"></a>  <span class="fu">arrange</span>(dem_pct_20)</span>
+<span id="cb82-308"><a href="#cb82-308"></a><span class="in">```</span></span>
+<span id="cb82-309"><a href="#cb82-309"></a></span>
+<span id="cb82-310"><a href="#cb82-310"></a><span class="fu">#### Part b {.unnumbered}</span></span>
+<span id="cb82-311"><a href="#cb82-311"></a></span>
+<span id="cb82-312"><a href="#cb82-312"></a>Create a new dataset named <span class="in">`mn_wi`</span> that sorts the counties in Minnesota and Wisconsin from lowest to highest in terms of the *change* in Democratic vote percentage in 2020 vs 2016.</span>
+<span id="cb82-313"><a href="#cb82-313"></a>This dataset should include the following variables (and only these variables): <span class="in">`state_name`</span>, <span class="in">`county_name`</span>, <span class="in">`dem_pct_20`</span>, <span class="in">`dem_pct_16`</span>, and a variable measuring the change in Democratic vote percentage in 2020 vs 2016.</span>
+<span id="cb82-314"><a href="#cb82-314"></a></span>
+<span id="cb82-317"><a href="#cb82-317"></a><span class="in">```{r}</span></span>
+<span id="cb82-318"><a href="#cb82-318"></a><span class="co"># Define the dataset</span></span>
+<span id="cb82-319"><a href="#cb82-319"></a><span class="co"># Only store the results once you're confident that they're correct</span></span>
+<span id="cb82-320"><a href="#cb82-320"></a>mn_wi <span class="ot">&lt;-</span> elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-321"><a href="#cb82-321"></a>  <span class="fu">filter</span>(state_name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Minnesota"</span>, <span class="st">"Wisconsin"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb82-322"><a href="#cb82-322"></a>  <span class="fu">mutate</span>(<span class="at">dem_increase_20 =</span> dem_pct_20<span class="sc">-</span>dem_pct_16) <span class="sc">|&gt;</span></span>
+<span id="cb82-323"><a href="#cb82-323"></a>  <span class="fu">select</span>(state_name, county_name, dem_pct_20, dem_pct_16, dem_increase_20) <span class="sc">|&gt;</span></span>
+<span id="cb82-324"><a href="#cb82-324"></a>  <span class="fu">arrange</span>(dem_increase_20)</span>
+<span id="cb82-325"><a href="#cb82-325"></a></span>
+<span id="cb82-326"><a href="#cb82-326"></a><span class="co"># Check out the first 6 rows to confirm your results</span></span>
+<span id="cb82-327"><a href="#cb82-327"></a><span class="fu">head</span>(mn_wi)</span>
+<span id="cb82-328"><a href="#cb82-328"></a><span class="in">```</span></span>
+<span id="cb82-329"><a href="#cb82-329"></a></span>
+<span id="cb82-330"><a href="#cb82-330"></a><span class="fu">#### Part c {.unnumbered}</span></span>
+<span id="cb82-331"><a href="#cb82-331"></a></span>
+<span id="cb82-332"><a href="#cb82-332"></a>Construct and discuss a plot of the county-level change in Democratic vote percent in 2020 vs 2016, and how this differs between Minnesota and Wisconsin.</span>
+<span id="cb82-333"><a href="#cb82-333"></a></span>
+<span id="cb82-336"><a href="#cb82-336"></a><span class="in">```{r}</span></span>
+<span id="cb82-337"><a href="#cb82-337"></a><span class="co"># will complete if time at end</span></span>
+<span id="cb82-338"><a href="#cb82-338"></a><span class="in">```</span></span>
+<span id="cb82-339"><a href="#cb82-339"></a></span>
+<span id="cb82-340"><a href="#cb82-340"></a><span class="fu">### Exercise 7: `summarize` Demo {.unnumbered}</span></span>
+<span id="cb82-341"><a href="#cb82-341"></a></span>
+<span id="cb82-342"><a href="#cb82-342"></a>6 verbs: <span class="in">`select`</span>, <span class="in">`filter`</span>, <span class="in">`arrange`</span>, <span class="in">`mutate`</span>, <span class="in">`summarize`</span>, <span class="in">`group_by`</span></span>
+<span id="cb82-343"><a href="#cb82-343"></a></span>
+<span id="cb82-344"><a href="#cb82-344"></a>Let's talk about the last 2 verbs.</span>
+<span id="cb82-345"><a href="#cb82-345"></a><span class="in">`summarize()`</span> (or equivalently <span class="in">`summarise()`</span>) takes an entire data frame as input and outputs a single row with one or more summary statistics.</span>
+<span id="cb82-346"><a href="#cb82-346"></a>For each chunk below, indicate what the code does.</span>
+<span id="cb82-347"><a href="#cb82-347"></a></span>
+<span id="cb82-350"><a href="#cb82-350"></a><span class="in">```{r}</span></span>
+<span id="cb82-351"><a href="#cb82-351"></a><span class="co"># What does this do? - return the median value of republican percent of vote in 2020</span></span>
+<span id="cb82-352"><a href="#cb82-352"></a></span>
+<span id="cb82-353"><a href="#cb82-353"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-354"><a href="#cb82-354"></a>  <span class="fu">summarize</span>(<span class="fu">median</span>(repub_pct_20))</span>
+<span id="cb82-355"><a href="#cb82-355"></a><span class="in">```</span></span>
+<span id="cb82-356"><a href="#cb82-356"></a></span>
+<span id="cb82-359"><a href="#cb82-359"></a><span class="in">```{r}</span></span>
+<span id="cb82-360"><a href="#cb82-360"></a><span class="co"># What does this do? - create a new value median_repub which represents the median value of republican percent of vote in 2020</span></span>
+<span id="cb82-361"><a href="#cb82-361"></a></span>
+<span id="cb82-362"><a href="#cb82-362"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-363"><a href="#cb82-363"></a>  <span class="fu">summarize</span>(<span class="at">median_repub =</span> <span class="fu">median</span>(repub_pct_20))</span>
+<span id="cb82-364"><a href="#cb82-364"></a><span class="in">```</span></span>
+<span id="cb82-365"><a href="#cb82-365"></a></span>
+<span id="cb82-368"><a href="#cb82-368"></a><span class="in">```{r}</span></span>
+<span id="cb82-369"><a href="#cb82-369"></a><span class="co"># What does this do? - create a new value median_repub which represents the median value of republican percent of vote in 2020, and a new value total_votes which is the sum of total_votes_20</span></span>
+<span id="cb82-370"><a href="#cb82-370"></a></span>
+<span id="cb82-371"><a href="#cb82-371"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-372"><a href="#cb82-372"></a>  <span class="fu">summarize</span>(<span class="at">median_repub =</span> <span class="fu">median</span>(repub_pct_20), <span class="at">total_votes =</span> <span class="fu">sum</span>(total_votes_20))</span>
+<span id="cb82-373"><a href="#cb82-373"></a><span class="in">```</span></span>
+<span id="cb82-374"><a href="#cb82-374"></a></span>
+<span id="cb82-375"><a href="#cb82-375"></a><span class="fu">### Exercise 8: `summarize` + `group_by` demo {.unnumbered}</span></span>
+<span id="cb82-376"><a href="#cb82-376"></a></span>
+<span id="cb82-377"><a href="#cb82-377"></a>Finally, <span class="in">`group_by()`</span> groups the units of observation or rows of a data frame by a specified set of variables.</span>
+<span id="cb82-378"><a href="#cb82-378"></a>Alone, this function doesn't change the appearance of our dataset or seem to do anything at all:</span>
+<span id="cb82-379"><a href="#cb82-379"></a></span>
+<span id="cb82-382"><a href="#cb82-382"></a><span class="in">```{r}</span></span>
+<span id="cb82-383"><a href="#cb82-383"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-384"><a href="#cb82-384"></a>  <span class="fu">group_by</span>(state_name)</span>
+<span id="cb82-385"><a href="#cb82-385"></a><span class="in">```</span></span>
+<span id="cb82-386"><a href="#cb82-386"></a></span>
+<span id="cb82-387"><a href="#cb82-387"></a>Though it does change the underlying structure of the dataset:</span>
+<span id="cb82-388"><a href="#cb82-388"></a></span>
+<span id="cb82-391"><a href="#cb82-391"></a><span class="in">```{r}</span></span>
+<span id="cb82-392"><a href="#cb82-392"></a><span class="co"># Check out the structure before and after group_by</span></span>
+<span id="cb82-393"><a href="#cb82-393"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-394"><a href="#cb82-394"></a>  <span class="fu">class</span>()</span>
+<span id="cb82-395"><a href="#cb82-395"></a></span>
+<span id="cb82-396"><a href="#cb82-396"></a>elections_small <span class="sc">|&gt;</span></span>
+<span id="cb82-397"><a href="#cb82-397"></a>  <span class="fu">group_by</span>(state_name) <span class="sc">|&gt;</span></span>
+<span id="cb82-398"><a href="#cb82-398"></a>  <span class="fu">class</span>()</span>
+<span id="cb82-399"><a href="#cb82-399"></a><span class="in">```</span></span>
+<span id="cb82-400"><a href="#cb82-400"></a></span>
+<span id="cb82-401"><a href="#cb82-401"></a>Where it really shines is in partnership with <span class="in">`summarize()`</span>.</span>
+<span id="cb82-402"><a href="#cb82-402"></a></span>
+<span id="cb82-405"><a href="#cb82-405"></a><span class="in">```{r}</span></span>
+<span id="cb82-406"><a href="#cb82-406"></a><span class="co"># What does this do? - this makes each sate one row and its values are the summarized values median_repub and total_votes</span></span>
+<span id="cb82-407"><a href="#cb82-407"></a><span class="co"># (What if we didn't use group_by?) - it would just give the total values for the entire dataset</span></span>
+<span id="cb82-408"><a href="#cb82-408"></a></span>
+<span id="cb82-409"><a href="#cb82-409"></a>elections_small <span class="sc">|&gt;</span> </span>
+<span id="cb82-410"><a href="#cb82-410"></a>   <span class="fu">group_by</span>(state_name) <span class="sc">|&gt;</span></span>
+<span id="cb82-411"><a href="#cb82-411"></a>   <span class="fu">summarize</span>(<span class="at">median_repub =</span> <span class="fu">median</span>(repub_pct_20), <span class="at">total_votes =</span> <span class="fu">sum</span>(total_votes_20)) </span>
+<span id="cb82-412"><a href="#cb82-412"></a><span class="in">```</span></span>
+<span id="cb82-413"><a href="#cb82-413"></a></span>
+<span id="cb82-414"><a href="#cb82-414"></a>::: {.callout-warning title="Reflect"}</span>
+<span id="cb82-415"><a href="#cb82-415"></a>Notice that <span class="in">`group_by()`</span> with <span class="in">`summarize()`</span> produces new data frame or tibble!</span>
+<span id="cb82-416"><a href="#cb82-416"></a>But the units of observation are now states instead of counties within states.</span>
+<span id="cb82-417"><a href="#cb82-417"></a>:::</span>
+<span id="cb82-418"><a href="#cb82-418"></a></span>
+<span id="cb82-419"><a href="#cb82-419"></a><span class="fu">### Exercise 9: DIY {.unnumbered}</span></span>
+<span id="cb82-420"><a href="#cb82-420"></a></span>
+<span id="cb82-421"><a href="#cb82-421"></a>Let's practice (some of) our 6 verbs: <span class="in">`select`</span>, <span class="in">`filter`</span>, <span class="in">`arrange`</span>, <span class="in">`mutate`</span>, <span class="in">`summarize`</span>, <span class="in">`group_by`</span> Remember:</span>
+<span id="cb82-422"><a href="#cb82-422"></a></span>
+<span id="cb82-423"><a href="#cb82-423"></a><span class="ss">-   </span>Before writing any code, translate the given prompts: how many distinct wrangling steps are needed and what verb do we need in each step?</span>
+<span id="cb82-424"><a href="#cb82-424"></a><span class="ss">-   </span>Add each verb one at a time.</span>
+<span id="cb82-425"><a href="#cb82-425"></a></span>
+<span id="cb82-426"><a href="#cb82-426"></a><span class="fu">#### Part a {.unnumbered}</span></span>
+<span id="cb82-427"><a href="#cb82-427"></a></span>
+<span id="cb82-428"><a href="#cb82-428"></a>NOTE: Part a is a challenge exercise.</span>
+<span id="cb82-429"><a href="#cb82-429"></a>If you get really stuck, move on to Part b which is the same overall question, but with hints.</span>
+<span id="cb82-430"><a href="#cb82-430"></a></span>
+<span id="cb82-433"><a href="#cb82-433"></a><span class="in">```{r}</span></span>
+<span id="cb82-434"><a href="#cb82-434"></a><span class="co"># Sort the *states* from the most to least total votes cast in 2020</span></span>
+<span id="cb82-435"><a href="#cb82-435"></a></span>
+<span id="cb82-436"><a href="#cb82-436"></a><span class="in">```</span></span>
+<span id="cb82-437"><a href="#cb82-437"></a></span>
+<span id="cb82-440"><a href="#cb82-440"></a><span class="in">```{r}</span></span>
+<span id="cb82-441"><a href="#cb82-441"></a><span class="co"># In 2020, what were the total number of votes for the Democratic candidate and the total number of votes for the Republican candidate in each *state*?</span></span>
+<span id="cb82-442"><a href="#cb82-442"></a></span>
+<span id="cb82-443"><a href="#cb82-443"></a><span class="in">```</span></span>
+<span id="cb82-444"><a href="#cb82-444"></a></span>
+<span id="cb82-447"><a href="#cb82-447"></a><span class="in">```{r}</span></span>
+<span id="cb82-448"><a href="#cb82-448"></a><span class="co"># What states did the Democratic candidate win in 2020?</span></span>
+<span id="cb82-449"><a href="#cb82-449"></a></span>
+<span id="cb82-450"><a href="#cb82-450"></a><span class="in">```</span></span>
+<span id="cb82-451"><a href="#cb82-451"></a></span>
+<span id="cb82-452"><a href="#cb82-452"></a><span class="fu">#### Part b {.unnumbered}</span></span>
+<span id="cb82-453"><a href="#cb82-453"></a></span>
+<span id="cb82-456"><a href="#cb82-456"></a><span class="in">```{r}</span></span>
+<span id="cb82-457"><a href="#cb82-457"></a><span class="co"># Sort the states from the most to least total votes cast in 2020</span></span>
+<span id="cb82-458"><a href="#cb82-458"></a><span class="co"># HINT: Calculate the total number of votes in each state, then sort</span></span>
+<span id="cb82-459"><a href="#cb82-459"></a></span>
+<span id="cb82-460"><a href="#cb82-460"></a><span class="in">```</span></span>
+<span id="cb82-461"><a href="#cb82-461"></a></span>
+<span id="cb82-464"><a href="#cb82-464"></a><span class="in">```{r}</span></span>
+<span id="cb82-465"><a href="#cb82-465"></a><span class="co"># In 2020, what were the total number of votes for the Democratic candidate and the total number of votes for the Republican candidate in each state?</span></span>
+<span id="cb82-466"><a href="#cb82-466"></a><span class="co"># HINT: First calculate the number of Dem and Repub votes in each *county*</span></span>
+<span id="cb82-467"><a href="#cb82-467"></a><span class="co"># Then group and summarize these by state</span></span>
+<span id="cb82-468"><a href="#cb82-468"></a></span>
+<span id="cb82-469"><a href="#cb82-469"></a><span class="in">```</span></span>
+<span id="cb82-470"><a href="#cb82-470"></a></span>
+<span id="cb82-473"><a href="#cb82-473"></a><span class="in">```{r}</span></span>
+<span id="cb82-474"><a href="#cb82-474"></a><span class="co"># What states did the Democratic candidate win in 2020?</span></span>
+<span id="cb82-475"><a href="#cb82-475"></a><span class="co"># HINT: Start with the results from the previous chunk, and then keep only some rows</span></span>
+<span id="cb82-476"><a href="#cb82-476"></a></span>
+<span id="cb82-477"><a href="#cb82-477"></a><span class="in">```</span></span>
+<span id="cb82-478"><a href="#cb82-478"></a></span>
+<span id="cb82-479"><a href="#cb82-479"></a><span class="fu">### Exercise 10: Practice on New Data {.unnumbered}</span></span>
+<span id="cb82-480"><a href="#cb82-480"></a></span>
+<span id="cb82-481"><a href="#cb82-481"></a>Recall the World Cup football/soccer data from TidyTuesday:</span>
+<span id="cb82-482"><a href="#cb82-482"></a></span>
+<span id="cb82-485"><a href="#cb82-485"></a><span class="in">```{r}</span></span>
+<span id="cb82-486"><a href="#cb82-486"></a>world_cup <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-29/worldcups.csv"</span>)</span>
+<span id="cb82-487"><a href="#cb82-487"></a><span class="in">```</span></span>
+<span id="cb82-488"><a href="#cb82-488"></a></span>
+<span id="cb82-489"><a href="#cb82-489"></a>You can find a codebook <span class="co">[</span><span class="ot">here</span><span class="co">](https://github.com/rfordatascience/tidytuesday/tree/master/data/2022/2022-11-29)</span>.</span>
+<span id="cb82-490"><a href="#cb82-490"></a>Use (some of) our 6 verbs (<span class="in">`select`</span>, <span class="in">`filter`</span>, <span class="in">`arrange`</span>, <span class="in">`mutate`</span>, <span class="in">`summarize`</span>, <span class="in">`group_by`</span>) and data viz to address the following prompts.</span>
+<span id="cb82-491"><a href="#cb82-491"></a></span>
+<span id="cb82-494"><a href="#cb82-494"></a><span class="in">```{r}</span></span>
+<span id="cb82-495"><a href="#cb82-495"></a><span class="co"># In what years did Brazil win the World Cup?</span></span>
+<span id="cb82-496"><a href="#cb82-496"></a></span>
+<span id="cb82-497"><a href="#cb82-497"></a><span class="in">```</span></span>
+<span id="cb82-498"><a href="#cb82-498"></a></span>
+<span id="cb82-501"><a href="#cb82-501"></a><span class="in">```{r}</span></span>
+<span id="cb82-502"><a href="#cb82-502"></a><span class="co"># What were the 6 World Cups with the highest attendance?</span></span>
+<span id="cb82-503"><a href="#cb82-503"></a></span>
+<span id="cb82-504"><a href="#cb82-504"></a><span class="in">```</span></span>
+<span id="cb82-505"><a href="#cb82-505"></a></span>
+<span id="cb82-508"><a href="#cb82-508"></a><span class="in">```{r}</span></span>
+<span id="cb82-509"><a href="#cb82-509"></a><span class="co"># Construct a univariate plot of goals_scored (no wrangling necessary)</span></span>
+<span id="cb82-510"><a href="#cb82-510"></a><span class="co"># This provides a visual summary of how the number of goals_scored varies from World Cup to World Cup</span></span>
+<span id="cb82-511"><a href="#cb82-511"></a></span>
+<span id="cb82-512"><a href="#cb82-512"></a><span class="in">```</span></span>
+<span id="cb82-513"><a href="#cb82-513"></a></span>
+<span id="cb82-516"><a href="#cb82-516"></a><span class="in">```{r}</span></span>
+<span id="cb82-517"><a href="#cb82-517"></a><span class="co"># Let's follow up the plot with some more precise numerical summaries</span></span>
+<span id="cb82-518"><a href="#cb82-518"></a><span class="co"># Calculate the min, median, and max number of goals_scored across all World Cups</span></span>
+<span id="cb82-519"><a href="#cb82-519"></a><span class="co"># </span><span class="al">NOTE</span><span class="co">: Visually compare these numerical summaries to what you observed in the plot</span></span>
+<span id="cb82-520"><a href="#cb82-520"></a></span>
+<span id="cb82-521"><a href="#cb82-521"></a><span class="in">```</span></span>
+<span id="cb82-522"><a href="#cb82-522"></a></span>
+<span id="cb82-525"><a href="#cb82-525"></a><span class="in">```{r}</span></span>
+<span id="cb82-526"><a href="#cb82-526"></a><span class="co"># Construct a bivariate plot of how the number of goals_scored in the World Cup has changed over the years</span></span>
+<span id="cb82-527"><a href="#cb82-527"></a><span class="co"># No wrangling necessary</span></span>
+<span id="cb82-528"><a href="#cb82-528"></a></span>
+<span id="cb82-529"><a href="#cb82-529"></a><span class="in">```</span></span>
+<span id="cb82-530"><a href="#cb82-530"></a></span>
+<span id="cb82-533"><a href="#cb82-533"></a><span class="in">```{r}</span></span>
+<span id="cb82-534"><a href="#cb82-534"></a><span class="co"># Our above summaries might be a bit misleading.</span></span>
+<span id="cb82-535"><a href="#cb82-535"></a><span class="co"># The number of games played at the World Cup varies.</span></span>
+<span id="cb82-536"><a href="#cb82-536"></a><span class="co"># Construct a bivariate plot of how the typical number of goals per game has changed over the years</span></span>
+<span id="cb82-537"><a href="#cb82-537"></a></span>
+<span id="cb82-538"><a href="#cb82-538"></a></span>
+<span id="cb82-539"><a href="#cb82-539"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
