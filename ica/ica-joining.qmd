@@ -6,6 +6,10 @@ editor:
 ---
 
 ### Exercise 1: Where are my keys? {.unnumbered}
+```{r}
+#import libraries as needed
+library(tidyverse)
+```
 
 #### Part a {.unnumbered}
 
@@ -129,16 +133,20 @@ Use the appropriate join for each prompt below. In each case, think before you t
 
 ```{r}
 # 1. We want contact info for people who HAVEN'T voted
-
+contact |> 
+  anti_join(voters, join_by(name == id))
 
 # 2. We want contact info for people who HAVE voted
-
+voters |> 
+  left_join(contact, join_by(id == name))
 
 # 3. We want any data available on each person
-
+voters |> 
+  full_join(contact, join_by(id == name))
 
 # 4. When possible, we want to add contact info to the voting roster
-
+voters |> 
+  left_join(contact, join_by(id == name))
 
 ```
 
@@ -181,10 +189,10 @@ Use R code to take a quick glance at the data.
 
 ```{r}
 # How many observations (rows) and variables (columns) are there in the grades data?
-
+dim(grades)
 
 # How many observations (rows) and variables (columns) are there in the courses data?
-
+dim(courses)
 
 ```
 
