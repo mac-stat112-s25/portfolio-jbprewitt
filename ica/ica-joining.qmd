@@ -222,12 +222,12 @@ courses |>
 For our class size exploration, obtain the *total* enrollments in each `sessionID`, combining any cross-listed sections. Save this as `courses_combined`. NOTE: There's no joining to do here!
 
 ```{r}
-# courses_combined <- courses |> 
-#   ___(sessionID) |> 
-#   ___(enroll = sum(___))
+courses_combined <- courses |>
+  group_by(sessionID) |>
+  summarize(enroll = sum(enroll))
 
 # Check that this has 1695 rows and 2 columns
-# dim(courses_combined)
+dim(courses_combined)
 ```
 
 #### Part b {.unnumbered}
