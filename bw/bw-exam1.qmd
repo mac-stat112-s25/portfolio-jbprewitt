@@ -1,0 +1,71 @@
+---
+title: "Exam 1 Visualization"
+output: html_document
+---
+
+# Exam 1: Visualization {.unnumbered}
+
+This page follows the steps outlined in exam 1 to answer the following grand research question:
+
+#### What does the consumption of each food category in each country look like? {.unnumbered}
+
+# Load Data and Explore it {.unnumbered}
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+##load packages
+library(tidyverse)
+library(tidytuesdayR)
+
+# Load data
+tuesdata <- tt_load('2020-02-18')
+fc <- tuesdata$food_consumption
+```
+
+```{r}
+# Understand & Explore the Data
+head(fc, 22)
+
+tail(fc, 22)
+
+dim(fc)
+
+str(fc)
+
+```
+
+# Information About the Data {.unnumbered}
+
+Units of observation are country, food_category, consumption, and co2_emission.
+There are 11 food categories, and 130 total countries in the data set.
+
+# Visualizing the Data {.unnumbered}
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| fig-cap: "Food Consumption Across Countries by Category - Data from TidyTuesday - Made by Julia Prewitt"
+#| fig-alt: "A bar plot called Food Consumption Across Countries by Categories, using data from Tidy Tuesday. There are 11 food categories: beef, eggs, fish, lamb & goat, milk - includes cheese, Nuts - includes peanut butter, pork, poultry, rice, soybeans, wheat and wheat products. Each category has its own plot with consumption (measured by kilograms per person per year) on the x axis and country on the y axis. There are 130 countries, and they are ordered by consumption. The data shows that milk, wheat and wheat products, an rice seem to be the most consumed categories, with soybeans and lamb and goat being the least consumed regardless of country. "
+
+ggplot(fc, aes(x = consumption, y = reorder(country, consumption), fill = food_category)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~food_category) +  
+  theme_classic() +
+  scale_fill_viridis_d() +  
+  labs(title = "Food Consumption Across Countries by Category",
+       x = "Consumption (kg/person/year)",
+       y = "Country, Ordered by Consumption",
+       fill = "Food Category") +
+  theme(strip.text = element_text(size = 12, face = "bold"),
+        axis.text.y = element_text(size = 6),  
+        legend.position = 'none')  
+```
+
+# Observations {.unnumbered}
+It seems that milk, wheat and wheat products, an rice seem to be the most consumed categories, with soybeans and lamb and goat being the least consumed regardless of country.There are some trends within each category as well; for instance, countries with higher rates of consumption tend to prefer milk products more than those countries with lesser rates of consumption, who tend to prefer rice more. 
+
+After this brief examination of the data, a number of questions remain. It would be interesting to examine what the largest import and export categories are for each country, and how much of CO2 emissions for each country can be explained by their food consumption patterns. 

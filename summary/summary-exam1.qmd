@@ -1,0 +1,228 @@
+---
+title: "summary-exam1"
+format: html
+---
+
+#Exam 1 Summary Exam one covered setup, univariate, bivariate, multivariate, spatial, appropriate, and effective visualizations.
+
+# Set Up & Background {.unnumbered}
+
+Use R studio to utilize R code to help explore data.
+You can use the console for quick tests and trying out code.
+A quart document is good for saving information and compiling code segments.
+
+Use a hash tag to leave comments inside of a code chunk.
+
+Follow style guides for consistent and easy to understand code.
+
+Make sure data is tidy
+
+-   row = unit of observation
+
+-   column = measure of variable
+
+-   each entry should be one data value
+
+# Why Visualizations Matter {.unnumbered}
+
+Visualizations help to understand data and its characteristics, inform next steps, and to help communicate about findings.
+It can help to explore trends, relationships and their strength, find outliers, and more.
+
+# The Basics of Visualizations {.unnumbered}
+
+A graphic contains:
+
+-   a frame/coordinate system
+
+-   a layer (a single geometric element)
+
+-   scales
+
+-   (optional) faceting
+
+-   theme
+
+# Exploring Relationships {.unnumbered}
+
+Response Variables - the variable whose variability we would like to explain
+
+Predictors - variables that might explain variability in the response variable
+
+Qualitative versus quantitative variables will need to be visualized differently.
+
+# Effective Visualization {.unnumbered}
+
+-   Professional
+
+    -   axis labels, figure caption with source
+
+-   Accessible
+
+    -   alt text, color blind friendly color palette
+
+-   Smart Design Details
+
+    -   consider making comparisons, faceting, etc
+
+-   Ethics - Do not mislead
+
+    -   Visability
+
+    -   Privacy
+
+    -   Power
+
+    -   Pluralism
+
+    -   Emotion & Embodiment
+
+    -   Context
+
+# Overview of Code {.unnumbered}
+
+Below is a list of important coding functions.
+See later sections to view them in action!
+
+-   nrow() & ncol()
+
+    -   number of rows and columns (respectively)
+
+-   str()
+
+    -   structure of the data
+
+-   head()
+
+    -   variables at beginning of a dataset.
+        Defaults to 6, can add comma and number to specify
+
+-   tail()
+
+    -   variables at end of a dataset.
+        Defaults to 6, can add comma and number to specify
+
+-   dim()
+
+    -   dimensions of a dataset
+
+-   class()
+
+    -   Returns class of a variable
+
+-   summarize()
+
+    -   Allows for a number of summarizing methods such as median, mean, min, max, etc
+
+-   arrange()
+
+    -   Orders the data according to a specific variable
+
+-   group_by()
+
+    -   Groups the data into categories
+
+-   ggplot(dataset, aes(x = n, y = n)) +
+
+    -   the framework for our plot using a dataset and setting the x and y parameters.
+        used prior to implementing the geom\_ functions
+
+-   geom_point()
+
+    -   Makes a scatterplot of points
+
+-   geom_smooth(method = "lm")
+
+    -   Makes a line plot.
+        lm means linear model.
+
+-   geom_jitter(width = 0.5, size = 1)
+
+    -   Helpful for when points overlap, this is a scatterplot method which will randomly jitter the points according to the width and size variables inputted.
+
+-   geom_histogram()
+
+    -   A type of bar plot.
+        Can use bins to create categories
+
+-   geom_bar()
+
+    -   A bar plot
+
+-   geom_density(alpha = 0.5)
+
+    -   Creates a density plot.
+        Modifying the alpha value allows for varying transparency
+
+-   geom_boxplot()
+
+    -   Creates a plot of boxplots
+
+-   geom_violin()
+
+    -   Creates a violin plot
+
+-   geom_line()
+
+    -   creates a line connecting given data points
+
+-   labs(title = "title", x = "x", y = "y", color = "color")
+
+    -   Creates labels
+
+-   theme\_
+
+    -   Opens up a list of theme options
+
+-   scale_fill_manual()
+
+    -   Manually set the colors for the plot
+
+-   facet_wrap(\~ value)
+
+    -   Creates facet wrap where each category has their own mini plot
+
+-   mutate(new_column = existing_column\*2)
+
+    -   modifies the data to create a new column
+
+-   rename (new_name = old_name)
+
+    -   renames previous data/variables
+
+-   distinct(column_name)
+
+    -   checks if it is a distinct value
+
+-   count(column_name)
+
+    -   Finds how many items there are
+
+-   Scale editing:
+
+    -   Color - changes color to represent a different variable
+
+    -   Shape - Changes shape to represent variable
+
+    -   Fill - changes fill to represent a variable
+
+    -   Cut - cut(variable, x) splits variable into groups with unique colors
+
+# Spatial Visualization {.unnumbered}
+
+Confounding variables - omitted or lurking variables that must be controlled
+
+Types of spatial visualizations:
+
+-   Point map
+
+    -   Plots locations of individual observations
+
+-   contour map
+
+    -   Plots density and distribution of observations
+
+-   Choropleth Map
+
+    -   plots outcomes in different regions
+
+Spatial maps are static or dynamic/interactive.
