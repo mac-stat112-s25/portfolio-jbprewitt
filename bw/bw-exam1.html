@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>1&nbsp; Univariate Viz – COMP/STAT112 Notebook</title>
+<title>6&nbsp; Exam 1 Visualization – COMP/STAT112 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +59,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../bw/bw-bi.html" rel="next">
-<link href="../index.html" rel="prev">
+<link href="../ica/ica-uni.html" rel="next">
+<link href="../bw/bw-spatial.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-uni.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-exam1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1 Visualization</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -152,7 +152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
 <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
   </div>
 </li>
@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bw/bw-exam1.html" class="sidebar-item-text sidebar-link">
+  <a href="../bw/bw-exam1.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1 Visualization</span></span></a>
   </div>
 </li>
@@ -257,13 +257,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#exam-1-visualization" id="toc-exam-1-visualization" class="nav-link active" data-scroll-target="#exam-1-visualization"><span class="header-section-number">7</span> Exam 1: Visualization</a></li>
+  <li><a href="#load-data-and-explore-it" id="toc-load-data-and-explore-it" class="nav-link" data-scroll-target="#load-data-and-explore-it"><span class="header-section-number">8</span> Load Data and Explore it</a></li>
+  <li><a href="#information-about-the-data" id="toc-information-about-the-data" class="nav-link" data-scroll-target="#information-about-the-data"><span class="header-section-number">9</span> Information About the Data</a></li>
+  <li><a href="#visualizing-the-data" id="toc-visualizing-the-data" class="nav-link" data-scroll-target="#visualizing-the-data"><span class="header-section-number">10</span> Visualizing the Data</a></li>
+  <li><a href="#observations" id="toc-observations" class="nav-link" data-scroll-target="#observations"><span class="header-section-number">11</span> Observations</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-uni.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-exam1.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1 Visualization</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span>
+<span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1 Visualization</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -278,21 +286,92 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Use this file to generate a professional looking <strong>univariate</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
+</header><section id="exam-1-visualization" class="level1" data-number="7"><h1 data-number="7">
+<span class="header-section-number">7</span> Exam 1: Visualization</h1>
+<p>This page follows the steps outlined in exam 1 to answer the following grand research question:</p>
+<section id="what-does-the-consumption-of-each-food-category-in-each-country-look-like" class="level4" data-number="7.0.0.1"><h4 data-number="7.0.0.1" class="anchored" data-anchor-id="what-does-the-consumption-of-each-food-category-in-each-country-look-like">
+<span class="header-section-number">7.0.0.1</span> What does the consumption of each food category in each country look like?</h4>
+</section></section><section id="load-data-and-explore-it" class="level1" data-number="8"><h1 data-number="8">
+<span class="header-section-number">8</span> Load Data and Explore it</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Understand &amp; Explore the Data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">head</span>(fc, <span class="dv">22</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 4
+   country   food_category            consumption co2_emmission
+   &lt;chr&gt;     &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Argentina Pork                           10.5          37.2 
+ 2 Argentina Poultry                        38.7          41.5 
+ 3 Argentina Beef                           55.5        1712   
+ 4 Argentina Lamb &amp; Goat                     1.56         54.6 
+ 5 Argentina Fish                            4.36          6.96
+ 6 Argentina Eggs                           11.4          10.5 
+ 7 Argentina Milk - inc. cheese            195.          278.  
+ 8 Argentina Wheat and Wheat Products      103.           19.7 
+ 9 Argentina Rice                            8.77         11.2 
+10 Argentina Soybeans                        0             0   
+# ℹ 12 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">tail</span>(fc, <span class="dv">22</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 22 × 4
+   country food_category            consumption co2_emmission
+   &lt;chr&gt;   &lt;chr&gt;                          &lt;dbl&gt;         &lt;dbl&gt;
+ 1 Liberia Pork                            4.01         14.2 
+ 2 Liberia Poultry                         8.91          9.57
+ 3 Liberia Beef                            0.78         24.1 
+ 4 Liberia Lamb &amp; Goat                     0.48         16.8 
+ 5 Liberia Fish                            4.13          6.59
+ 6 Liberia Eggs                            2.05          1.88
+ 7 Liberia Milk - inc. cheese              3.04          4.33
+ 8 Liberia Wheat and Wheat Products       11.0           2.09
+ 9 Liberia Rice                           94.8         121.  
+10 Liberia Soybeans                        0.63          0.28
+# ℹ 12 more rows</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">dim</span>(fc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1430    4</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">str</span>(fc)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spc_tbl_ [1,430 × 4] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ country      : chr [1:1430] "Argentina" "Argentina" "Argentina" "Argentina" ...
+ $ food_category: chr [1:1430] "Pork" "Poultry" "Beef" "Lamb &amp; Goat" ...
+ $ consumption  : num [1:1430] 10.51 38.66 55.48 1.56 4.36 ...
+ $ co2_emmission: num [1:1430] 37.2 41.53 1712 54.63 6.96 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   country = col_character(),
+  ..   food_category = col_character(),
+  ..   consumption = col_double(),
+  ..   co2_emmission = col_double()
+  .. )
+ - attr(*, "problems")=&lt;externalptr&gt; </code></pre>
+</div>
+</div>
+</section><section id="information-about-the-data" class="level1" data-number="9"><h1 data-number="9">
+<span class="header-section-number">9</span> Information About the Data</h1>
+<p>Units of observation are country, food_category, consumption, and co2_emission. There are 11 food categories, and 130 total countries in the data set.</p>
+</section><section id="visualizing-the-data" class="level1" data-number="10"><h1 data-number="10">
+<span class="header-section-number">10</span> Visualizing the Data</h1>
 <div class="cell">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure"><p><img src="bw-uni_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal." width="672"></p>
-<figcaption>A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt</figcaption></figure>
+<figure class="figure"><p><img src="bw-exam1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" alt="A bar plot called Food Consumption Across Countries by Categories, using data from Tidy Tuesday. There are 11 food categories: beef, eggs, fish, lamb &amp; goat, milk - includes cheese, Nuts - includes peanut butter, pork, poultry, rice, soybeans, wheat and wheat products. Each category has its own plot with consumption (measured by kilograms per person per year) on the x axis and country on the y axis. There are 130 countries, and they are ordered by consumption. The data shows that milk, wheat and wheat products, an rice seem to be the most consumed categories, with soybeans and lamb and goat being the least consumed regardless of country. " width="672"></p>
+<figcaption>Food Consumption Across Countries by Category - Data from TidyTuesday - Made by Julia Prewitt</figcaption></figure>
 </div>
 </div>
 </div>
+</section><section id="observations" class="level1" data-number="11"><h1 data-number="11">
+<span class="header-section-number">11</span> Observations</h1>
+<p>It seems that milk, wheat and wheat products, an rice seem to be the most consumed categories, with soybeans and lamb and goat being the least consumed regardless of country.There are some trends within each category as well; for instance, countries with higher rates of consumption tend to prefer milk products more than those countries with lesser rates of consumption, who tend to prefer rice more.</p>
+<p>After this brief examination of the data, a number of questions remain. It would be interesting to examine what the largest import and export categories are for each country, and how much of CO2 emissions for each country can be explained by their food consumption patterns.</p>
 
 
 <!-- -->
 
-
-</main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -912,57 +991,87 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../index.html" class="pagination-link" aria-label="Welcome">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome</span>
+      <a href="../bw/bw-spatial.html" class="pagination-link" aria-label="Spatial Viz">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../bw/bw-bi.html" class="pagination-link" aria-label="Bivariate Viz">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ica/ica-uni.html" class="pagination-link" aria-label="Univariate Viz">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Univariate Viz"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>Use this file to generate a professional looking **univariate** visualization.</span>
-<span id="cb1-7"><a href="#cb1-7"></a>The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="in">```{r}</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#| eval: true</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#| warning: false</span></span>
-<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#| error: false</span></span>
-<span id="cb1-16"><a href="#cb1-16"></a></span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="co"># Import data</span></span>
-<span id="cb1-18"><a href="#cb1-18"></a>hikes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/high_peaks.csv"</span>)</span>
-<span id="cb1-19"><a href="#cb1-19"></a></span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="do">##load tidyverse</span></span>
-<span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-23"><a href="#cb1-23"></a><span class="in">```</span></span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a></span>
-<span id="cb1-28"><a href="#cb1-28"></a><span class="in">```{r}</span></span>
-<span id="cb1-29"><a href="#cb1-29"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a><span class="co">#| warning: false</span></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="co">#| fig-cap: "A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt"</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#| fig-alt: "A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal."</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation in Feet"</span>, <span class="at">y =</span> <span class="st">"Density"</span>, <span class="at">title =</span> <span class="st">"Hiking Trail Elevation in the Adirondack Mountains of NY"</span>) <span class="sc">+</span></span>
-<span id="cb1-37"><a href="#cb1-37"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-38"><a href="#cb1-38"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
-<span id="cb1-39"><a href="#cb1-39"></a>      <span class="at">colour =</span> <span class="st">"#006000"</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb1-40"><a href="#cb1-40"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
-<span id="cb1-41"><a href="#cb1-41"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
-<span id="cb1-42"><a href="#cb1-42"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(</span>
-<span id="cb1-43"><a href="#cb1-43"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
-<span id="cb1-44"><a href="#cb1-44"></a>  )</span>
-<span id="cb1-45"><a href="#cb1-45"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb9" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">---</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="an">title:</span><span class="co"> "Exam 1 Visualization"</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="an">output:</span><span class="co"> html_document</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">---</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="fu"># Exam 1: Visualization</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>This page follows the steps outlined in exam 1 to answer the following grand research question:</span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="fu">#### What does the consumption of each food category in each country look like?</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="fu"># Load Data and Explore it</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="in">```{r}</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="co">#| echo: false</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co">#| warning: false</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="co">#| error: false</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a></span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="do">##load packages</span></span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="fu">library</span>(tidytuesdayR)</span>
+<span id="cb9-24"><a href="#cb9-24"></a></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="co"># Load data</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a>tuesdata <span class="ot">&lt;-</span> <span class="fu">tt_load</span>(<span class="st">'2020-02-18'</span>)</span>
+<span id="cb9-27"><a href="#cb9-27"></a>fc <span class="ot">&lt;-</span> tuesdata<span class="sc">$</span>food_consumption</span>
+<span id="cb9-28"><a href="#cb9-28"></a><span class="in">```</span></span>
+<span id="cb9-29"><a href="#cb9-29"></a></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="in">```{r}</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="co"># Understand &amp; Explore the Data</span></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="fu">head</span>(fc, <span class="dv">22</span>)</span>
+<span id="cb9-35"><a href="#cb9-35"></a></span>
+<span id="cb9-36"><a href="#cb9-36"></a><span class="fu">tail</span>(fc, <span class="dv">22</span>)</span>
+<span id="cb9-37"><a href="#cb9-37"></a></span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="fu">dim</span>(fc)</span>
+<span id="cb9-39"><a href="#cb9-39"></a></span>
+<span id="cb9-40"><a href="#cb9-40"></a><span class="fu">str</span>(fc)</span>
+<span id="cb9-41"><a href="#cb9-41"></a></span>
+<span id="cb9-42"><a href="#cb9-42"></a><span class="in">```</span></span>
+<span id="cb9-43"><a href="#cb9-43"></a></span>
+<span id="cb9-44"><a href="#cb9-44"></a><span class="fu"># Information About the Data</span></span>
+<span id="cb9-45"><a href="#cb9-45"></a></span>
+<span id="cb9-46"><a href="#cb9-46"></a>Units of observation are country, food_category, consumption, and co2_emission.</span>
+<span id="cb9-47"><a href="#cb9-47"></a>There are 11 food categories, and 130 total countries in the data set.</span>
+<span id="cb9-48"><a href="#cb9-48"></a></span>
+<span id="cb9-49"><a href="#cb9-49"></a><span class="fu"># Visualizing the Data</span></span>
+<span id="cb9-50"><a href="#cb9-50"></a></span>
+<span id="cb9-53"><a href="#cb9-53"></a><span class="in">```{r}</span></span>
+<span id="cb9-54"><a href="#cb9-54"></a><span class="co">#| echo: false</span></span>
+<span id="cb9-55"><a href="#cb9-55"></a><span class="co">#| warning: false</span></span>
+<span id="cb9-56"><a href="#cb9-56"></a><span class="co">#| error: false</span></span>
+<span id="cb9-57"><a href="#cb9-57"></a><span class="co">#| fig-cap: "Food Consumption Across Countries by Category - Data from TidyTuesday - Made by Julia Prewitt"</span></span>
+<span id="cb9-58"><a href="#cb9-58"></a><span class="co">#| fig-alt: "A bar plot called Food Consumption Across Countries by Categories, using data from Tidy Tuesday. There are 11 food categories: beef, eggs, fish, lamb &amp; goat, milk - includes cheese, Nuts - includes peanut butter, pork, poultry, rice, soybeans, wheat and wheat products. Each category has its own plot with consumption (measured by kilograms per person per year) on the x axis and country on the y axis. There are 130 countries, and they are ordered by consumption. The data shows that milk, wheat and wheat products, an rice seem to be the most consumed categories, with soybeans and lamb and goat being the least consumed regardless of country. "</span></span>
+<span id="cb9-59"><a href="#cb9-59"></a></span>
+<span id="cb9-60"><a href="#cb9-60"></a><span class="fu">ggplot</span>(fc, <span class="fu">aes</span>(<span class="at">x =</span> consumption, <span class="at">y =</span> <span class="fu">reorder</span>(country, consumption), <span class="at">fill =</span> food_category)) <span class="sc">+</span></span>
+<span id="cb9-61"><a href="#cb9-61"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb9-62"><a href="#cb9-62"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>food_category) <span class="sc">+</span>  </span>
+<span id="cb9-63"><a href="#cb9-63"></a>  <span class="fu">theme_classic</span>() <span class="sc">+</span></span>
+<span id="cb9-64"><a href="#cb9-64"></a>  <span class="fu">scale_fill_viridis_d</span>() <span class="sc">+</span>  </span>
+<span id="cb9-65"><a href="#cb9-65"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Food Consumption Across Countries by Category"</span>,</span>
+<span id="cb9-66"><a href="#cb9-66"></a>       <span class="at">x =</span> <span class="st">"Consumption (kg/person/year)"</span>,</span>
+<span id="cb9-67"><a href="#cb9-67"></a>       <span class="at">y =</span> <span class="st">"Country, Ordered by Consumption"</span>,</span>
+<span id="cb9-68"><a href="#cb9-68"></a>       <span class="at">fill =</span> <span class="st">"Food Category"</span>) <span class="sc">+</span></span>
+<span id="cb9-69"><a href="#cb9-69"></a>  <span class="fu">theme</span>(<span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb9-70"><a href="#cb9-70"></a>        <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">6</span>),  </span>
+<span id="cb9-71"><a href="#cb9-71"></a>        <span class="at">legend.position =</span> <span class="st">'none'</span>)  </span>
+<span id="cb9-72"><a href="#cb9-72"></a><span class="in">```</span></span>
+<span id="cb9-73"><a href="#cb9-73"></a></span>
+<span id="cb9-74"><a href="#cb9-74"></a><span class="fu"># Observations</span></span>
+<span id="cb9-75"><a href="#cb9-75"></a>It seems that milk, wheat and wheat products, an rice seem to be the most consumed categories, with soybeans and lamb and goat being the least consumed regardless of country.There are some trends within each category as well; for instance, countries with higher rates of consumption tend to prefer milk products more than those countries with lesser rates of consumption, who tend to prefer rice more. </span>
+<span id="cb9-76"><a href="#cb9-76"></a></span>
+<span id="cb9-77"><a href="#cb9-77"></a>After this brief examination of the data, a number of questions remain. It would be interesting to examine what the largest import and export categories are for each country, and how much of CO2 emissions for each country can be explained by their food consumption patterns. </span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
