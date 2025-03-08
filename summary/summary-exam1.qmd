@@ -226,3 +226,430 @@ Types of spatial visualizations:
     -   plots outcomes in different regions
 
 Spatial maps are static or dynamic/interactive.
+
+# Making Plots {.unnumbered}
+
+## Univariate Practice with Hiking Data
+Loading in the Data:
+```{r}
+#| eval: true
+
+# Import data
+hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
+
+##load tidyverse
+
+library(tidyverse)
+```
+Examining the Data: 
+```{r}
+#| eval: true
+
+head(hikes)
+tail(hikes)
+dim(hikes)
+str(hikes)
+nrow(hikes)
+ncol(hikes)
+class(hikes)
+```
+Sorting and Cleaning Data:
+```{r}
+hikes |>
+  mutate(timeForSlowHike = time*2) |> #modifies the data to create a new column
+  rename (timeForNormalHike = time) |> #renames previous data/variables
+  arrange(rating)  # Orders the data according to a specific variable
+
+avgHikePeak <- hikes |> #create new data set for average hike time for given peak
+  group_by(peak) |> #Groups the data into categories
+  summarize(mean(time))  #Allows for a number of summarizing methods such as median, mean, min, max, etc
+```
+Making Plots:
+```{r}
+ggplot(hikes, aes(x = rating)) +
+  geom_bar(color = "orange", fill = "blue")  +
+  labs(x = "Rating", y = "Number of hikes") +
+  theme_minimal()
+
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white") +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+
+# switched the binwidth to 1000, which means it categorizes the data into 1000 value ranges
+ggplot(hikes, aes(x = elevation)) +
+  geom_histogram(color = "white", binwidth = 1000) +
+  labs(x = "Elevation (feet)", y = "Number of hikes")
+
+ggplot(hikes, aes(x = elevation)) +
+  geom_density(color = "blue", fill = "orange")
+``` 
+
+## Bivariate Practice 
+```{r}
+# Load data
+elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+ggplot(elections, aes(x = repub_pct_16, y = repub_pct_20)) +
+  geom_point()
+
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point(color = "red", fill = "black")
+
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_text(aes(label = state_abbr))
+
+ggplot(elections, aes(y = repub_pct_20, x = repub_pct_16)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_violin()
+
+ggplot(elections, aes(y = repub_pct_20, x = historical)) +
+  geom_boxplot()
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density(alpha = .5) +
+  scale_fill_manual(values = c("blue", "purple", "red"))
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density() +
+  scale_fill_manual(values = c("blue", "purple", "red")) +
+  facet_wrap(~ historical)
+
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar()
+
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar(position = "dodge")
+
+ggplot(elections, aes(x = historical, fill = winner_20)) +
+  geom_bar(position = "fill")
+
+
+```
+
+## Multivariate Practice
+
+```{r}
+education <- read.csv("https://mac-stat.github.io/data/sat.csv")
+
+ggplot(education, aes(y = sat, x = salary, color = expend)) + 
+  geom_point() + 
+  geom_smooth(method = "lm")
+
+ggplot(education, aes(x = sat, fill = fracCat)) + 
+  geom_density(alpha = 0.5)
+
+ggplot(education, aes(x = expend, y = sat, color = fracCat)) + 
+  geom_point() +
+  geom_smooth(method = "lm")
+```
+
+## Spatial Practice
+
+```{r}
+library(gplots)
+library(mosaic)
+library(sf)
+library(maps)
+
+fave_places <- read.csv("https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv")
+
+leaflet(data = fave_places) |> 
+  addTiles() |> 
+  addMarkers()
+
+leaflet(data = fave_places) |> 
+  addTiles() |> 
+  addCircles(color = col2hex("red"))
+
+leaflet(data = fave_places) |>
+  addProviderTiles("USGS") |>
+  addCircles(weight = 10, opacity = 1, color = col2hex("yellow")) |>
+  addPolylines(
+    lng = ~longitude,
+    lat = ~latitude,
+    color = col2hex("green")
+  )
+```
+
+```{r}
+starbucks <- read.csv("https://mac-stat.github.io/data/starbucks.csv")
+
+starbucks_mn <- starbucks |>   
+  filter(Country == "US", State.Province == "MN")
+
+ggplot(world_boundaries) + 
+  geom_sf() + 
+  geom_point(
+    data = starbucks,
+    aes(x = Longitude, y = Latitude),
+    alpha = 0.3, size = 0.2, color = "darkgreen"
+  ) +
+  theme_map()
+
+starbucks_cma <- starbucks |> 
+  filter(Country %in% c('CA', 'MX', 'US'))
+
+cma_boundaries <- ne_states(
+  country = c("canada", "mexico", "united states of america"),
+  returnclass = "sf")
+
+ggplot(cma_boundaries) + 
+  geom_sf() + 
+  geom_point(
+    data = starbucks_cma,
+    aes(x = Longitude, y = Latitude),
+    alpha = 0.3,
+    size = 0.2,
+    color = "darkgreen"
+  ) +
+  coord_sf(xlim = c(-179.14, -50)) +
+  theme_map()
+
+starbucks_midwest <- starbucks |> 
+  filter(State.Province %in% c("MN", "ND", "SD", "WI"))
+
+midwest_boundaries <- st_as_sf(
+  maps::map("county",
+            region = c("minnesota", "wisconsin", "north dakota", "south dakota"), 
+            fill = TRUE, plot = FALSE))
+
+ggplot(midwest_boundaries) +
+  geom_sf() +
+  geom_point(
+    data = starbucks_midwest,
+    aes(x = Longitude, y = Latitude),
+    alpha = 0.7,
+    size = 0.2,
+    color = 'darkgreen'
+  ) +
+  theme_map()
+
+ggplot(cma_boundaries) + 
+  geom_sf() + 
+  geom_density_2d(
+    data = starbucks_cma,
+    aes(x = Longitude, y = Latitude),
+    size = 0.2,
+    color = "darkgreen"
+  ) +
+  coord_sf(xlim = c(-179.14, -50), ylim = c(14.54, 83.11)) +
+  theme_map()
+```
+
+```{r}
+elections_by_state <-  read.csv("https://mac-stat.github.io/data/election_2020_by_state.csv")
+elections_by_counties <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+
+elections_by_state <- elections_by_state |> 
+  filter(state_abbr != "DC") |> 
+  select(state_name, state_abbr, repub_pct_20) |> 
+  mutate(repub_20_categories = 
+           cut(repub_pct_20, 
+               breaks = seq(30, 70, by = 5), 
+               labels = c("30-34", "35-39", "40-44", "45-49",
+                          "50-54", "55-59", "60-64", "65-70"), 
+               include.lowest = TRUE))
+
+elections_by_counties <- elections_by_counties |> 
+  select(state_name, state_abbr, county_name, county_fips,
+          repub_pct_20, median_age, median_rent) |> 
+  mutate(repub_20_categories = 
+           cut(repub_pct_20, 
+               breaks = seq(0, 100, by = 10),
+               labels = c("0-9", "10-19", "20-29", "30-39", "40-49",
+                          "50-59", "60-69", "70-79", "80-89", "90-100"),
+               include.lowest = TRUE))
+
+ggplot(elections_by_state, aes(map_id = state_name, fill = repub_20_categories)) +
+  geom_map(map = states_map) +
+  expand_limits(x = states_map$long, y = states_map$lat) +
+  theme_map() + 
+  scale_fill_manual(values = rev(brewer.pal(8, "RdBu")), name = "% Republican")
+
+elections_by_counties <- elections_by_counties |> 
+  mutate(county_fips = as.character(county_fips)) |> 
+  mutate(county_fips = 
+           ifelse(nchar(county_fips) == 4, paste0("0", county_fips), county_fips))
+
+ggplot(elections_by_counties, aes(map_id = county_fips, fill = repub_20_categories)) +
+  geom_map(map = county_map) +
+  scale_fill_manual(values = rev(brewer.pal(10, "RdBu")), name = "% Republican") +
+  expand_limits(x = county_map$long, y = county_map$lat) +
+  theme_map() +
+  theme(legend.position = "right") + 
+  coord_equal()
+
+```
+
+## Effective Practice
+
+```{r}
+#| echo: false
+#| fig-cap: "Add captions to your plots!"
+#| fig-alt: "and alt text for screen readers!"
+
+# some of my best work to illustrate effective visualization practices
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-cap: "A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt"
+#| fig-alt: "A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal."
+
+ggplot(hikes, aes(x = elevation)) +
+  geom_density(color = "black", fill = "darkgreen") +
+  labs(x = "Elevation in Feet", y = "Density", title = "Hiking Trail Elevation in the Adirondack Mountains of NY") +
+  theme(
+    plot.title = element_text(
+      colour = "#006000", size = 12, face = "bold"),
+    axis.title.x = element_text(
+      colour = "black", size = 10, face = "bold"),
+    axis.title.y = element_text(
+      colour = "black", size = 10, face = "bold")
+  )
+```
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+#| fig-cap: "A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt"
+#| fig-alt: "A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. "
+
+ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
+  geom_density(alpha = .6) +
+  scale_fill_manual(
+    values = c("blue", "purple", "red"),
+    labels = c("Democratic-leaning", "Swing state", "Republican-leaning") ) +  
+  labs(title ="Percent of Republican Support by County in 2020 by State Trends", 
+       y = "Density", 
+       x = "Republican Support in 2020 by County",
+        fill = "Historical State Voting Trends") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),  
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.position = "top"  
+  )
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+#| fig-cap: "A figure of SAT Expendature vs SAT Score by Percent of Participation - Made by Julia Prewitt"
+#| fig-alt: "A point plot of SAT expendature vs sat score by percent of participation. The x axis is expendature on sat scores, the y axis is sat score, and the plot is separated into 3 categories for the actual points representing percent of students participating in the sat, with red being 0 to 15 percent, purple being 15 to 45 percent, and blue being 45 to 100 percent. Each color is separated out and has a linear plot and grey area around each line to represent the trend. THe overall plot ullustrates how within each of the participation rate categories, as expendature goes up so too does the score. "
+
+#Make the plot
+ggplot(education, aes(x = expend, y = sat, color = fracCat)) + 
+  geom_point() +
+  geom_smooth(method = "lm") +
+    scale_color_manual(
+    values = c("(0,15]" = "red", "(15,45]" = "purple", "(45,100]" = "blue"),
+    labels = c("(0,15]" = "0%-15%", "(15,45]" = "15%-45%", "(45,100]" = "45%-100%")) +
+  labs(x = "Expendature on SAT Scores", y = "SAT Score", title = "SAT Expendature vs SAT Score by Percent of Parcipation", color = "Percent of SAT Participation") + 
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),  
+    axis.title = element_text(size = 12, face = "bold"),
+    axis.text = element_text(size = 10),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.position = "top")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+library(stringr)
+library(tidyverse)
+library(dplyr)
+
+# Add dataset
+agencies <- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-02-18/agencies.csv', show_col_types = FALSE)
+
+# Create a new dataset with just top 6 reporting states
+topReporters <- agencies |> 
+  filter(state %in% c("Texas", "Ohio", "California", "Illinois", "Michigan", "Missouri"))
+
+topReporters <- topReporters %>%
+  mutate(is_nibrs = ifelse(is_nibrs == TRUE, "Yes", "No"))
+
+#| echo: false
+#| warning: false
+#| error: false
+
+#| fig-cap: "A figure of whether agencies in 6 states report to NIBRS broken down by agency type - Made by Julia Prewitt"
+#| fig-alt: "A visual of government agencies of California, Illinois, Michigan, Missouri, Ohio, and Texas. It is called Number of NIBRS Reporting Agencies in High Reporting States. They are broken down into agency type for each bar. For all the states, of their government agencies, the majority do report, and it is typically the city agencies who do."
+
+ggplot(topReporters, aes(x = is_nibrs, fill = agency_type)) +
+  geom_bar() +
+  facet_wrap(~state) +
+  labs(x = "Does the agency report to NIBRS?", 
+       y = "Number of Agencies", 
+       title = "Number of NIBRS Reporting Agencies in High Reporting States", 
+       fill = "Agency Type") +
+  scale_fill_brewer(palette = "Set2", na.value="grey") +
+  theme_bw() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5),  
+    axis.title = element_text(size = 12),
+    axis.text = element_text(size = 10),
+    legend.title = element_text(size = 12),
+    legend.text = element_text(size = 10),
+    legend.position = "right")
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| error: false
+
+
+library(mosaic)
+library(tidyverse)
+library(leaflet)
+library(gplots)
+library(rnaturalearth)
+
+
+starbucks <- read.csv("https://mac-stat.github.io/data/starbucks.csv")
+
+world_boundaries <- ne_countries(returnclass = "sf")
+
+#| echo: false
+#| warning: false
+#| error: false
+
+#| fig-cap: "A map of Starbucks Store locaitons accross the world - Made by Julia Prewitt"
+#| fig-alt: "A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia."
+
+ggplot(world_boundaries) + 
+  geom_sf(fill = "lightgray", color = "white", size = 0.2)  +
+  geom_point(
+    data = starbucks,
+    aes(x = Longitude, y = Latitude),
+    alpha = 0.3, size = 0.2, color = "darkgreen") +
+  labs(title = "Starbucks Locations Across the World") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 14, face = "bold", hjust = 0.5, color ="darkgreen"),
+    axis.title = element_blank(),  
+    axis.text = element_blank(),  
+    panel.grid = element_blank(),  
+    panel.border = element_blank(),  
+    legend.position = "none"
+    )
+
+```
