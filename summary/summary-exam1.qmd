@@ -353,6 +353,7 @@ library(gplots)
 library(mosaic)
 library(sf)
 library(maps)
+library(leaflet)
 
 fave_places <- read.csv("https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv")
 
@@ -375,10 +376,15 @@ leaflet(data = fave_places) |>
 ```
 
 ```{r}
+library(rnaturalearth)
+ 
 starbucks <- read.csv("https://mac-stat.github.io/data/starbucks.csv")
 
 starbucks_mn <- starbucks |>   
   filter(Country == "US", State.Province == "MN")
+
+world_boundaries <- ne_countries(returnclass = "sf")
+
 
 ggplot(world_boundaries) + 
   geom_sf() + 
@@ -440,8 +446,13 @@ ggplot(cma_boundaries) +
 ```
 
 ```{r}
+library(RColorBrewer)
+library(socviz)
+data(county_map) 
+
 elections_by_state <-  read.csv("https://mac-stat.github.io/data/election_2020_by_state.csv")
 elections_by_counties <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
+states_map <- map_data("state")
 
 elections_by_state <- elections_by_state |> 
   filter(state_abbr != "DC") |> 
