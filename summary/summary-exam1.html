@@ -1,0 +1,2600 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>16&nbsp; summary-exam1 – COMP/STAT112 Notebook</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../ica/ica-joining.html" rel="prev">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script><link href="../site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+<script src="../site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script><script src="../site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><link href="../site_libs/leaflet-1.3.1/leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-1.3.1/leaflet.js"></script><link href="../site_libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet">
+<script src="../site_libs/proj4-2.6.2/proj4.min.js"></script><script src="../site_libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script><link href="../site_libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet">
+<script src="../site_libs/leaflet-binding-2.2.2/leaflet.js"></script><script src="../site_libs/leaflet-providers-2.0.0/leaflet-providers_2.0.0.js"></script><script src="../site_libs/leaflet-providers-plugin-2.2.2/leaflet-providers-plugin.js"></script><link rel="stylesheet" href="../style/custom.css">
+</head>
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top"><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../summary/summary-exam1.html">Summary</a></li><li class="breadcrumb-item"><a href="../summary/summary-exam1.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">summary-exam1</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto"><div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="../">Julia Prewitt</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Best Work</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-tri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Trivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-quad.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadvariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../bw/bw-exam1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1 Visualization</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">In-class Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-uni.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-bi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Bivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-multi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Mulivariate Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-spatial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-effective.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Effective Viz</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-wrangling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Wrangling Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-dates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Dates</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-reshaping.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Reshaping Data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../ica/ica-joining.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Joining Data</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Summary</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../summary/summary-exam1.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">summary-exam1</span></span></a>
+  </div>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+<li><a href="#set-up-background" id="toc-set-up-background" class="nav-link active" data-scroll-target="#set-up-background">Set Up &amp; Background</a></li>
+  <li><a href="#why-visualizations-matter" id="toc-why-visualizations-matter" class="nav-link" data-scroll-target="#why-visualizations-matter">Why Visualizations Matter</a></li>
+  <li><a href="#the-basics-of-visualizations" id="toc-the-basics-of-visualizations" class="nav-link" data-scroll-target="#the-basics-of-visualizations">The Basics of Visualizations</a></li>
+  <li><a href="#exploring-relationships" id="toc-exploring-relationships" class="nav-link" data-scroll-target="#exploring-relationships">Exploring Relationships</a></li>
+  <li><a href="#effective-visualization" id="toc-effective-visualization" class="nav-link" data-scroll-target="#effective-visualization">Effective Visualization</a></li>
+  <li><a href="#overview-of-code" id="toc-overview-of-code" class="nav-link" data-scroll-target="#overview-of-code">Overview of Code</a></li>
+  <li><a href="#spatial-visualization" id="toc-spatial-visualization" class="nav-link" data-scroll-target="#spatial-visualization">Spatial Visualization</a></li>
+  <li>
+<a href="#making-plots" id="toc-making-plots" class="nav-link" data-scroll-target="#making-plots">Making Plots</a>
+  <ul class="collapse">
+<li><a href="#univariate-practice-with-hiking-data" id="toc-univariate-practice-with-hiking-data" class="nav-link" data-scroll-target="#univariate-practice-with-hiking-data"><span class="header-section-number">16.1</span> Univariate Practice with Hiking Data</a></li>
+  <li><a href="#bivariate-practice" id="toc-bivariate-practice" class="nav-link" data-scroll-target="#bivariate-practice"><span class="header-section-number">16.2</span> Bivariate Practice</a></li>
+  <li><a href="#multivariate-practice" id="toc-multivariate-practice" class="nav-link" data-scroll-target="#multivariate-practice"><span class="header-section-number">16.3</span> Multivariate Practice</a></li>
+  <li><a href="#spatial-practice" id="toc-spatial-practice" class="nav-link" data-scroll-target="#spatial-practice"><span class="header-section-number">16.4</span> Spatial Practice</a></li>
+  <li><a href="#effective-practice" id="toc-effective-practice" class="nav-link" data-scroll-target="#effective-practice"><span class="header-section-number">16.5</span> Effective Practice</a></li>
+  </ul>
+</li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../summary/summary-exam1.html">Summary</a></li><li class="breadcrumb-item"><a href="../summary/summary-exam1.html"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">summary-exam1</span></a></li></ol></nav><div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">
+<span class="chapter-number">16</span>&nbsp; <span class="chapter-title">summary-exam1</span>
+</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header><p>#Exam 1 Summary Exam one covered setup, univariate, bivariate, multivariate, spatial, appropriate, and effective visualizations.</p>
+<section id="set-up-background" class="level1 unnumbered"><h1 class="unnumbered">Set Up &amp; Background</h1>
+<p>Use R studio to utilize R code to help explore data. You can use the console for quick tests and trying out code. A quart document is good for saving information and compiling code segments.</p>
+<p>Use a hash tag to leave comments inside of a code chunk.</p>
+<p>Follow style guides for consistent and easy to understand code.</p>
+<p>Make sure data is tidy</p>
+<ul>
+<li><p>row = unit of observation</p></li>
+<li><p>column = measure of variable</p></li>
+<li><p>each entry should be one data value</p></li>
+</ul></section><section id="why-visualizations-matter" class="level1 unnumbered"><h1 class="unnumbered">Why Visualizations Matter</h1>
+<p>Visualizations help to understand data and its characteristics, inform next steps, and to help communicate about findings. It can help to explore trends, relationships and their strength, find outliers, and more.</p>
+</section><section id="the-basics-of-visualizations" class="level1 unnumbered"><h1 class="unnumbered">The Basics of Visualizations</h1>
+<p>A graphic contains:</p>
+<ul>
+<li><p>a frame/coordinate system</p></li>
+<li><p>a layer (a single geometric element)</p></li>
+<li><p>scales</p></li>
+<li><p>(optional) faceting</p></li>
+<li><p>theme</p></li>
+</ul></section><section id="exploring-relationships" class="level1 unnumbered"><h1 class="unnumbered">Exploring Relationships</h1>
+<p>Response Variables - the variable whose variability we would like to explain</p>
+<p>Predictors - variables that might explain variability in the response variable</p>
+<p>Qualitative versus quantitative variables will need to be visualized differently.</p>
+</section><section id="effective-visualization" class="level1 unnumbered"><h1 class="unnumbered">Effective Visualization</h1>
+<ul>
+<li>
+<p>Professional</p>
+<ul>
+<li>axis labels, figure caption with source</li>
+</ul>
+</li>
+<li>
+<p>Accessible</p>
+<ul>
+<li>alt text, color blind friendly color palette</li>
+</ul>
+</li>
+<li>
+<p>Smart Design Details</p>
+<ul>
+<li>consider making comparisons, faceting, etc</li>
+</ul>
+</li>
+<li>
+<p>Ethics - Do not mislead</p>
+<ul>
+<li><p>Visability</p></li>
+<li><p>Privacy</p></li>
+<li><p>Power</p></li>
+<li><p>Pluralism</p></li>
+<li><p>Emotion &amp; Embodiment</p></li>
+<li><p>Context</p></li>
+</ul>
+</li>
+</ul></section><section id="overview-of-code" class="level1 unnumbered"><h1 class="unnumbered">Overview of Code</h1>
+<p>Below is a list of important coding functions. See later sections to view them in action!</p>
+<ul>
+<li>
+<p>nrow() &amp; ncol()</p>
+<ul>
+<li>number of rows and columns (respectively)</li>
+</ul>
+</li>
+<li>
+<p>str()</p>
+<ul>
+<li>structure of the data</li>
+</ul>
+</li>
+<li>
+<p>head()</p>
+<ul>
+<li>variables at beginning of a dataset. Defaults to 6, can add comma and number to specify</li>
+</ul>
+</li>
+<li>
+<p>tail()</p>
+<ul>
+<li>variables at end of a dataset. Defaults to 6, can add comma and number to specify</li>
+</ul>
+</li>
+<li>
+<p>dim()</p>
+<ul>
+<li>dimensions of a dataset</li>
+</ul>
+</li>
+<li>
+<p>class()</p>
+<ul>
+<li>Returns class of a variable</li>
+</ul>
+</li>
+<li>
+<p>summarize()</p>
+<ul>
+<li>Allows for a number of summarizing methods such as median, mean, min, max, etc</li>
+</ul>
+</li>
+<li>
+<p>arrange()</p>
+<ul>
+<li>Orders the data according to a specific variable</li>
+</ul>
+</li>
+<li>
+<p>group_by()</p>
+<ul>
+<li>Groups the data into categories</li>
+</ul>
+</li>
+<li>
+<p>ggplot(dataset, aes(x = n, y = n)) +</p>
+<ul>
+<li>the framework for our plot using a dataset and setting the x and y parameters. used prior to implementing the geom_ functions</li>
+</ul>
+</li>
+<li>
+<p>geom_point()</p>
+<ul>
+<li>Makes a scatterplot of points</li>
+</ul>
+</li>
+<li>
+<p>geom_smooth(method = “lm”)</p>
+<ul>
+<li>Makes a line plot. lm means linear model.</li>
+</ul>
+</li>
+<li>
+<p>geom_jitter(width = 0.5, size = 1)</p>
+<ul>
+<li>Helpful for when points overlap, this is a scatterplot method which will randomly jitter the points according to the width and size variables inputted.</li>
+</ul>
+</li>
+<li>
+<p>geom_histogram()</p>
+<ul>
+<li>A type of bar plot. Can use bins to create categories</li>
+</ul>
+</li>
+<li>
+<p>geom_bar()</p>
+<ul>
+<li>A bar plot</li>
+</ul>
+</li>
+<li>
+<p>geom_density(alpha = 0.5)</p>
+<ul>
+<li>Creates a density plot. Modifying the alpha value allows for varying transparency</li>
+</ul>
+</li>
+<li>
+<p>geom_boxplot()</p>
+<ul>
+<li>Creates a plot of boxplots</li>
+</ul>
+</li>
+<li>
+<p>geom_violin()</p>
+<ul>
+<li>Creates a violin plot</li>
+</ul>
+</li>
+<li>
+<p>geom_line()</p>
+<ul>
+<li>creates a line connecting given data points</li>
+</ul>
+</li>
+<li>
+<p>labs(title = “title”, x = “x”, y = “y”, color = “color”)</p>
+<ul>
+<li>Creates labels</li>
+</ul>
+</li>
+<li>
+<p>theme_</p>
+<ul>
+<li>Opens up a list of theme options</li>
+</ul>
+</li>
+<li>
+<p>scale_fill_manual()</p>
+<ul>
+<li>Manually set the colors for the plot</li>
+</ul>
+</li>
+<li>
+<p>facet_wrap(~ value)</p>
+<ul>
+<li>Creates facet wrap where each category has their own mini plot</li>
+</ul>
+</li>
+<li>
+<p>mutate(new_column = existing_column*2)</p>
+<ul>
+<li>modifies the data to create a new column</li>
+</ul>
+</li>
+<li>
+<p>rename (new_name = old_name)</p>
+<ul>
+<li>renames previous data/variables</li>
+</ul>
+</li>
+<li>
+<p>distinct(column_name)</p>
+<ul>
+<li>checks if it is a distinct value</li>
+</ul>
+</li>
+<li>
+<p>count(column_name)</p>
+<ul>
+<li>Finds how many items there are</li>
+</ul>
+</li>
+<li>
+<p>Scale editing:</p>
+<ul>
+<li><p>Color - changes color to represent a different variable</p></li>
+<li><p>Shape - Changes shape to represent variable</p></li>
+<li><p>Fill - changes fill to represent a variable</p></li>
+<li><p>Cut - cut(variable, x) splits variable into groups with unique colors</p></li>
+</ul>
+</li>
+</ul></section><section id="spatial-visualization" class="level1 unnumbered"><h1 class="unnumbered">Spatial Visualization</h1>
+<p>Confounding variables - omitted or lurking variables that must be controlled</p>
+<p>Types of spatial visualizations:</p>
+<ul>
+<li>
+<p>Point map</p>
+<ul>
+<li>Plots locations of individual observations</li>
+</ul>
+</li>
+<li>
+<p>contour map</p>
+<ul>
+<li>Plots density and distribution of observations</li>
+</ul>
+</li>
+<li>
+<p>Choropleth Map</p>
+<ul>
+<li>plots outcomes in different regions</li>
+</ul>
+</li>
+</ul>
+<p>Spatial maps are static or dynamic/interactive.</p>
+</section><section id="making-plots" class="level1 unnumbered"><h1 class="unnumbered">Making Plots</h1>
+<section id="univariate-practice-with-hiking-data" class="level2" data-number="16.1"><h2 data-number="16.1" class="anchored" data-anchor-id="univariate-practice-with-hiking-data">
+<span class="header-section-number">16.1</span> Univariate Practice with Hiking Data</h2>
+<p>Loading in the Data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Import data</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>hikes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/high_peaks.csv"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="do">##load tidyverse</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     
+── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+</div>
+<p>Examining the Data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">head</span>(hikes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>             peak elevation difficulty ascent length time    rating
+1     Mt. Marcy        5344          5   3166   14.8 10.0  moderate
+2 Algonquin Peak       5114          5   2936    9.6  9.0  moderate
+3   Mt. Haystack       4960          7   3570   17.8 12.0 difficult
+4   Mt. Skylight       4926          7   4265   17.9 15.0 difficult
+5 Whiteface Mtn.       4867          4   2535   10.4  8.5      easy
+6       Dix Mtn.       4857          5   2800   13.2 10.0  moderate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">tail</span>(hikes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  peak elevation difficulty ascent length time   rating
+41          Dial Mtn.       4020          5   3450   10.0  9.0 moderate
+42           East Dix       4012          6   3002   12.5 12.0 moderate
+43              Blake       3960          4   3270   13.6 12.0     easy
+44         Cliff Mtn.       3960          6   2160   17.2 12.0 moderate
+45           Nye Mtn.       3895          6   1844    7.5  8.5 moderate
+46 Couchsachraga Peak       3820          6   3140   15.0 12.0 moderate</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">dim</span>(hikes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46  7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">str</span>(hikes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>'data.frame':   46 obs. of  7 variables:
+ $ peak      : chr  "Mt. Marcy  " "Algonquin Peak " "Mt. Haystack " "Mt. Skylight " ...
+ $ elevation : int  5344 5114 4960 4926 4867 4857 4840 4840 4827 4736 ...
+ $ difficulty: int  5 5 7 7 4 5 7 6 6 5 ...
+ $ ascent    : int  3166 2936 3570 4265 2535 2800 4178 3250 3650 4070 ...
+ $ length    : num  14.8 9.6 17.8 17.9 10.4 13.2 16 11.6 16.5 10 ...
+ $ time      : num  10 9 12 15 8.5 10 14 8.5 11 9 ...
+ $ rating    : chr  "moderate" "moderate" "difficult" "difficult" ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">nrow</span>(hikes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 46</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">ncol</span>(hikes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">class</span>(hikes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "data.frame"</code></pre>
+</div>
+</div>
+<p>Sorting and Cleaning Data:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a>hikes <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a href="#cb27-2"></a>  <span class="fu">mutate</span>(<span class="at">timeForSlowHike =</span> time<span class="sc">*</span><span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co">#modifies the data to create a new column</span></span>
+<span id="cb27-3"><a href="#cb27-3"></a>  <span class="fu">rename</span> (<span class="at">timeForNormalHike =</span> time) <span class="sc">|&gt;</span> <span class="co">#renames previous data/variables</span></span>
+<span id="cb27-4"><a href="#cb27-4"></a>  <span class="fu">arrange</span>(rating)  <span class="co"># Orders the data according to a specific variable</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                  peak elevation difficulty ascent length timeForNormalHike
+1        Mt. Haystack       4960          7   3570   17.8              12.0
+2        Mt. Skylight       4926          7   4265   17.9              15.0
+3           Gray Peak       4840          7   4178   16.0              14.0
+4        Mt. Redfield       4606          7   3225   17.5              14.0
+5         Seward Mtn.       4361          7   3490   16.0              17.0
+6          Allen Mtn.       4340          7   2540   16.2              13.0
+7       Mt. Donaldson       4140          7   3490   17.0              17.0
+8          Mt. Emmons       4040          7   3490   18.0              18.0
+9      Whiteface Mtn.       4867          4   2535   10.4               8.5
+10         Giant Mtn.       4627          4   3050    6.0               7.5
+11        Wright Peak       4580          4   2400    7.0               7.0
+12     Big Slide Mtn.       4240          4   2800    9.4               8.0
+13        Esther Mtn.       4240          4   3020    9.4               7.5
+14      Lower Wolfjaw       4175          4   2825    8.7               8.0
+15           Sawteeth       4100          4   2975   11.8               9.0
+16       Cascade Mtn.       4098          2   1940    4.8               5.0
+17        Porter Mtn.       4059          3   2700    7.6               5.5
+18         Mt. Colvin       4057          4   2130   10.8              10.0
+19              Blake       3960          4   3270   13.6              12.0
+20         Mt. Marcy        5344          5   3166   14.8              10.0
+21     Algonquin Peak       5114          5   2936    9.6               9.0
+22           Dix Mtn.       4857          5   2800   13.2              10.0
+23      Iroquois Peak       4840          6   3250   11.6               8.5
+24         Basin Mtn.       4827          6   3650   16.5              11.0
+25            Gothics       4736          5   4070   10.0               9.0
+26         Mt. Colden       4714          5   2850   15.2              10.0
+27          Nippletop       4620          5   4050   12.6              10.0
+28     Santanoni Peak       4607          5   2860   11.4              10.0
+29    Saddleback Mtn.       4515          5   2990   13.4              10.0
+30       Panther Peak       4442          6   3762   17.6              13.5
+31      Tabletop Mtn.       4427          5   3660   15.2              13.0
+32   Rocky Peak Ridge       4420          6   4500   13.4              11.0
+33        Macomb Mtn.       4405          5   2344    8.4               8.0
+34     Armstrong Mtn.       4400          5   3734   12.7              11.0
+35         Hough Peak       4400          6   3200   13.7              11.0
+36       Mt. Marshall       4360          6   2575   14.0              11.0
+37      Upper Wolfjaw       4185          5   3619   12.7              11.0
+38        Street Mtn.       4166          6   2115    8.8               9.5
+39        Phelps Mtn.       4161          5   3394   10.0               9.0
+40       Seymour Mtn.       4120          6   2370   14.0              11.0
+41          South Dix       4060          6   3050   11.5              12.0
+42          Dial Mtn.       4020          5   3450   10.0               9.0
+43           East Dix       4012          6   3002   12.5              12.0
+44         Cliff Mtn.       3960          6   2160   17.2              12.0
+45           Nye Mtn.       3895          6   1844    7.5               8.5
+46 Couchsachraga Peak       3820          6   3140   15.0              12.0
+      rating timeForSlowHike
+1  difficult              24
+2  difficult              30
+3  difficult              28
+4  difficult              28
+5  difficult              34
+6  difficult              26
+7  difficult              34
+8  difficult              36
+9       easy              17
+10      easy              15
+11      easy              14
+12      easy              16
+13      easy              15
+14      easy              16
+15      easy              18
+16      easy              10
+17      easy              11
+18      easy              20
+19      easy              24
+20  moderate              20
+21  moderate              18
+22  moderate              20
+23  moderate              17
+24  moderate              22
+25  moderate              18
+26  moderate              20
+27  moderate              20
+28  moderate              20
+29  moderate              20
+30  moderate              27
+31  moderate              26
+32  moderate              22
+33  moderate              16
+34  moderate              22
+35  moderate              22
+36  moderate              22
+37  moderate              22
+38  moderate              19
+39  moderate              18
+40  moderate              22
+41  moderate              24
+42  moderate              18
+43  moderate              24
+44  moderate              24
+45  moderate              17
+46  moderate              24</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a>avgHikePeak <span class="ot">&lt;-</span> hikes <span class="sc">|&gt;</span> <span class="co">#create new data set for average hike time for given peak</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a>  <span class="fu">group_by</span>(peak) <span class="sc">|&gt;</span> <span class="co">#Groups the data into categories</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(time))  <span class="co">#Allows for a number of summarizing methods such as median, mean, min, max, etc</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Making Plots:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> rating)) <span class="sc">+</span></span>
+<span id="cb30-2"><a href="#cb30-2"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>)  <span class="sc">+</span></span>
+<span id="cb30-3"><a href="#cb30-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rating"</span>, <span class="at">y =</span> <span class="st">"Number of hikes"</span>) <span class="sc">+</span></span>
+<span id="cb30-4"><a href="#cb30-4"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation (feet)"</span>, <span class="at">y =</span> <span class="st">"Number of hikes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-4-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1"></a><span class="co"># switched the binwidth to 1000, which means it categorizes the data into 1000 value ranges</span></span>
+<span id="cb33-2"><a href="#cb33-2"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb33-3"><a href="#cb33-3"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">binwidth =</span> <span class="dv">1000</span>) <span class="sc">+</span></span>
+<span id="cb33-4"><a href="#cb33-4"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation (feet)"</span>, <span class="at">y =</span> <span class="st">"Number of hikes"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-4-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb34-2"><a href="#cb34-2"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">fill =</span> <span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-4-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="bivariate-practice" class="level2" data-number="16.2"><h2 data-number="16.2" class="anchored" data-anchor-id="bivariate-practice">
+<span class="header-section-number">16.2</span> Bivariate Practice</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1"></a><span class="co"># Load data</span></span>
+<span id="cb35-2"><a href="#cb35-2"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
+<span id="cb35-3"><a href="#cb35-3"></a></span>
+<span id="cb35-4"><a href="#cb35-4"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_16, <span class="at">y =</span> repub_pct_20)) <span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5"></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> repub_pct_16)) <span class="sc">+</span></span>
+<span id="cb36-2"><a href="#cb36-2"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fill =</span> <span class="st">"black"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> repub_pct_16)) <span class="sc">+</span></span>
+<span id="cb37-2"><a href="#cb37-2"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> state_abbr))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> repub_pct_16)) <span class="sc">+</span></span>
+<span id="cb38-2"><a href="#cb38-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb38-3"><a href="#cb38-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> historical)) <span class="sc">+</span></span>
+<span id="cb40-2"><a href="#cb40-2"></a>  <span class="fu">geom_violin</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> historical)) <span class="sc">+</span></span>
+<span id="cb41-2"><a href="#cb41-2"></a>  <span class="fu">geom_boxplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_20, <span class="at">fill =</span> historical)) <span class="sc">+</span></span>
+<span id="cb42-2"><a href="#cb42-2"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-7.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_20, <span class="at">fill =</span> historical)) <span class="sc">+</span></span>
+<span id="cb43-2"><a href="#cb43-2"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb43-3"><a href="#cb43-3"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>)) <span class="sc">+</span></span>
+<span id="cb43-4"><a href="#cb43-4"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> historical)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-8.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> historical, <span class="at">fill =</span> winner_20)) <span class="sc">+</span></span>
+<span id="cb44-2"><a href="#cb44-2"></a>  <span class="fu">geom_bar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-9.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> historical, <span class="at">fill =</span> winner_20)) <span class="sc">+</span></span>
+<span id="cb45-2"><a href="#cb45-2"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-10.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> historical, <span class="at">fill =</span> winner_20)) <span class="sc">+</span></span>
+<span id="cb46-2"><a href="#cb46-2"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-5-11.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="multivariate-practice" class="level2" data-number="16.3"><h2 data-number="16.3" class="anchored" data-anchor-id="multivariate-practice">
+<span class="header-section-number">16.3</span> Multivariate Practice</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/sat.csv"</span>)</span>
+<span id="cb47-2"><a href="#cb47-2"></a></span>
+<span id="cb47-3"><a href="#cb47-3"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">y =</span> sat, <span class="at">x =</span> salary, <span class="at">color =</span> expend)) <span class="sc">+</span> </span>
+<span id="cb47-4"><a href="#cb47-4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb47-5"><a href="#cb47-5"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The following aesthetics were dropped during statistical transformation:
+colour.
+ℹ This can happen when ggplot fails to infer the correct grouping structure in
+  the data.
+ℹ Did you forget to specify a `group` aesthetic or to convert a numerical
+  variable into a factor?</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">fill =</span> fracCat)) <span class="sc">+</span> </span>
+<span id="cb50-2"><a href="#cb50-2"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> expend, <span class="at">y =</span> sat, <span class="at">color =</span> fracCat)) <span class="sc">+</span> </span>
+<span id="cb51-2"><a href="#cb51-2"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb51-3"><a href="#cb51-3"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-6-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="spatial-practice" class="level2" data-number="16.4"><h2 data-number="16.4" class="anchored" data-anchor-id="spatial-practice">
+<span class="header-section-number">16.4</span> Spatial Practice</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1"></a><span class="fu">library</span>(gplots)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gplots' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'gplots'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:stats':
+
+    lowess</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1"></a><span class="fu">library</span>(mosaic)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'mosaic' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Registered S3 method overwritten by 'mosaic':
+  method                           from   
+  fortify.SpatialPolygonsDataFrame ggplot2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+The 'mosaic' package masks several functions from core packages in order to add 
+additional features.  The original behavior of these functions should not be affected by this.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'mosaic'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:Matrix':
+
+    mean</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:dplyr':
+
+    count, do, tally</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    cross</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:ggplot2':
+
+    stat</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    binom.test, cor, cor.test, cov, fivenum, IQR, median, prop.test,
+    quantile, sd, t.test, var</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    max, mean, min, prod, range, sample, sum</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'sf' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1"></a><span class="fu">library</span>(maps)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'maps' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'maps'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:purrr':
+
+    map</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1"></a><span class="fu">library</span>(leaflet)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'leaflet' was built under R version 4.4.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1"></a>fave_places <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv"</span>)</span>
+<span id="cb77-2"><a href="#cb77-2"></a></span>
+<span id="cb77-3"><a href="#cb77-3"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
+<span id="cb77-4"><a href="#cb77-4"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb77-5"><a href="#cb77-5"></a>  <span class="fu">addMarkers</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-37303bc4cf0a429ac5cc" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-37303bc4cf0a429ac5cc">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addMarkers","args":[[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20],[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],null,null,null,{"interactive":true,"draggable":false,"keyboard":true,"title":"","alt":"","zIndexOffset":0,"opacity":1,"riseOnHover":false,"riseOffset":250},null,null,null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[0,59],"lng":[-155,127]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
+<span id="cb78-2"><a href="#cb78-2"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb78-3"><a href="#cb78-3"></a>  <span class="fu">addCircles</span>(<span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"red"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-cac88a607fdbdc89a06f" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-cac88a607fdbdc89a06f">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addTiles","args":["https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",null,null,{"minZoom":0,"maxZoom":18,"tileSize":256,"subdomains":"abc","errorTileUrl":"","tms":false,"noWrap":false,"zoomOffset":0,"zoomReverse":false,"opacity":1,"zIndex":1,"detectRetina":false,"attribution":"&copy; <a href=\"https://openstreetmap.org/copyright/\">OpenStreetMap<\/a>,  <a href=\"https://opendatacommons.org/licenses/odbl/\">ODbL<\/a>"}]},{"method":"addCircles","args":[[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20],[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#FF0000","weight":5,"opacity":0.5,"fill":true,"fillColor":"#FF0000","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]}],"limits":{"lat":[0,59],"lng":[-155,127]}},"evals":[],"jsHooks":[]}</script>
+</div>
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span></span>
+<span id="cb79-2"><a href="#cb79-2"></a>  <span class="fu">addProviderTiles</span>(<span class="st">"USGS"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb79-3"><a href="#cb79-3"></a>  <span class="fu">addCircles</span>(<span class="at">weight =</span> <span class="dv">10</span>, <span class="at">opacity =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"yellow"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb79-4"><a href="#cb79-4"></a>  <span class="fu">addPolylines</span>(</span>
+<span id="cb79-5"><a href="#cb79-5"></a>    <span class="at">lng =</span> <span class="sc">~</span>longitude,</span>
+<span id="cb79-6"><a href="#cb79-6"></a>    <span class="at">lat =</span> <span class="sc">~</span>latitude,</span>
+<span id="cb79-7"><a href="#cb79-7"></a>    <span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"green"</span>)</span>
+<span id="cb79-8"><a href="#cb79-8"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="leaflet html-widget html-fill-item" id="htmlwidget-c83b55b3abb83de67f43" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-c83b55b3abb83de67f43">{"x":{"options":{"crs":{"crsClass":"L.CRS.EPSG3857","code":null,"proj4def":null,"projectedBounds":null,"options":{}}},"calls":[{"method":"addProviderTiles","args":["USGS",null,null,{"errorTileUrl":"","noWrap":false,"detectRetina":false}]},{"method":"addCircles","args":[[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20],[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],10,null,null,{"interactive":true,"className":"","stroke":true,"color":"#FFFF00","weight":10,"opacity":1,"fill":true,"fillColor":"#FFFF00","fillOpacity":0.2},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null,null]},{"method":"addPolylines","args":[[[[{"lng":[18,-93,-117,116,106,-122,-106,24,5,-90,122,29,-118,-111,7,-93,101,-70,5,-90,122,-122,-117,-80,123,107,119,-85,0,68,-100,104,127,-123,-123,7,-124,-155],"lat":[59,45,33,40,40,37,33,38,52,35,25,41,34,46,50,45,14,44,52,45,38,48,33,33,48,39,32,46,0,16,30,36,38,38,38,50,45,20]}]]],null,null,{"interactive":true,"className":"","stroke":true,"color":"#00FF00","weight":5,"opacity":0.5,"fill":false,"fillColor":"#00FF00","fillOpacity":0.2,"smoothFactor":1,"noClip":false},null,null,null,{"interactive":false,"permanent":false,"direction":"auto","opacity":1,"offset":[0,0],"textsize":"10px","textOnly":false,"className":"","sticky":true},null]}],"limits":{"lat":[0,59],"lng":[-155,127]}},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1"></a><span class="fu">library</span>(rnaturalearth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'rnaturalearth' was built under R version 4.4.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1"></a>starbucks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/starbucks.csv"</span>)</span>
+<span id="cb82-2"><a href="#cb82-2"></a></span>
+<span id="cb82-3"><a href="#cb82-3"></a>starbucks_mn <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span>   </span>
+<span id="cb82-4"><a href="#cb82-4"></a>  <span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">"US"</span>, State.Province <span class="sc">==</span> <span class="st">"MN"</span>)</span>
+<span id="cb82-5"><a href="#cb82-5"></a></span>
+<span id="cb82-6"><a href="#cb82-6"></a>world_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
+<span id="cb82-7"><a href="#cb82-7"></a></span>
+<span id="cb82-8"><a href="#cb82-8"></a></span>
+<span id="cb82-9"><a href="#cb82-9"></a><span class="fu">ggplot</span>(world_boundaries) <span class="sc">+</span> </span>
+<span id="cb82-10"><a href="#cb82-10"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb82-11"><a href="#cb82-11"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb82-12"><a href="#cb82-12"></a>    <span class="at">data =</span> starbucks,</span>
+<span id="cb82-13"><a href="#cb82-13"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb82-14"><a href="#cb82-14"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span></span>
+<span id="cb82-15"><a href="#cb82-15"></a>  ) <span class="sc">+</span></span>
+<span id="cb82-16"><a href="#cb82-16"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Removed 1 row containing missing values or values outside the scale range
+(`geom_point()`).</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1"></a>starbucks_cma <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
+<span id="cb84-2"><a href="#cb84-2"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'CA'</span>, <span class="st">'MX'</span>, <span class="st">'US'</span>))</span>
+<span id="cb84-3"><a href="#cb84-3"></a></span>
+<span id="cb84-4"><a href="#cb84-4"></a>cma_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(</span>
+<span id="cb84-5"><a href="#cb84-5"></a>  <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"canada"</span>, <span class="st">"mexico"</span>, <span class="st">"united states of america"</span>),</span>
+<span id="cb84-6"><a href="#cb84-6"></a>  <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
+<span id="cb84-7"><a href="#cb84-7"></a></span>
+<span id="cb84-8"><a href="#cb84-8"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
+<span id="cb84-9"><a href="#cb84-9"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb84-10"><a href="#cb84-10"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb84-11"><a href="#cb84-11"></a>    <span class="at">data =</span> starbucks_cma,</span>
+<span id="cb84-12"><a href="#cb84-12"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb84-13"><a href="#cb84-13"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb84-14"><a href="#cb84-14"></a>    <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb84-15"><a href="#cb84-15"></a>    <span class="at">color =</span> <span class="st">"darkgreen"</span></span>
+<span id="cb84-16"><a href="#cb84-16"></a>  ) <span class="sc">+</span></span>
+<span id="cb84-17"><a href="#cb84-17"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">179.14</span>, <span class="sc">-</span><span class="dv">50</span>)) <span class="sc">+</span></span>
+<span id="cb84-18"><a href="#cb84-18"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-8-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1"></a>starbucks_midwest <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
+<span id="cb85-2"><a href="#cb85-2"></a>  <span class="fu">filter</span>(State.Province <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MN"</span>, <span class="st">"ND"</span>, <span class="st">"SD"</span>, <span class="st">"WI"</span>))</span>
+<span id="cb85-3"><a href="#cb85-3"></a></span>
+<span id="cb85-4"><a href="#cb85-4"></a>midwest_boundaries <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(</span>
+<span id="cb85-5"><a href="#cb85-5"></a>  maps<span class="sc">::</span><span class="fu">map</span>(<span class="st">"county"</span>,</span>
+<span id="cb85-6"><a href="#cb85-6"></a>            <span class="at">region =</span> <span class="fu">c</span>(<span class="st">"minnesota"</span>, <span class="st">"wisconsin"</span>, <span class="st">"north dakota"</span>, <span class="st">"south dakota"</span>), </span>
+<span id="cb85-7"><a href="#cb85-7"></a>            <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb85-8"><a href="#cb85-8"></a></span>
+<span id="cb85-9"><a href="#cb85-9"></a><span class="fu">ggplot</span>(midwest_boundaries) <span class="sc">+</span></span>
+<span id="cb85-10"><a href="#cb85-10"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb85-11"><a href="#cb85-11"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb85-12"><a href="#cb85-12"></a>    <span class="at">data =</span> starbucks_midwest,</span>
+<span id="cb85-13"><a href="#cb85-13"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb85-14"><a href="#cb85-14"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
+<span id="cb85-15"><a href="#cb85-15"></a>    <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb85-16"><a href="#cb85-16"></a>    <span class="at">color =</span> <span class="st">'darkgreen'</span></span>
+<span id="cb85-17"><a href="#cb85-17"></a>  ) <span class="sc">+</span></span>
+<span id="cb85-18"><a href="#cb85-18"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-8-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb86-1"><a href="#cb86-1"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
+<span id="cb86-2"><a href="#cb86-2"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb86-3"><a href="#cb86-3"></a>  <span class="fu">geom_density_2d</span>(</span>
+<span id="cb86-4"><a href="#cb86-4"></a>    <span class="at">data =</span> starbucks_cma,</span>
+<span id="cb86-5"><a href="#cb86-5"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb86-6"><a href="#cb86-6"></a>    <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb86-7"><a href="#cb86-7"></a>    <span class="at">color =</span> <span class="st">"darkgreen"</span></span>
+<span id="cb86-8"><a href="#cb86-8"></a>  ) <span class="sc">+</span></span>
+<span id="cb86-9"><a href="#cb86-9"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">179.14</span>, <span class="sc">-</span><span class="dv">50</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">14.54</span>, <span class="fl">83.11</span>)) <span class="sc">+</span></span>
+<span id="cb86-10"><a href="#cb86-10"></a>  <span class="fu">theme_map</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-8-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb88-1"><a href="#cb88-1"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb88-2"><a href="#cb88-2"></a><span class="fu">library</span>(socviz)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'socviz' was built under R version 4.4.2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb90-1"><a href="#cb90-1"></a><span class="fu">data</span>(county_map) </span>
+<span id="cb90-2"><a href="#cb90-2"></a></span>
+<span id="cb90-3"><a href="#cb90-3"></a>elections_by_state <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_by_state.csv"</span>)</span>
+<span id="cb90-4"><a href="#cb90-4"></a>elections_by_counties <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
+<span id="cb90-5"><a href="#cb90-5"></a>states_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"state"</span>)</span>
+<span id="cb90-6"><a href="#cb90-6"></a></span>
+<span id="cb90-7"><a href="#cb90-7"></a>elections_by_state <span class="ot">&lt;-</span> elections_by_state <span class="sc">|&gt;</span> </span>
+<span id="cb90-8"><a href="#cb90-8"></a>  <span class="fu">filter</span>(state_abbr <span class="sc">!=</span> <span class="st">"DC"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb90-9"><a href="#cb90-9"></a>  <span class="fu">select</span>(state_name, state_abbr, repub_pct_20) <span class="sc">|&gt;</span> </span>
+<span id="cb90-10"><a href="#cb90-10"></a>  <span class="fu">mutate</span>(<span class="at">repub_20_categories =</span> </span>
+<span id="cb90-11"><a href="#cb90-11"></a>           <span class="fu">cut</span>(repub_pct_20, </span>
+<span id="cb90-12"><a href="#cb90-12"></a>               <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">30</span>, <span class="dv">70</span>, <span class="at">by =</span> <span class="dv">5</span>), </span>
+<span id="cb90-13"><a href="#cb90-13"></a>               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"30-34"</span>, <span class="st">"35-39"</span>, <span class="st">"40-44"</span>, <span class="st">"45-49"</span>,</span>
+<span id="cb90-14"><a href="#cb90-14"></a>                          <span class="st">"50-54"</span>, <span class="st">"55-59"</span>, <span class="st">"60-64"</span>, <span class="st">"65-70"</span>), </span>
+<span id="cb90-15"><a href="#cb90-15"></a>               <span class="at">include.lowest =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb90-16"><a href="#cb90-16"></a></span>
+<span id="cb90-17"><a href="#cb90-17"></a>elections_by_counties <span class="ot">&lt;-</span> elections_by_counties <span class="sc">|&gt;</span> </span>
+<span id="cb90-18"><a href="#cb90-18"></a>  <span class="fu">select</span>(state_name, state_abbr, county_name, county_fips,</span>
+<span id="cb90-19"><a href="#cb90-19"></a>          repub_pct_20, median_age, median_rent) <span class="sc">|&gt;</span> </span>
+<span id="cb90-20"><a href="#cb90-20"></a>  <span class="fu">mutate</span>(<span class="at">repub_20_categories =</span> </span>
+<span id="cb90-21"><a href="#cb90-21"></a>           <span class="fu">cut</span>(repub_pct_20, </span>
+<span id="cb90-22"><a href="#cb90-22"></a>               <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>),</span>
+<span id="cb90-23"><a href="#cb90-23"></a>               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0-9"</span>, <span class="st">"10-19"</span>, <span class="st">"20-29"</span>, <span class="st">"30-39"</span>, <span class="st">"40-49"</span>,</span>
+<span id="cb90-24"><a href="#cb90-24"></a>                          <span class="st">"50-59"</span>, <span class="st">"60-69"</span>, <span class="st">"70-79"</span>, <span class="st">"80-89"</span>, <span class="st">"90-100"</span>),</span>
+<span id="cb90-25"><a href="#cb90-25"></a>               <span class="at">include.lowest =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb90-26"><a href="#cb90-26"></a></span>
+<span id="cb90-27"><a href="#cb90-27"></a><span class="fu">ggplot</span>(elections_by_state, <span class="fu">aes</span>(<span class="at">map_id =</span> state_name, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
+<span id="cb90-28"><a href="#cb90-28"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> states_map) <span class="sc">+</span></span>
+<span id="cb90-29"><a href="#cb90-29"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
+<span id="cb90-30"><a href="#cb90-30"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span> </span>
+<span id="cb90-31"><a href="#cb90-31"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"RdBu"</span>)), <span class="at">name =</span> <span class="st">"% Republican"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb91"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1"></a>elections_by_counties <span class="ot">&lt;-</span> elections_by_counties <span class="sc">|&gt;</span> </span>
+<span id="cb91-2"><a href="#cb91-2"></a>  <span class="fu">mutate</span>(<span class="at">county_fips =</span> <span class="fu">as.character</span>(county_fips)) <span class="sc">|&gt;</span> </span>
+<span id="cb91-3"><a href="#cb91-3"></a>  <span class="fu">mutate</span>(<span class="at">county_fips =</span> </span>
+<span id="cb91-4"><a href="#cb91-4"></a>           <span class="fu">ifelse</span>(<span class="fu">nchar</span>(county_fips) <span class="sc">==</span> <span class="dv">4</span>, <span class="fu">paste0</span>(<span class="st">"0"</span>, county_fips), county_fips))</span>
+<span id="cb91-5"><a href="#cb91-5"></a></span>
+<span id="cb91-6"><a href="#cb91-6"></a><span class="fu">ggplot</span>(elections_by_counties, <span class="fu">aes</span>(<span class="at">map_id =</span> county_fips, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
+<span id="cb91-7"><a href="#cb91-7"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> county_map) <span class="sc">+</span></span>
+<span id="cb91-8"><a href="#cb91-8"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">"RdBu"</span>)), <span class="at">name =</span> <span class="st">"% Republican"</span>) <span class="sc">+</span></span>
+<span id="cb91-9"><a href="#cb91-9"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> county_map<span class="sc">$</span>long, <span class="at">y =</span> county_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
+<span id="cb91-10"><a href="#cb91-10"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
+<span id="cb91-11"><a href="#cb91-11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>) <span class="sc">+</span> </span>
+<span id="cb91-12"><a href="#cb91-12"></a>  <span class="fu">coord_equal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-9-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section><section id="effective-practice" class="level2" data-number="16.5"><h2 data-number="16.5" class="anchored" data-anchor-id="effective-practice">
+<span class="header-section-number">16.5</span> Effective Practice</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" alt="A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal." width="672"></p>
+<figcaption>A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" alt="A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. " width="672"></p>
+<figcaption>A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt</figcaption></figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="summary-exam1_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+
+
+<!-- -->
+
+</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+          // target, if specified
+          link.setAttribute("target", "_blank");
+          if (link.getAttribute("rel") === null) {
+            link.setAttribute("rel", "noopener");
+          }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+      <a href="../ica/ica-joining.html" class="pagination-link" aria-label="Joining Data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Joining Data</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+  </div>
+</nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb92" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb92-1"><a href="#cb92-1"></a><span class="co">---</span></span>
+<span id="cb92-2"><a href="#cb92-2"></a><span class="an">title:</span><span class="co"> "summary-exam1"</span></span>
+<span id="cb92-3"><a href="#cb92-3"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb92-4"><a href="#cb92-4"></a><span class="co">---</span></span>
+<span id="cb92-5"><a href="#cb92-5"></a></span>
+<span id="cb92-6"><a href="#cb92-6"></a>#Exam 1 Summary Exam one covered setup, univariate, bivariate, multivariate, spatial, appropriate, and effective visualizations.</span>
+<span id="cb92-7"><a href="#cb92-7"></a></span>
+<span id="cb92-8"><a href="#cb92-8"></a><span class="fu"># Set Up &amp; Background {.unnumbered}</span></span>
+<span id="cb92-9"><a href="#cb92-9"></a></span>
+<span id="cb92-10"><a href="#cb92-10"></a>Use R studio to utilize R code to help explore data.</span>
+<span id="cb92-11"><a href="#cb92-11"></a>You can use the console for quick tests and trying out code.</span>
+<span id="cb92-12"><a href="#cb92-12"></a>A quart document is good for saving information and compiling code segments.</span>
+<span id="cb92-13"><a href="#cb92-13"></a></span>
+<span id="cb92-14"><a href="#cb92-14"></a>Use a hash tag to leave comments inside of a code chunk.</span>
+<span id="cb92-15"><a href="#cb92-15"></a></span>
+<span id="cb92-16"><a href="#cb92-16"></a>Follow style guides for consistent and easy to understand code.</span>
+<span id="cb92-17"><a href="#cb92-17"></a></span>
+<span id="cb92-18"><a href="#cb92-18"></a>Make sure data is tidy</span>
+<span id="cb92-19"><a href="#cb92-19"></a></span>
+<span id="cb92-20"><a href="#cb92-20"></a><span class="ss">-   </span>row = unit of observation</span>
+<span id="cb92-21"><a href="#cb92-21"></a></span>
+<span id="cb92-22"><a href="#cb92-22"></a><span class="ss">-   </span>column = measure of variable</span>
+<span id="cb92-23"><a href="#cb92-23"></a></span>
+<span id="cb92-24"><a href="#cb92-24"></a><span class="ss">-   </span>each entry should be one data value</span>
+<span id="cb92-25"><a href="#cb92-25"></a></span>
+<span id="cb92-26"><a href="#cb92-26"></a><span class="fu"># Why Visualizations Matter {.unnumbered}</span></span>
+<span id="cb92-27"><a href="#cb92-27"></a></span>
+<span id="cb92-28"><a href="#cb92-28"></a>Visualizations help to understand data and its characteristics, inform next steps, and to help communicate about findings.</span>
+<span id="cb92-29"><a href="#cb92-29"></a>It can help to explore trends, relationships and their strength, find outliers, and more.</span>
+<span id="cb92-30"><a href="#cb92-30"></a></span>
+<span id="cb92-31"><a href="#cb92-31"></a><span class="fu"># The Basics of Visualizations {.unnumbered}</span></span>
+<span id="cb92-32"><a href="#cb92-32"></a></span>
+<span id="cb92-33"><a href="#cb92-33"></a>A graphic contains:</span>
+<span id="cb92-34"><a href="#cb92-34"></a></span>
+<span id="cb92-35"><a href="#cb92-35"></a><span class="ss">-   </span>a frame/coordinate system</span>
+<span id="cb92-36"><a href="#cb92-36"></a></span>
+<span id="cb92-37"><a href="#cb92-37"></a><span class="ss">-   </span>a layer (a single geometric element)</span>
+<span id="cb92-38"><a href="#cb92-38"></a></span>
+<span id="cb92-39"><a href="#cb92-39"></a><span class="ss">-   </span>scales</span>
+<span id="cb92-40"><a href="#cb92-40"></a></span>
+<span id="cb92-41"><a href="#cb92-41"></a><span class="ss">-   </span>(optional) faceting</span>
+<span id="cb92-42"><a href="#cb92-42"></a></span>
+<span id="cb92-43"><a href="#cb92-43"></a><span class="ss">-   </span>theme</span>
+<span id="cb92-44"><a href="#cb92-44"></a></span>
+<span id="cb92-45"><a href="#cb92-45"></a><span class="fu"># Exploring Relationships {.unnumbered}</span></span>
+<span id="cb92-46"><a href="#cb92-46"></a></span>
+<span id="cb92-47"><a href="#cb92-47"></a>Response Variables - the variable whose variability we would like to explain</span>
+<span id="cb92-48"><a href="#cb92-48"></a></span>
+<span id="cb92-49"><a href="#cb92-49"></a>Predictors - variables that might explain variability in the response variable</span>
+<span id="cb92-50"><a href="#cb92-50"></a></span>
+<span id="cb92-51"><a href="#cb92-51"></a>Qualitative versus quantitative variables will need to be visualized differently.</span>
+<span id="cb92-52"><a href="#cb92-52"></a></span>
+<span id="cb92-53"><a href="#cb92-53"></a><span class="fu"># Effective Visualization {.unnumbered}</span></span>
+<span id="cb92-54"><a href="#cb92-54"></a></span>
+<span id="cb92-55"><a href="#cb92-55"></a><span class="ss">-   </span>Professional</span>
+<span id="cb92-56"><a href="#cb92-56"></a></span>
+<span id="cb92-57"><a href="#cb92-57"></a><span class="ss">    -   </span>axis labels, figure caption with source</span>
+<span id="cb92-58"><a href="#cb92-58"></a></span>
+<span id="cb92-59"><a href="#cb92-59"></a><span class="ss">-   </span>Accessible</span>
+<span id="cb92-60"><a href="#cb92-60"></a></span>
+<span id="cb92-61"><a href="#cb92-61"></a><span class="ss">    -   </span>alt text, color blind friendly color palette</span>
+<span id="cb92-62"><a href="#cb92-62"></a></span>
+<span id="cb92-63"><a href="#cb92-63"></a><span class="ss">-   </span>Smart Design Details</span>
+<span id="cb92-64"><a href="#cb92-64"></a></span>
+<span id="cb92-65"><a href="#cb92-65"></a><span class="ss">    -   </span>consider making comparisons, faceting, etc</span>
+<span id="cb92-66"><a href="#cb92-66"></a></span>
+<span id="cb92-67"><a href="#cb92-67"></a><span class="ss">-   </span>Ethics - Do not mislead</span>
+<span id="cb92-68"><a href="#cb92-68"></a></span>
+<span id="cb92-69"><a href="#cb92-69"></a><span class="ss">    -   </span>Visability</span>
+<span id="cb92-70"><a href="#cb92-70"></a></span>
+<span id="cb92-71"><a href="#cb92-71"></a><span class="ss">    -   </span>Privacy</span>
+<span id="cb92-72"><a href="#cb92-72"></a></span>
+<span id="cb92-73"><a href="#cb92-73"></a><span class="ss">    -   </span>Power</span>
+<span id="cb92-74"><a href="#cb92-74"></a></span>
+<span id="cb92-75"><a href="#cb92-75"></a><span class="ss">    -   </span>Pluralism</span>
+<span id="cb92-76"><a href="#cb92-76"></a></span>
+<span id="cb92-77"><a href="#cb92-77"></a><span class="ss">    -   </span>Emotion &amp; Embodiment</span>
+<span id="cb92-78"><a href="#cb92-78"></a></span>
+<span id="cb92-79"><a href="#cb92-79"></a><span class="ss">    -   </span>Context</span>
+<span id="cb92-80"><a href="#cb92-80"></a></span>
+<span id="cb92-81"><a href="#cb92-81"></a><span class="fu"># Overview of Code {.unnumbered}</span></span>
+<span id="cb92-82"><a href="#cb92-82"></a></span>
+<span id="cb92-83"><a href="#cb92-83"></a>Below is a list of important coding functions.</span>
+<span id="cb92-84"><a href="#cb92-84"></a>See later sections to view them in action!</span>
+<span id="cb92-85"><a href="#cb92-85"></a></span>
+<span id="cb92-86"><a href="#cb92-86"></a><span class="ss">-   </span>nrow() &amp; ncol()</span>
+<span id="cb92-87"><a href="#cb92-87"></a></span>
+<span id="cb92-88"><a href="#cb92-88"></a><span class="ss">    -   </span>number of rows and columns (respectively)</span>
+<span id="cb92-89"><a href="#cb92-89"></a></span>
+<span id="cb92-90"><a href="#cb92-90"></a><span class="ss">-   </span>str()</span>
+<span id="cb92-91"><a href="#cb92-91"></a></span>
+<span id="cb92-92"><a href="#cb92-92"></a><span class="ss">    -   </span>structure of the data</span>
+<span id="cb92-93"><a href="#cb92-93"></a></span>
+<span id="cb92-94"><a href="#cb92-94"></a><span class="ss">-   </span>head()</span>
+<span id="cb92-95"><a href="#cb92-95"></a></span>
+<span id="cb92-96"><a href="#cb92-96"></a><span class="ss">    -   </span>variables at beginning of a dataset.</span>
+<span id="cb92-97"><a href="#cb92-97"></a>        Defaults to 6, can add comma and number to specify</span>
+<span id="cb92-98"><a href="#cb92-98"></a></span>
+<span id="cb92-99"><a href="#cb92-99"></a><span class="ss">-   </span>tail()</span>
+<span id="cb92-100"><a href="#cb92-100"></a></span>
+<span id="cb92-101"><a href="#cb92-101"></a><span class="ss">    -   </span>variables at end of a dataset.</span>
+<span id="cb92-102"><a href="#cb92-102"></a>        Defaults to 6, can add comma and number to specify</span>
+<span id="cb92-103"><a href="#cb92-103"></a></span>
+<span id="cb92-104"><a href="#cb92-104"></a><span class="ss">-   </span>dim()</span>
+<span id="cb92-105"><a href="#cb92-105"></a></span>
+<span id="cb92-106"><a href="#cb92-106"></a><span class="ss">    -   </span>dimensions of a dataset</span>
+<span id="cb92-107"><a href="#cb92-107"></a></span>
+<span id="cb92-108"><a href="#cb92-108"></a><span class="ss">-   </span>class()</span>
+<span id="cb92-109"><a href="#cb92-109"></a></span>
+<span id="cb92-110"><a href="#cb92-110"></a><span class="ss">    -   </span>Returns class of a variable</span>
+<span id="cb92-111"><a href="#cb92-111"></a></span>
+<span id="cb92-112"><a href="#cb92-112"></a><span class="ss">-   </span>summarize()</span>
+<span id="cb92-113"><a href="#cb92-113"></a></span>
+<span id="cb92-114"><a href="#cb92-114"></a><span class="ss">    -   </span>Allows for a number of summarizing methods such as median, mean, min, max, etc</span>
+<span id="cb92-115"><a href="#cb92-115"></a></span>
+<span id="cb92-116"><a href="#cb92-116"></a><span class="ss">-   </span>arrange()</span>
+<span id="cb92-117"><a href="#cb92-117"></a></span>
+<span id="cb92-118"><a href="#cb92-118"></a><span class="ss">    -   </span>Orders the data according to a specific variable</span>
+<span id="cb92-119"><a href="#cb92-119"></a></span>
+<span id="cb92-120"><a href="#cb92-120"></a><span class="ss">-   </span>group_by()</span>
+<span id="cb92-121"><a href="#cb92-121"></a></span>
+<span id="cb92-122"><a href="#cb92-122"></a><span class="ss">    -   </span>Groups the data into categories</span>
+<span id="cb92-123"><a href="#cb92-123"></a></span>
+<span id="cb92-124"><a href="#cb92-124"></a><span class="ss">-   </span>ggplot(dataset, aes(x = n, y = n)) +</span>
+<span id="cb92-125"><a href="#cb92-125"></a></span>
+<span id="cb92-126"><a href="#cb92-126"></a><span class="ss">    -   </span>the framework for our plot using a dataset and setting the x and y parameters.</span>
+<span id="cb92-127"><a href="#cb92-127"></a>        used prior to implementing the geom<span class="sc">\_</span> functions</span>
+<span id="cb92-128"><a href="#cb92-128"></a></span>
+<span id="cb92-129"><a href="#cb92-129"></a><span class="ss">-   </span>geom_point()</span>
+<span id="cb92-130"><a href="#cb92-130"></a></span>
+<span id="cb92-131"><a href="#cb92-131"></a><span class="ss">    -   </span>Makes a scatterplot of points</span>
+<span id="cb92-132"><a href="#cb92-132"></a></span>
+<span id="cb92-133"><a href="#cb92-133"></a><span class="ss">-   </span>geom_smooth(method = "lm")</span>
+<span id="cb92-134"><a href="#cb92-134"></a></span>
+<span id="cb92-135"><a href="#cb92-135"></a><span class="ss">    -   </span>Makes a line plot.</span>
+<span id="cb92-136"><a href="#cb92-136"></a>        lm means linear model.</span>
+<span id="cb92-137"><a href="#cb92-137"></a></span>
+<span id="cb92-138"><a href="#cb92-138"></a><span class="ss">-   </span>geom_jitter(width = 0.5, size = 1)</span>
+<span id="cb92-139"><a href="#cb92-139"></a></span>
+<span id="cb92-140"><a href="#cb92-140"></a><span class="ss">    -   </span>Helpful for when points overlap, this is a scatterplot method which will randomly jitter the points according to the width and size variables inputted.</span>
+<span id="cb92-141"><a href="#cb92-141"></a></span>
+<span id="cb92-142"><a href="#cb92-142"></a><span class="ss">-   </span>geom_histogram()</span>
+<span id="cb92-143"><a href="#cb92-143"></a></span>
+<span id="cb92-144"><a href="#cb92-144"></a><span class="ss">    -   </span>A type of bar plot.</span>
+<span id="cb92-145"><a href="#cb92-145"></a>        Can use bins to create categories</span>
+<span id="cb92-146"><a href="#cb92-146"></a></span>
+<span id="cb92-147"><a href="#cb92-147"></a><span class="ss">-   </span>geom_bar()</span>
+<span id="cb92-148"><a href="#cb92-148"></a></span>
+<span id="cb92-149"><a href="#cb92-149"></a><span class="ss">    -   </span>A bar plot</span>
+<span id="cb92-150"><a href="#cb92-150"></a></span>
+<span id="cb92-151"><a href="#cb92-151"></a><span class="ss">-   </span>geom_density(alpha = 0.5)</span>
+<span id="cb92-152"><a href="#cb92-152"></a></span>
+<span id="cb92-153"><a href="#cb92-153"></a><span class="ss">    -   </span>Creates a density plot.</span>
+<span id="cb92-154"><a href="#cb92-154"></a>        Modifying the alpha value allows for varying transparency</span>
+<span id="cb92-155"><a href="#cb92-155"></a></span>
+<span id="cb92-156"><a href="#cb92-156"></a><span class="ss">-   </span>geom_boxplot()</span>
+<span id="cb92-157"><a href="#cb92-157"></a></span>
+<span id="cb92-158"><a href="#cb92-158"></a><span class="ss">    -   </span>Creates a plot of boxplots</span>
+<span id="cb92-159"><a href="#cb92-159"></a></span>
+<span id="cb92-160"><a href="#cb92-160"></a><span class="ss">-   </span>geom_violin()</span>
+<span id="cb92-161"><a href="#cb92-161"></a></span>
+<span id="cb92-162"><a href="#cb92-162"></a><span class="ss">    -   </span>Creates a violin plot</span>
+<span id="cb92-163"><a href="#cb92-163"></a></span>
+<span id="cb92-164"><a href="#cb92-164"></a><span class="ss">-   </span>geom_line()</span>
+<span id="cb92-165"><a href="#cb92-165"></a></span>
+<span id="cb92-166"><a href="#cb92-166"></a><span class="ss">    -   </span>creates a line connecting given data points</span>
+<span id="cb92-167"><a href="#cb92-167"></a></span>
+<span id="cb92-168"><a href="#cb92-168"></a><span class="ss">-   </span>labs(title = "title", x = "x", y = "y", color = "color")</span>
+<span id="cb92-169"><a href="#cb92-169"></a></span>
+<span id="cb92-170"><a href="#cb92-170"></a><span class="ss">    -   </span>Creates labels</span>
+<span id="cb92-171"><a href="#cb92-171"></a></span>
+<span id="cb92-172"><a href="#cb92-172"></a><span class="ss">-   </span>theme<span class="sc">\_</span></span>
+<span id="cb92-173"><a href="#cb92-173"></a></span>
+<span id="cb92-174"><a href="#cb92-174"></a><span class="ss">    -   </span>Opens up a list of theme options</span>
+<span id="cb92-175"><a href="#cb92-175"></a></span>
+<span id="cb92-176"><a href="#cb92-176"></a><span class="ss">-   </span>scale_fill_manual()</span>
+<span id="cb92-177"><a href="#cb92-177"></a></span>
+<span id="cb92-178"><a href="#cb92-178"></a><span class="ss">    -   </span>Manually set the colors for the plot</span>
+<span id="cb92-179"><a href="#cb92-179"></a></span>
+<span id="cb92-180"><a href="#cb92-180"></a><span class="ss">-   </span>facet_wrap(\~ value)</span>
+<span id="cb92-181"><a href="#cb92-181"></a></span>
+<span id="cb92-182"><a href="#cb92-182"></a><span class="ss">    -   </span>Creates facet wrap where each category has their own mini plot</span>
+<span id="cb92-183"><a href="#cb92-183"></a></span>
+<span id="cb92-184"><a href="#cb92-184"></a><span class="ss">-   </span>mutate(new_column = existing_column<span class="sc">\*</span>2)</span>
+<span id="cb92-185"><a href="#cb92-185"></a></span>
+<span id="cb92-186"><a href="#cb92-186"></a><span class="ss">    -   </span>modifies the data to create a new column</span>
+<span id="cb92-187"><a href="#cb92-187"></a></span>
+<span id="cb92-188"><a href="#cb92-188"></a><span class="ss">-   </span>rename (new_name = old_name)</span>
+<span id="cb92-189"><a href="#cb92-189"></a></span>
+<span id="cb92-190"><a href="#cb92-190"></a><span class="ss">    -   </span>renames previous data/variables</span>
+<span id="cb92-191"><a href="#cb92-191"></a></span>
+<span id="cb92-192"><a href="#cb92-192"></a><span class="ss">-   </span>distinct(column_name)</span>
+<span id="cb92-193"><a href="#cb92-193"></a></span>
+<span id="cb92-194"><a href="#cb92-194"></a><span class="ss">    -   </span>checks if it is a distinct value</span>
+<span id="cb92-195"><a href="#cb92-195"></a></span>
+<span id="cb92-196"><a href="#cb92-196"></a><span class="ss">-   </span>count(column_name)</span>
+<span id="cb92-197"><a href="#cb92-197"></a></span>
+<span id="cb92-198"><a href="#cb92-198"></a><span class="ss">    -   </span>Finds how many items there are</span>
+<span id="cb92-199"><a href="#cb92-199"></a></span>
+<span id="cb92-200"><a href="#cb92-200"></a><span class="ss">-   </span>Scale editing:</span>
+<span id="cb92-201"><a href="#cb92-201"></a></span>
+<span id="cb92-202"><a href="#cb92-202"></a><span class="ss">    -   </span>Color - changes color to represent a different variable</span>
+<span id="cb92-203"><a href="#cb92-203"></a></span>
+<span id="cb92-204"><a href="#cb92-204"></a><span class="ss">    -   </span>Shape - Changes shape to represent variable</span>
+<span id="cb92-205"><a href="#cb92-205"></a></span>
+<span id="cb92-206"><a href="#cb92-206"></a><span class="ss">    -   </span>Fill - changes fill to represent a variable</span>
+<span id="cb92-207"><a href="#cb92-207"></a></span>
+<span id="cb92-208"><a href="#cb92-208"></a><span class="ss">    -   </span>Cut - cut(variable, x) splits variable into groups with unique colors</span>
+<span id="cb92-209"><a href="#cb92-209"></a></span>
+<span id="cb92-210"><a href="#cb92-210"></a><span class="fu"># Spatial Visualization {.unnumbered}</span></span>
+<span id="cb92-211"><a href="#cb92-211"></a></span>
+<span id="cb92-212"><a href="#cb92-212"></a>Confounding variables - omitted or lurking variables that must be controlled</span>
+<span id="cb92-213"><a href="#cb92-213"></a></span>
+<span id="cb92-214"><a href="#cb92-214"></a>Types of spatial visualizations:</span>
+<span id="cb92-215"><a href="#cb92-215"></a></span>
+<span id="cb92-216"><a href="#cb92-216"></a><span class="ss">-   </span>Point map</span>
+<span id="cb92-217"><a href="#cb92-217"></a></span>
+<span id="cb92-218"><a href="#cb92-218"></a><span class="ss">    -   </span>Plots locations of individual observations</span>
+<span id="cb92-219"><a href="#cb92-219"></a></span>
+<span id="cb92-220"><a href="#cb92-220"></a><span class="ss">-   </span>contour map</span>
+<span id="cb92-221"><a href="#cb92-221"></a></span>
+<span id="cb92-222"><a href="#cb92-222"></a><span class="ss">    -   </span>Plots density and distribution of observations</span>
+<span id="cb92-223"><a href="#cb92-223"></a></span>
+<span id="cb92-224"><a href="#cb92-224"></a><span class="ss">-   </span>Choropleth Map</span>
+<span id="cb92-225"><a href="#cb92-225"></a></span>
+<span id="cb92-226"><a href="#cb92-226"></a><span class="ss">    -   </span>plots outcomes in different regions</span>
+<span id="cb92-227"><a href="#cb92-227"></a></span>
+<span id="cb92-228"><a href="#cb92-228"></a>Spatial maps are static or dynamic/interactive.</span>
+<span id="cb92-229"><a href="#cb92-229"></a></span>
+<span id="cb92-230"><a href="#cb92-230"></a><span class="fu"># Making Plots {.unnumbered}</span></span>
+<span id="cb92-231"><a href="#cb92-231"></a></span>
+<span id="cb92-232"><a href="#cb92-232"></a><span class="fu">## Univariate Practice with Hiking Data</span></span>
+<span id="cb92-233"><a href="#cb92-233"></a>Loading in the Data:</span>
+<span id="cb92-236"><a href="#cb92-236"></a><span class="in">```{r}</span></span>
+<span id="cb92-237"><a href="#cb92-237"></a><span class="co">#| eval: true</span></span>
+<span id="cb92-238"><a href="#cb92-238"></a></span>
+<span id="cb92-239"><a href="#cb92-239"></a><span class="co"># Import data</span></span>
+<span id="cb92-240"><a href="#cb92-240"></a>hikes <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/high_peaks.csv"</span>)</span>
+<span id="cb92-241"><a href="#cb92-241"></a></span>
+<span id="cb92-242"><a href="#cb92-242"></a><span class="do">##load tidyverse</span></span>
+<span id="cb92-243"><a href="#cb92-243"></a></span>
+<span id="cb92-244"><a href="#cb92-244"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb92-245"><a href="#cb92-245"></a><span class="in">```</span></span>
+<span id="cb92-246"><a href="#cb92-246"></a>Examining the Data: </span>
+<span id="cb92-249"><a href="#cb92-249"></a><span class="in">```{r}</span></span>
+<span id="cb92-250"><a href="#cb92-250"></a><span class="co">#| eval: true</span></span>
+<span id="cb92-251"><a href="#cb92-251"></a></span>
+<span id="cb92-252"><a href="#cb92-252"></a><span class="fu">head</span>(hikes)</span>
+<span id="cb92-253"><a href="#cb92-253"></a><span class="fu">tail</span>(hikes)</span>
+<span id="cb92-254"><a href="#cb92-254"></a><span class="fu">dim</span>(hikes)</span>
+<span id="cb92-255"><a href="#cb92-255"></a><span class="fu">str</span>(hikes)</span>
+<span id="cb92-256"><a href="#cb92-256"></a><span class="fu">nrow</span>(hikes)</span>
+<span id="cb92-257"><a href="#cb92-257"></a><span class="fu">ncol</span>(hikes)</span>
+<span id="cb92-258"><a href="#cb92-258"></a><span class="fu">class</span>(hikes)</span>
+<span id="cb92-259"><a href="#cb92-259"></a><span class="in">```</span></span>
+<span id="cb92-260"><a href="#cb92-260"></a>Sorting and Cleaning Data:</span>
+<span id="cb92-263"><a href="#cb92-263"></a><span class="in">```{r}</span></span>
+<span id="cb92-264"><a href="#cb92-264"></a>hikes <span class="sc">|&gt;</span></span>
+<span id="cb92-265"><a href="#cb92-265"></a>  <span class="fu">mutate</span>(<span class="at">timeForSlowHike =</span> time<span class="sc">*</span><span class="dv">2</span>) <span class="sc">|&gt;</span> <span class="co">#modifies the data to create a new column</span></span>
+<span id="cb92-266"><a href="#cb92-266"></a>  <span class="fu">rename</span> (<span class="at">timeForNormalHike =</span> time) <span class="sc">|&gt;</span> <span class="co">#renames previous data/variables</span></span>
+<span id="cb92-267"><a href="#cb92-267"></a>  <span class="fu">arrange</span>(rating)  <span class="co"># Orders the data according to a specific variable</span></span>
+<span id="cb92-268"><a href="#cb92-268"></a></span>
+<span id="cb92-269"><a href="#cb92-269"></a>avgHikePeak <span class="ot">&lt;-</span> hikes <span class="sc">|&gt;</span> <span class="co">#create new data set for average hike time for given peak</span></span>
+<span id="cb92-270"><a href="#cb92-270"></a>  <span class="fu">group_by</span>(peak) <span class="sc">|&gt;</span> <span class="co">#Groups the data into categories</span></span>
+<span id="cb92-271"><a href="#cb92-271"></a>  <span class="fu">summarize</span>(<span class="fu">mean</span>(time))  <span class="co">#Allows for a number of summarizing methods such as median, mean, min, max, etc</span></span>
+<span id="cb92-272"><a href="#cb92-272"></a><span class="in">```</span></span>
+<span id="cb92-273"><a href="#cb92-273"></a>Making Plots:</span>
+<span id="cb92-276"><a href="#cb92-276"></a><span class="in">```{r}</span></span>
+<span id="cb92-277"><a href="#cb92-277"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> rating)) <span class="sc">+</span></span>
+<span id="cb92-278"><a href="#cb92-278"></a>  <span class="fu">geom_bar</span>(<span class="at">color =</span> <span class="st">"orange"</span>, <span class="at">fill =</span> <span class="st">"blue"</span>)  <span class="sc">+</span></span>
+<span id="cb92-279"><a href="#cb92-279"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Rating"</span>, <span class="at">y =</span> <span class="st">"Number of hikes"</span>) <span class="sc">+</span></span>
+<span id="cb92-280"><a href="#cb92-280"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb92-281"><a href="#cb92-281"></a></span>
+<span id="cb92-282"><a href="#cb92-282"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb92-283"><a href="#cb92-283"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb92-284"><a href="#cb92-284"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation (feet)"</span>, <span class="at">y =</span> <span class="st">"Number of hikes"</span>)</span>
+<span id="cb92-285"><a href="#cb92-285"></a></span>
+<span id="cb92-286"><a href="#cb92-286"></a><span class="co"># switched the binwidth to 1000, which means it categorizes the data into 1000 value ranges</span></span>
+<span id="cb92-287"><a href="#cb92-287"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb92-288"><a href="#cb92-288"></a>  <span class="fu">geom_histogram</span>(<span class="at">color =</span> <span class="st">"white"</span>, <span class="at">binwidth =</span> <span class="dv">1000</span>) <span class="sc">+</span></span>
+<span id="cb92-289"><a href="#cb92-289"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation (feet)"</span>, <span class="at">y =</span> <span class="st">"Number of hikes"</span>)</span>
+<span id="cb92-290"><a href="#cb92-290"></a></span>
+<span id="cb92-291"><a href="#cb92-291"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb92-292"><a href="#cb92-292"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">fill =</span> <span class="st">"orange"</span>)</span>
+<span id="cb92-293"><a href="#cb92-293"></a><span class="in">```</span> </span>
+<span id="cb92-294"><a href="#cb92-294"></a></span>
+<span id="cb92-295"><a href="#cb92-295"></a><span class="fu">## Bivariate Practice </span></span>
+<span id="cb92-298"><a href="#cb92-298"></a><span class="in">```{r}</span></span>
+<span id="cb92-299"><a href="#cb92-299"></a><span class="co"># Load data</span></span>
+<span id="cb92-300"><a href="#cb92-300"></a>elections <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
+<span id="cb92-301"><a href="#cb92-301"></a></span>
+<span id="cb92-302"><a href="#cb92-302"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_16, <span class="at">y =</span> repub_pct_20)) <span class="sc">+</span></span>
+<span id="cb92-303"><a href="#cb92-303"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb92-304"><a href="#cb92-304"></a></span>
+<span id="cb92-305"><a href="#cb92-305"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> repub_pct_16)) <span class="sc">+</span></span>
+<span id="cb92-306"><a href="#cb92-306"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fill =</span> <span class="st">"black"</span>)</span>
+<span id="cb92-307"><a href="#cb92-307"></a></span>
+<span id="cb92-308"><a href="#cb92-308"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> repub_pct_16)) <span class="sc">+</span></span>
+<span id="cb92-309"><a href="#cb92-309"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> state_abbr))</span>
+<span id="cb92-310"><a href="#cb92-310"></a></span>
+<span id="cb92-311"><a href="#cb92-311"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> repub_pct_16)) <span class="sc">+</span></span>
+<span id="cb92-312"><a href="#cb92-312"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb92-313"><a href="#cb92-313"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb92-314"><a href="#cb92-314"></a></span>
+<span id="cb92-315"><a href="#cb92-315"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> historical)) <span class="sc">+</span></span>
+<span id="cb92-316"><a href="#cb92-316"></a>  <span class="fu">geom_violin</span>()</span>
+<span id="cb92-317"><a href="#cb92-317"></a></span>
+<span id="cb92-318"><a href="#cb92-318"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">y =</span> repub_pct_20, <span class="at">x =</span> historical)) <span class="sc">+</span></span>
+<span id="cb92-319"><a href="#cb92-319"></a>  <span class="fu">geom_boxplot</span>()</span>
+<span id="cb92-320"><a href="#cb92-320"></a></span>
+<span id="cb92-321"><a href="#cb92-321"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_20, <span class="at">fill =</span> historical)) <span class="sc">+</span></span>
+<span id="cb92-322"><a href="#cb92-322"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb92-323"><a href="#cb92-323"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>))</span>
+<span id="cb92-324"><a href="#cb92-324"></a></span>
+<span id="cb92-325"><a href="#cb92-325"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_20, <span class="at">fill =</span> historical)) <span class="sc">+</span></span>
+<span id="cb92-326"><a href="#cb92-326"></a>  <span class="fu">geom_density</span>() <span class="sc">+</span></span>
+<span id="cb92-327"><a href="#cb92-327"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>)) <span class="sc">+</span></span>
+<span id="cb92-328"><a href="#cb92-328"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> historical)</span>
+<span id="cb92-329"><a href="#cb92-329"></a></span>
+<span id="cb92-330"><a href="#cb92-330"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> historical, <span class="at">fill =</span> winner_20)) <span class="sc">+</span></span>
+<span id="cb92-331"><a href="#cb92-331"></a>  <span class="fu">geom_bar</span>()</span>
+<span id="cb92-332"><a href="#cb92-332"></a></span>
+<span id="cb92-333"><a href="#cb92-333"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> historical, <span class="at">fill =</span> winner_20)) <span class="sc">+</span></span>
+<span id="cb92-334"><a href="#cb92-334"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"dodge"</span>)</span>
+<span id="cb92-335"><a href="#cb92-335"></a></span>
+<span id="cb92-336"><a href="#cb92-336"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> historical, <span class="at">fill =</span> winner_20)) <span class="sc">+</span></span>
+<span id="cb92-337"><a href="#cb92-337"></a>  <span class="fu">geom_bar</span>(<span class="at">position =</span> <span class="st">"fill"</span>)</span>
+<span id="cb92-338"><a href="#cb92-338"></a></span>
+<span id="cb92-339"><a href="#cb92-339"></a></span>
+<span id="cb92-340"><a href="#cb92-340"></a><span class="in">```</span></span>
+<span id="cb92-341"><a href="#cb92-341"></a></span>
+<span id="cb92-342"><a href="#cb92-342"></a><span class="fu">## Multivariate Practice</span></span>
+<span id="cb92-343"><a href="#cb92-343"></a></span>
+<span id="cb92-346"><a href="#cb92-346"></a><span class="in">```{r}</span></span>
+<span id="cb92-347"><a href="#cb92-347"></a>education <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/sat.csv"</span>)</span>
+<span id="cb92-348"><a href="#cb92-348"></a></span>
+<span id="cb92-349"><a href="#cb92-349"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">y =</span> sat, <span class="at">x =</span> salary, <span class="at">color =</span> expend)) <span class="sc">+</span> </span>
+<span id="cb92-350"><a href="#cb92-350"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb92-351"><a href="#cb92-351"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb92-352"><a href="#cb92-352"></a></span>
+<span id="cb92-353"><a href="#cb92-353"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> sat, <span class="at">fill =</span> fracCat)) <span class="sc">+</span> </span>
+<span id="cb92-354"><a href="#cb92-354"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>)</span>
+<span id="cb92-355"><a href="#cb92-355"></a></span>
+<span id="cb92-356"><a href="#cb92-356"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> expend, <span class="at">y =</span> sat, <span class="at">color =</span> fracCat)) <span class="sc">+</span> </span>
+<span id="cb92-357"><a href="#cb92-357"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb92-358"><a href="#cb92-358"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>)</span>
+<span id="cb92-359"><a href="#cb92-359"></a><span class="in">```</span></span>
+<span id="cb92-360"><a href="#cb92-360"></a></span>
+<span id="cb92-361"><a href="#cb92-361"></a><span class="fu">## Spatial Practice</span></span>
+<span id="cb92-362"><a href="#cb92-362"></a></span>
+<span id="cb92-365"><a href="#cb92-365"></a><span class="in">```{r}</span></span>
+<span id="cb92-366"><a href="#cb92-366"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb92-367"><a href="#cb92-367"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb92-368"><a href="#cb92-368"></a><span class="fu">library</span>(sf)</span>
+<span id="cb92-369"><a href="#cb92-369"></a><span class="fu">library</span>(maps)</span>
+<span id="cb92-370"><a href="#cb92-370"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb92-371"><a href="#cb92-371"></a></span>
+<span id="cb92-372"><a href="#cb92-372"></a>fave_places <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://hash-mac.github.io/stat112site-s25/data/our_fave_places.csv"</span>)</span>
+<span id="cb92-373"><a href="#cb92-373"></a></span>
+<span id="cb92-374"><a href="#cb92-374"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
+<span id="cb92-375"><a href="#cb92-375"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb92-376"><a href="#cb92-376"></a>  <span class="fu">addMarkers</span>()</span>
+<span id="cb92-377"><a href="#cb92-377"></a></span>
+<span id="cb92-378"><a href="#cb92-378"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span> </span>
+<span id="cb92-379"><a href="#cb92-379"></a>  <span class="fu">addTiles</span>() <span class="sc">|&gt;</span> </span>
+<span id="cb92-380"><a href="#cb92-380"></a>  <span class="fu">addCircles</span>(<span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"red"</span>))</span>
+<span id="cb92-381"><a href="#cb92-381"></a></span>
+<span id="cb92-382"><a href="#cb92-382"></a><span class="fu">leaflet</span>(<span class="at">data =</span> fave_places) <span class="sc">|&gt;</span></span>
+<span id="cb92-383"><a href="#cb92-383"></a>  <span class="fu">addProviderTiles</span>(<span class="st">"USGS"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb92-384"><a href="#cb92-384"></a>  <span class="fu">addCircles</span>(<span class="at">weight =</span> <span class="dv">10</span>, <span class="at">opacity =</span> <span class="dv">1</span>, <span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"yellow"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb92-385"><a href="#cb92-385"></a>  <span class="fu">addPolylines</span>(</span>
+<span id="cb92-386"><a href="#cb92-386"></a>    <span class="at">lng =</span> <span class="sc">~</span>longitude,</span>
+<span id="cb92-387"><a href="#cb92-387"></a>    <span class="at">lat =</span> <span class="sc">~</span>latitude,</span>
+<span id="cb92-388"><a href="#cb92-388"></a>    <span class="at">color =</span> <span class="fu">col2hex</span>(<span class="st">"green"</span>)</span>
+<span id="cb92-389"><a href="#cb92-389"></a>  )</span>
+<span id="cb92-390"><a href="#cb92-390"></a><span class="in">```</span></span>
+<span id="cb92-391"><a href="#cb92-391"></a></span>
+<span id="cb92-394"><a href="#cb92-394"></a><span class="in">```{r}</span></span>
+<span id="cb92-395"><a href="#cb92-395"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb92-396"><a href="#cb92-396"></a> </span>
+<span id="cb92-397"><a href="#cb92-397"></a>starbucks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/starbucks.csv"</span>)</span>
+<span id="cb92-398"><a href="#cb92-398"></a></span>
+<span id="cb92-399"><a href="#cb92-399"></a>starbucks_mn <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span>   </span>
+<span id="cb92-400"><a href="#cb92-400"></a>  <span class="fu">filter</span>(Country <span class="sc">==</span> <span class="st">"US"</span>, State.Province <span class="sc">==</span> <span class="st">"MN"</span>)</span>
+<span id="cb92-401"><a href="#cb92-401"></a></span>
+<span id="cb92-402"><a href="#cb92-402"></a>world_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
+<span id="cb92-403"><a href="#cb92-403"></a></span>
+<span id="cb92-404"><a href="#cb92-404"></a></span>
+<span id="cb92-405"><a href="#cb92-405"></a><span class="fu">ggplot</span>(world_boundaries) <span class="sc">+</span> </span>
+<span id="cb92-406"><a href="#cb92-406"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb92-407"><a href="#cb92-407"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb92-408"><a href="#cb92-408"></a>    <span class="at">data =</span> starbucks,</span>
+<span id="cb92-409"><a href="#cb92-409"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb92-410"><a href="#cb92-410"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span></span>
+<span id="cb92-411"><a href="#cb92-411"></a>  ) <span class="sc">+</span></span>
+<span id="cb92-412"><a href="#cb92-412"></a>  <span class="fu">theme_map</span>()</span>
+<span id="cb92-413"><a href="#cb92-413"></a></span>
+<span id="cb92-414"><a href="#cb92-414"></a>starbucks_cma <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
+<span id="cb92-415"><a href="#cb92-415"></a>  <span class="fu">filter</span>(Country <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'CA'</span>, <span class="st">'MX'</span>, <span class="st">'US'</span>))</span>
+<span id="cb92-416"><a href="#cb92-416"></a></span>
+<span id="cb92-417"><a href="#cb92-417"></a>cma_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_states</span>(</span>
+<span id="cb92-418"><a href="#cb92-418"></a>  <span class="at">country =</span> <span class="fu">c</span>(<span class="st">"canada"</span>, <span class="st">"mexico"</span>, <span class="st">"united states of america"</span>),</span>
+<span id="cb92-419"><a href="#cb92-419"></a>  <span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
+<span id="cb92-420"><a href="#cb92-420"></a></span>
+<span id="cb92-421"><a href="#cb92-421"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
+<span id="cb92-422"><a href="#cb92-422"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb92-423"><a href="#cb92-423"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb92-424"><a href="#cb92-424"></a>    <span class="at">data =</span> starbucks_cma,</span>
+<span id="cb92-425"><a href="#cb92-425"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb92-426"><a href="#cb92-426"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>,</span>
+<span id="cb92-427"><a href="#cb92-427"></a>    <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb92-428"><a href="#cb92-428"></a>    <span class="at">color =</span> <span class="st">"darkgreen"</span></span>
+<span id="cb92-429"><a href="#cb92-429"></a>  ) <span class="sc">+</span></span>
+<span id="cb92-430"><a href="#cb92-430"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">179.14</span>, <span class="sc">-</span><span class="dv">50</span>)) <span class="sc">+</span></span>
+<span id="cb92-431"><a href="#cb92-431"></a>  <span class="fu">theme_map</span>()</span>
+<span id="cb92-432"><a href="#cb92-432"></a></span>
+<span id="cb92-433"><a href="#cb92-433"></a>starbucks_midwest <span class="ot">&lt;-</span> starbucks <span class="sc">|&gt;</span> </span>
+<span id="cb92-434"><a href="#cb92-434"></a>  <span class="fu">filter</span>(State.Province <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"MN"</span>, <span class="st">"ND"</span>, <span class="st">"SD"</span>, <span class="st">"WI"</span>))</span>
+<span id="cb92-435"><a href="#cb92-435"></a></span>
+<span id="cb92-436"><a href="#cb92-436"></a>midwest_boundaries <span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(</span>
+<span id="cb92-437"><a href="#cb92-437"></a>  maps<span class="sc">::</span><span class="fu">map</span>(<span class="st">"county"</span>,</span>
+<span id="cb92-438"><a href="#cb92-438"></a>            <span class="at">region =</span> <span class="fu">c</span>(<span class="st">"minnesota"</span>, <span class="st">"wisconsin"</span>, <span class="st">"north dakota"</span>, <span class="st">"south dakota"</span>), </span>
+<span id="cb92-439"><a href="#cb92-439"></a>            <span class="at">fill =</span> <span class="cn">TRUE</span>, <span class="at">plot =</span> <span class="cn">FALSE</span>))</span>
+<span id="cb92-440"><a href="#cb92-440"></a></span>
+<span id="cb92-441"><a href="#cb92-441"></a><span class="fu">ggplot</span>(midwest_boundaries) <span class="sc">+</span></span>
+<span id="cb92-442"><a href="#cb92-442"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span></span>
+<span id="cb92-443"><a href="#cb92-443"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb92-444"><a href="#cb92-444"></a>    <span class="at">data =</span> starbucks_midwest,</span>
+<span id="cb92-445"><a href="#cb92-445"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb92-446"><a href="#cb92-446"></a>    <span class="at">alpha =</span> <span class="fl">0.7</span>,</span>
+<span id="cb92-447"><a href="#cb92-447"></a>    <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb92-448"><a href="#cb92-448"></a>    <span class="at">color =</span> <span class="st">'darkgreen'</span></span>
+<span id="cb92-449"><a href="#cb92-449"></a>  ) <span class="sc">+</span></span>
+<span id="cb92-450"><a href="#cb92-450"></a>  <span class="fu">theme_map</span>()</span>
+<span id="cb92-451"><a href="#cb92-451"></a></span>
+<span id="cb92-452"><a href="#cb92-452"></a><span class="fu">ggplot</span>(cma_boundaries) <span class="sc">+</span> </span>
+<span id="cb92-453"><a href="#cb92-453"></a>  <span class="fu">geom_sf</span>() <span class="sc">+</span> </span>
+<span id="cb92-454"><a href="#cb92-454"></a>  <span class="fu">geom_density_2d</span>(</span>
+<span id="cb92-455"><a href="#cb92-455"></a>    <span class="at">data =</span> starbucks_cma,</span>
+<span id="cb92-456"><a href="#cb92-456"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb92-457"><a href="#cb92-457"></a>    <span class="at">size =</span> <span class="fl">0.2</span>,</span>
+<span id="cb92-458"><a href="#cb92-458"></a>    <span class="at">color =</span> <span class="st">"darkgreen"</span></span>
+<span id="cb92-459"><a href="#cb92-459"></a>  ) <span class="sc">+</span></span>
+<span id="cb92-460"><a href="#cb92-460"></a>  <span class="fu">coord_sf</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">179.14</span>, <span class="sc">-</span><span class="dv">50</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">14.54</span>, <span class="fl">83.11</span>)) <span class="sc">+</span></span>
+<span id="cb92-461"><a href="#cb92-461"></a>  <span class="fu">theme_map</span>()</span>
+<span id="cb92-462"><a href="#cb92-462"></a><span class="in">```</span></span>
+<span id="cb92-463"><a href="#cb92-463"></a></span>
+<span id="cb92-466"><a href="#cb92-466"></a><span class="in">```{r}</span></span>
+<span id="cb92-467"><a href="#cb92-467"></a><span class="fu">library</span>(RColorBrewer)</span>
+<span id="cb92-468"><a href="#cb92-468"></a><span class="fu">library</span>(socviz)</span>
+<span id="cb92-469"><a href="#cb92-469"></a><span class="fu">data</span>(county_map) </span>
+<span id="cb92-470"><a href="#cb92-470"></a></span>
+<span id="cb92-471"><a href="#cb92-471"></a>elections_by_state <span class="ot">&lt;-</span>  <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_by_state.csv"</span>)</span>
+<span id="cb92-472"><a href="#cb92-472"></a>elections_by_counties <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/election_2020_county.csv"</span>)</span>
+<span id="cb92-473"><a href="#cb92-473"></a>states_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"state"</span>)</span>
+<span id="cb92-474"><a href="#cb92-474"></a></span>
+<span id="cb92-475"><a href="#cb92-475"></a>elections_by_state <span class="ot">&lt;-</span> elections_by_state <span class="sc">|&gt;</span> </span>
+<span id="cb92-476"><a href="#cb92-476"></a>  <span class="fu">filter</span>(state_abbr <span class="sc">!=</span> <span class="st">"DC"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb92-477"><a href="#cb92-477"></a>  <span class="fu">select</span>(state_name, state_abbr, repub_pct_20) <span class="sc">|&gt;</span> </span>
+<span id="cb92-478"><a href="#cb92-478"></a>  <span class="fu">mutate</span>(<span class="at">repub_20_categories =</span> </span>
+<span id="cb92-479"><a href="#cb92-479"></a>           <span class="fu">cut</span>(repub_pct_20, </span>
+<span id="cb92-480"><a href="#cb92-480"></a>               <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">30</span>, <span class="dv">70</span>, <span class="at">by =</span> <span class="dv">5</span>), </span>
+<span id="cb92-481"><a href="#cb92-481"></a>               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"30-34"</span>, <span class="st">"35-39"</span>, <span class="st">"40-44"</span>, <span class="st">"45-49"</span>,</span>
+<span id="cb92-482"><a href="#cb92-482"></a>                          <span class="st">"50-54"</span>, <span class="st">"55-59"</span>, <span class="st">"60-64"</span>, <span class="st">"65-70"</span>), </span>
+<span id="cb92-483"><a href="#cb92-483"></a>               <span class="at">include.lowest =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb92-484"><a href="#cb92-484"></a></span>
+<span id="cb92-485"><a href="#cb92-485"></a>elections_by_counties <span class="ot">&lt;-</span> elections_by_counties <span class="sc">|&gt;</span> </span>
+<span id="cb92-486"><a href="#cb92-486"></a>  <span class="fu">select</span>(state_name, state_abbr, county_name, county_fips,</span>
+<span id="cb92-487"><a href="#cb92-487"></a>          repub_pct_20, median_age, median_rent) <span class="sc">|&gt;</span> </span>
+<span id="cb92-488"><a href="#cb92-488"></a>  <span class="fu">mutate</span>(<span class="at">repub_20_categories =</span> </span>
+<span id="cb92-489"><a href="#cb92-489"></a>           <span class="fu">cut</span>(repub_pct_20, </span>
+<span id="cb92-490"><a href="#cb92-490"></a>               <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="at">by =</span> <span class="dv">10</span>),</span>
+<span id="cb92-491"><a href="#cb92-491"></a>               <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0-9"</span>, <span class="st">"10-19"</span>, <span class="st">"20-29"</span>, <span class="st">"30-39"</span>, <span class="st">"40-49"</span>,</span>
+<span id="cb92-492"><a href="#cb92-492"></a>                          <span class="st">"50-59"</span>, <span class="st">"60-69"</span>, <span class="st">"70-79"</span>, <span class="st">"80-89"</span>, <span class="st">"90-100"</span>),</span>
+<span id="cb92-493"><a href="#cb92-493"></a>               <span class="at">include.lowest =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb92-494"><a href="#cb92-494"></a></span>
+<span id="cb92-495"><a href="#cb92-495"></a><span class="fu">ggplot</span>(elections_by_state, <span class="fu">aes</span>(<span class="at">map_id =</span> state_name, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
+<span id="cb92-496"><a href="#cb92-496"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> states_map) <span class="sc">+</span></span>
+<span id="cb92-497"><a href="#cb92-497"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> states_map<span class="sc">$</span>long, <span class="at">y =</span> states_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
+<span id="cb92-498"><a href="#cb92-498"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span> </span>
+<span id="cb92-499"><a href="#cb92-499"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">8</span>, <span class="st">"RdBu"</span>)), <span class="at">name =</span> <span class="st">"% Republican"</span>)</span>
+<span id="cb92-500"><a href="#cb92-500"></a></span>
+<span id="cb92-501"><a href="#cb92-501"></a>elections_by_counties <span class="ot">&lt;-</span> elections_by_counties <span class="sc">|&gt;</span> </span>
+<span id="cb92-502"><a href="#cb92-502"></a>  <span class="fu">mutate</span>(<span class="at">county_fips =</span> <span class="fu">as.character</span>(county_fips)) <span class="sc">|&gt;</span> </span>
+<span id="cb92-503"><a href="#cb92-503"></a>  <span class="fu">mutate</span>(<span class="at">county_fips =</span> </span>
+<span id="cb92-504"><a href="#cb92-504"></a>           <span class="fu">ifelse</span>(<span class="fu">nchar</span>(county_fips) <span class="sc">==</span> <span class="dv">4</span>, <span class="fu">paste0</span>(<span class="st">"0"</span>, county_fips), county_fips))</span>
+<span id="cb92-505"><a href="#cb92-505"></a></span>
+<span id="cb92-506"><a href="#cb92-506"></a><span class="fu">ggplot</span>(elections_by_counties, <span class="fu">aes</span>(<span class="at">map_id =</span> county_fips, <span class="at">fill =</span> repub_20_categories)) <span class="sc">+</span></span>
+<span id="cb92-507"><a href="#cb92-507"></a>  <span class="fu">geom_map</span>(<span class="at">map =</span> county_map) <span class="sc">+</span></span>
+<span id="cb92-508"><a href="#cb92-508"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">rev</span>(<span class="fu">brewer.pal</span>(<span class="dv">10</span>, <span class="st">"RdBu"</span>)), <span class="at">name =</span> <span class="st">"% Republican"</span>) <span class="sc">+</span></span>
+<span id="cb92-509"><a href="#cb92-509"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> county_map<span class="sc">$</span>long, <span class="at">y =</span> county_map<span class="sc">$</span>lat) <span class="sc">+</span></span>
+<span id="cb92-510"><a href="#cb92-510"></a>  <span class="fu">theme_map</span>() <span class="sc">+</span></span>
+<span id="cb92-511"><a href="#cb92-511"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"right"</span>) <span class="sc">+</span> </span>
+<span id="cb92-512"><a href="#cb92-512"></a>  <span class="fu">coord_equal</span>()</span>
+<span id="cb92-513"><a href="#cb92-513"></a></span>
+<span id="cb92-514"><a href="#cb92-514"></a><span class="in">```</span></span>
+<span id="cb92-515"><a href="#cb92-515"></a></span>
+<span id="cb92-516"><a href="#cb92-516"></a><span class="fu">## Effective Practice</span></span>
+<span id="cb92-517"><a href="#cb92-517"></a></span>
+<span id="cb92-520"><a href="#cb92-520"></a><span class="in">```{r}</span></span>
+<span id="cb92-521"><a href="#cb92-521"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-522"><a href="#cb92-522"></a><span class="co">#| fig-cap: "Add captions to your plots!"</span></span>
+<span id="cb92-523"><a href="#cb92-523"></a><span class="co">#| fig-alt: "and alt text for screen readers!"</span></span>
+<span id="cb92-524"><a href="#cb92-524"></a></span>
+<span id="cb92-525"><a href="#cb92-525"></a><span class="co"># some of my best work to illustrate effective visualization practices</span></span>
+<span id="cb92-526"><a href="#cb92-526"></a></span>
+<span id="cb92-527"><a href="#cb92-527"></a><span class="in">```</span></span>
+<span id="cb92-528"><a href="#cb92-528"></a></span>
+<span id="cb92-531"><a href="#cb92-531"></a><span class="in">```{r}</span></span>
+<span id="cb92-532"><a href="#cb92-532"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-533"><a href="#cb92-533"></a><span class="co">#| warning: false</span></span>
+<span id="cb92-534"><a href="#cb92-534"></a><span class="co">#| fig-cap: "A figure of hiking trail elevation in the Adirondack Mountains of New York - Made by Julia Prewitt"</span></span>
+<span id="cb92-535"><a href="#cb92-535"></a><span class="co">#| fig-alt: "A visual titled Hiking Trail Elevation in the Adirondack Mountains of New York. It is a density plot, with the X axis being the elevation in feet and the y axis being the density. The density peaks around 4200 feet and is slightly right skewed and is unimodal."</span></span>
+<span id="cb92-536"><a href="#cb92-536"></a></span>
+<span id="cb92-537"><a href="#cb92-537"></a><span class="fu">ggplot</span>(hikes, <span class="fu">aes</span>(<span class="at">x =</span> elevation)) <span class="sc">+</span></span>
+<span id="cb92-538"><a href="#cb92-538"></a>  <span class="fu">geom_density</span>(<span class="at">color =</span> <span class="st">"black"</span>, <span class="at">fill =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb92-539"><a href="#cb92-539"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Elevation in Feet"</span>, <span class="at">y =</span> <span class="st">"Density"</span>, <span class="at">title =</span> <span class="st">"Hiking Trail Elevation in the Adirondack Mountains of NY"</span>) <span class="sc">+</span></span>
+<span id="cb92-540"><a href="#cb92-540"></a>  <span class="fu">theme</span>(</span>
+<span id="cb92-541"><a href="#cb92-541"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(</span>
+<span id="cb92-542"><a href="#cb92-542"></a>      <span class="at">colour =</span> <span class="st">"#006000"</span>, <span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb92-543"><a href="#cb92-543"></a>    <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(</span>
+<span id="cb92-544"><a href="#cb92-544"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb92-545"><a href="#cb92-545"></a>    <span class="at">axis.title.y =</span> <span class="fu">element_text</span>(</span>
+<span id="cb92-546"><a href="#cb92-546"></a>      <span class="at">colour =</span> <span class="st">"black"</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">face =</span> <span class="st">"bold"</span>)</span>
+<span id="cb92-547"><a href="#cb92-547"></a>  )</span>
+<span id="cb92-548"><a href="#cb92-548"></a><span class="in">```</span></span>
+<span id="cb92-551"><a href="#cb92-551"></a><span class="in">```{r}</span></span>
+<span id="cb92-552"><a href="#cb92-552"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-553"><a href="#cb92-553"></a><span class="co">#| warning: false</span></span>
+<span id="cb92-554"><a href="#cb92-554"></a><span class="co">#| error: false</span></span>
+<span id="cb92-555"><a href="#cb92-555"></a><span class="co">#| fig-cap: "A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt"</span></span>
+<span id="cb92-556"><a href="#cb92-556"></a><span class="co">#| fig-alt: "A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. "</span></span>
+<span id="cb92-557"><a href="#cb92-557"></a></span>
+<span id="cb92-558"><a href="#cb92-558"></a><span class="fu">ggplot</span>(elections, <span class="fu">aes</span>(<span class="at">x =</span> repub_pct_20, <span class="at">fill =</span> historical)) <span class="sc">+</span></span>
+<span id="cb92-559"><a href="#cb92-559"></a>  <span class="fu">geom_density</span>(<span class="at">alpha =</span> .<span class="dv">6</span>) <span class="sc">+</span></span>
+<span id="cb92-560"><a href="#cb92-560"></a>  <span class="fu">scale_fill_manual</span>(</span>
+<span id="cb92-561"><a href="#cb92-561"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"blue"</span>, <span class="st">"purple"</span>, <span class="st">"red"</span>),</span>
+<span id="cb92-562"><a href="#cb92-562"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Democratic-leaning"</span>, <span class="st">"Swing state"</span>, <span class="st">"Republican-leaning"</span>) ) <span class="sc">+</span>  </span>
+<span id="cb92-563"><a href="#cb92-563"></a>  <span class="fu">labs</span>(<span class="at">title =</span><span class="st">"Percent of Republican Support by County in 2020 by State Trends"</span>, </span>
+<span id="cb92-564"><a href="#cb92-564"></a>       <span class="at">y =</span> <span class="st">"Density"</span>, </span>
+<span id="cb92-565"><a href="#cb92-565"></a>       <span class="at">x =</span> <span class="st">"Republican Support in 2020 by County"</span>,</span>
+<span id="cb92-566"><a href="#cb92-566"></a>        <span class="at">fill =</span> <span class="st">"Historical State Voting Trends"</span>) <span class="sc">+</span></span>
+<span id="cb92-567"><a href="#cb92-567"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb92-568"><a href="#cb92-568"></a>  <span class="fu">theme</span>(</span>
+<span id="cb92-569"><a href="#cb92-569"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),  </span>
+<span id="cb92-570"><a href="#cb92-570"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb92-571"><a href="#cb92-571"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb92-572"><a href="#cb92-572"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb92-573"><a href="#cb92-573"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb92-574"><a href="#cb92-574"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span>  </span>
+<span id="cb92-575"><a href="#cb92-575"></a>  )</span>
+<span id="cb92-576"><a href="#cb92-576"></a><span class="in">```</span></span>
+<span id="cb92-577"><a href="#cb92-577"></a></span>
+<span id="cb92-580"><a href="#cb92-580"></a><span class="in">```{r}</span></span>
+<span id="cb92-581"><a href="#cb92-581"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-582"><a href="#cb92-582"></a><span class="co">#| warning: false</span></span>
+<span id="cb92-583"><a href="#cb92-583"></a><span class="co">#| error: false</span></span>
+<span id="cb92-584"><a href="#cb92-584"></a></span>
+<span id="cb92-585"><a href="#cb92-585"></a><span class="co">#| fig-cap: "A figure of SAT Expendature vs SAT Score by Percent of Participation - Made by Julia Prewitt"</span></span>
+<span id="cb92-586"><a href="#cb92-586"></a><span class="co">#| fig-alt: "A point plot of SAT expendature vs sat score by percent of participation. The x axis is expendature on sat scores, the y axis is sat score, and the plot is separated into 3 categories for the actual points representing percent of students participating in the sat, with red being 0 to 15 percent, purple being 15 to 45 percent, and blue being 45 to 100 percent. Each color is separated out and has a linear plot and grey area around each line to represent the trend. THe overall plot ullustrates how within each of the participation rate categories, as expendature goes up so too does the score. "</span></span>
+<span id="cb92-587"><a href="#cb92-587"></a></span>
+<span id="cb92-588"><a href="#cb92-588"></a><span class="co">#Make the plot</span></span>
+<span id="cb92-589"><a href="#cb92-589"></a><span class="fu">ggplot</span>(education, <span class="fu">aes</span>(<span class="at">x =</span> expend, <span class="at">y =</span> sat, <span class="at">color =</span> fracCat)) <span class="sc">+</span> </span>
+<span id="cb92-590"><a href="#cb92-590"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb92-591"><a href="#cb92-591"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>) <span class="sc">+</span></span>
+<span id="cb92-592"><a href="#cb92-592"></a>    <span class="fu">scale_color_manual</span>(</span>
+<span id="cb92-593"><a href="#cb92-593"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">"(0,15]"</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">"(15,45]"</span> <span class="ot">=</span> <span class="st">"purple"</span>, <span class="st">"(45,100]"</span> <span class="ot">=</span> <span class="st">"blue"</span>),</span>
+<span id="cb92-594"><a href="#cb92-594"></a>    <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"(0,15]"</span> <span class="ot">=</span> <span class="st">"0%-15%"</span>, <span class="st">"(15,45]"</span> <span class="ot">=</span> <span class="st">"15%-45%"</span>, <span class="st">"(45,100]"</span> <span class="ot">=</span> <span class="st">"45%-100%"</span>)) <span class="sc">+</span></span>
+<span id="cb92-595"><a href="#cb92-595"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Expendature on SAT Scores"</span>, <span class="at">y =</span> <span class="st">"SAT Score"</span>, <span class="at">title =</span> <span class="st">"SAT Expendature vs SAT Score by Percent of Parcipation"</span>, <span class="at">color =</span> <span class="st">"Percent of SAT Participation"</span>) <span class="sc">+</span> </span>
+<span id="cb92-596"><a href="#cb92-596"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb92-597"><a href="#cb92-597"></a>  <span class="fu">theme</span>(</span>
+<span id="cb92-598"><a href="#cb92-598"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),  </span>
+<span id="cb92-599"><a href="#cb92-599"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">face =</span> <span class="st">"bold"</span>),</span>
+<span id="cb92-600"><a href="#cb92-600"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb92-601"><a href="#cb92-601"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb92-602"><a href="#cb92-602"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb92-603"><a href="#cb92-603"></a>    <span class="at">legend.position =</span> <span class="st">"top"</span>)</span>
+<span id="cb92-604"><a href="#cb92-604"></a><span class="in">```</span></span>
+<span id="cb92-605"><a href="#cb92-605"></a></span>
+<span id="cb92-608"><a href="#cb92-608"></a><span class="in">```{r}</span></span>
+<span id="cb92-609"><a href="#cb92-609"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-610"><a href="#cb92-610"></a><span class="co">#| warning: false</span></span>
+<span id="cb92-611"><a href="#cb92-611"></a><span class="co">#| error: false</span></span>
+<span id="cb92-612"><a href="#cb92-612"></a></span>
+<span id="cb92-613"><a href="#cb92-613"></a><span class="fu">library</span>(stringr)</span>
+<span id="cb92-614"><a href="#cb92-614"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb92-615"><a href="#cb92-615"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb92-616"><a href="#cb92-616"></a></span>
+<span id="cb92-617"><a href="#cb92-617"></a><span class="co"># Add dataset</span></span>
+<span id="cb92-618"><a href="#cb92-618"></a>agencies <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(<span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/main/data/2025/2025-02-18/agencies.csv'</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb92-619"><a href="#cb92-619"></a></span>
+<span id="cb92-620"><a href="#cb92-620"></a><span class="co"># Create a new dataset with just top 6 reporting states</span></span>
+<span id="cb92-621"><a href="#cb92-621"></a>topReporters <span class="ot">&lt;-</span> agencies <span class="sc">|&gt;</span> </span>
+<span id="cb92-622"><a href="#cb92-622"></a>  <span class="fu">filter</span>(state <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Texas"</span>, <span class="st">"Ohio"</span>, <span class="st">"California"</span>, <span class="st">"Illinois"</span>, <span class="st">"Michigan"</span>, <span class="st">"Missouri"</span>))</span>
+<span id="cb92-623"><a href="#cb92-623"></a></span>
+<span id="cb92-624"><a href="#cb92-624"></a>topReporters <span class="ot">&lt;-</span> topReporters <span class="sc">%&gt;%</span></span>
+<span id="cb92-625"><a href="#cb92-625"></a>  <span class="fu">mutate</span>(<span class="at">is_nibrs =</span> <span class="fu">ifelse</span>(is_nibrs <span class="sc">==</span> <span class="cn">TRUE</span>, <span class="st">"Yes"</span>, <span class="st">"No"</span>))</span>
+<span id="cb92-626"><a href="#cb92-626"></a></span>
+<span id="cb92-627"><a href="#cb92-627"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-628"><a href="#cb92-628"></a><span class="co">#| warning: false</span></span>
+<span id="cb92-629"><a href="#cb92-629"></a><span class="co">#| error: false</span></span>
+<span id="cb92-630"><a href="#cb92-630"></a></span>
+<span id="cb92-631"><a href="#cb92-631"></a><span class="co">#| fig-cap: "A figure of whether agencies in 6 states report to NIBRS broken down by agency type - Made by Julia Prewitt"</span></span>
+<span id="cb92-632"><a href="#cb92-632"></a><span class="co">#| fig-alt: "A visual of government agencies of California, Illinois, Michigan, Missouri, Ohio, and Texas. It is called Number of NIBRS Reporting Agencies in High Reporting States. They are broken down into agency type for each bar. For all the states, of their government agencies, the majority do report, and it is typically the city agencies who do."</span></span>
+<span id="cb92-633"><a href="#cb92-633"></a></span>
+<span id="cb92-634"><a href="#cb92-634"></a><span class="fu">ggplot</span>(topReporters, <span class="fu">aes</span>(<span class="at">x =</span> is_nibrs, <span class="at">fill =</span> agency_type)) <span class="sc">+</span></span>
+<span id="cb92-635"><a href="#cb92-635"></a>  <span class="fu">geom_bar</span>() <span class="sc">+</span></span>
+<span id="cb92-636"><a href="#cb92-636"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>state) <span class="sc">+</span></span>
+<span id="cb92-637"><a href="#cb92-637"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Does the agency report to NIBRS?"</span>, </span>
+<span id="cb92-638"><a href="#cb92-638"></a>       <span class="at">y =</span> <span class="st">"Number of Agencies"</span>, </span>
+<span id="cb92-639"><a href="#cb92-639"></a>       <span class="at">title =</span> <span class="st">"Number of NIBRS Reporting Agencies in High Reporting States"</span>, </span>
+<span id="cb92-640"><a href="#cb92-640"></a>       <span class="at">fill =</span> <span class="st">"Agency Type"</span>) <span class="sc">+</span></span>
+<span id="cb92-641"><a href="#cb92-641"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">palette =</span> <span class="st">"Set2"</span>, <span class="at">na.value=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb92-642"><a href="#cb92-642"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb92-643"><a href="#cb92-643"></a>  <span class="fu">theme</span>(</span>
+<span id="cb92-644"><a href="#cb92-644"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),  </span>
+<span id="cb92-645"><a href="#cb92-645"></a>    <span class="at">axis.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb92-646"><a href="#cb92-646"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb92-647"><a href="#cb92-647"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb92-648"><a href="#cb92-648"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb92-649"><a href="#cb92-649"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>)</span>
+<span id="cb92-650"><a href="#cb92-650"></a></span>
+<span id="cb92-651"><a href="#cb92-651"></a><span class="in">```</span></span>
+<span id="cb92-652"><a href="#cb92-652"></a></span>
+<span id="cb92-655"><a href="#cb92-655"></a><span class="in">```{r}</span></span>
+<span id="cb92-656"><a href="#cb92-656"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-657"><a href="#cb92-657"></a><span class="co">#| warning: false</span></span>
+<span id="cb92-658"><a href="#cb92-658"></a><span class="co">#| error: false</span></span>
+<span id="cb92-659"><a href="#cb92-659"></a></span>
+<span id="cb92-660"><a href="#cb92-660"></a></span>
+<span id="cb92-661"><a href="#cb92-661"></a><span class="fu">library</span>(mosaic)</span>
+<span id="cb92-662"><a href="#cb92-662"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb92-663"><a href="#cb92-663"></a><span class="fu">library</span>(leaflet)</span>
+<span id="cb92-664"><a href="#cb92-664"></a><span class="fu">library</span>(gplots)</span>
+<span id="cb92-665"><a href="#cb92-665"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb92-666"><a href="#cb92-666"></a></span>
+<span id="cb92-667"><a href="#cb92-667"></a></span>
+<span id="cb92-668"><a href="#cb92-668"></a>starbucks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/starbucks.csv"</span>)</span>
+<span id="cb92-669"><a href="#cb92-669"></a></span>
+<span id="cb92-670"><a href="#cb92-670"></a>world_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
+<span id="cb92-671"><a href="#cb92-671"></a></span>
+<span id="cb92-672"><a href="#cb92-672"></a><span class="co">#| echo: false</span></span>
+<span id="cb92-673"><a href="#cb92-673"></a><span class="co">#| warning: false</span></span>
+<span id="cb92-674"><a href="#cb92-674"></a><span class="co">#| error: false</span></span>
+<span id="cb92-675"><a href="#cb92-675"></a></span>
+<span id="cb92-676"><a href="#cb92-676"></a><span class="co">#| fig-cap: "A map of Starbucks Store locaitons accross the world - Made by Julia Prewitt"</span></span>
+<span id="cb92-677"><a href="#cb92-677"></a><span class="co">#| fig-alt: "A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia."</span></span>
+<span id="cb92-678"><a href="#cb92-678"></a></span>
+<span id="cb92-679"><a href="#cb92-679"></a><span class="fu">ggplot</span>(world_boundaries) <span class="sc">+</span> </span>
+<span id="cb92-680"><a href="#cb92-680"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>)  <span class="sc">+</span></span>
+<span id="cb92-681"><a href="#cb92-681"></a>  <span class="fu">geom_point</span>(</span>
+<span id="cb92-682"><a href="#cb92-682"></a>    <span class="at">data =</span> starbucks,</span>
+<span id="cb92-683"><a href="#cb92-683"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
+<span id="cb92-684"><a href="#cb92-684"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb92-685"><a href="#cb92-685"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Starbucks Locations Across the World"</span>) <span class="sc">+</span></span>
+<span id="cb92-686"><a href="#cb92-686"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb92-687"><a href="#cb92-687"></a>  <span class="fu">theme</span>(</span>
+<span id="cb92-688"><a href="#cb92-688"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">color =</span><span class="st">"darkgreen"</span>),</span>
+<span id="cb92-689"><a href="#cb92-689"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),  </span>
+<span id="cb92-690"><a href="#cb92-690"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),  </span>
+<span id="cb92-691"><a href="#cb92-691"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),  </span>
+<span id="cb92-692"><a href="#cb92-692"></a>    <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),  </span>
+<span id="cb92-693"><a href="#cb92-693"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
+<span id="cb92-694"><a href="#cb92-694"></a>    )</span>
+<span id="cb92-695"><a href="#cb92-695"></a></span>
+<span id="cb92-696"><a href="#cb92-696"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+
+
+
+</body></html>
