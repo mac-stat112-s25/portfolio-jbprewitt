@@ -1,9 +1,11 @@
 ---
-title: "summary-exam1"
+title: "Exam 1 Summary"
 format: html
 ---
 
-#Exam 1 Summary Exam one covered setup, univariate, bivariate, multivariate, spatial, appropriate, and effective visualizations.
+# Exam 1 Summary
+
+Exam one covered setup, univariate, bivariate, multivariate, spatial, appropriate, and effective visualizations.
 
 # Set Up & Background {.unnumbered}
 
@@ -93,13 +95,11 @@ See later sections to view them in action!
 
 -   head()
 
-    -   variables at beginning of a dataset.
-        Defaults to 6, can add comma and number to specify
+    -   variables at beginning of a dataset. Defaults to 6, can add comma and number to specify
 
 -   tail()
 
-    -   variables at end of a dataset.
-        Defaults to 6, can add comma and number to specify
+    -   variables at end of a dataset. Defaults to 6, can add comma and number to specify
 
 -   dim()
 
@@ -123,8 +123,7 @@ See later sections to view them in action!
 
 -   ggplot(dataset, aes(x = n, y = n)) +
 
-    -   the framework for our plot using a dataset and setting the x and y parameters.
-        used prior to implementing the geom\_ functions
+    -   the framework for our plot using a dataset and setting the x and y parameters. used prior to implementing the geom\_ functions
 
 -   geom_point()
 
@@ -132,8 +131,7 @@ See later sections to view them in action!
 
 -   geom_smooth(method = "lm")
 
-    -   Makes a line plot.
-        lm means linear model.
+    -   Makes a line plot. lm means linear model.
 
 -   geom_jitter(width = 0.5, size = 1)
 
@@ -141,8 +139,7 @@ See later sections to view them in action!
 
 -   geom_histogram()
 
-    -   A type of bar plot.
-        Can use bins to create categories
+    -   A type of bar plot. Can use bins to create categories
 
 -   geom_bar()
 
@@ -150,8 +147,7 @@ See later sections to view them in action!
 
 -   geom_density(alpha = 0.5)
 
-    -   Creates a density plot.
-        Modifying the alpha value allows for varying transparency
+    -   Creates a density plot. Modifying the alpha value allows for varying transparency
 
 -   geom_boxplot()
 
@@ -229,8 +225,10 @@ Spatial maps are static or dynamic/interactive.
 
 # Making Plots {.unnumbered}
 
-## Univariate Practice with Hiking Data
+## Univariate Practice {.unnumbered}
+
 Loading in the Data:
+
 ```{r}
 #| eval: true
 
@@ -241,7 +239,9 @@ hikes <- read.csv("https://mac-stat.github.io/data/high_peaks.csv")
 
 library(tidyverse)
 ```
-Examining the Data: 
+
+Examining the Data:
+
 ```{r}
 #| eval: true
 
@@ -253,7 +253,9 @@ nrow(hikes)
 ncol(hikes)
 class(hikes)
 ```
+
 Sorting and Cleaning Data:
+
 ```{r}
 hikes |>
   mutate(timeForSlowHike = time*2) |> #modifies the data to create a new column
@@ -264,7 +266,9 @@ avgHikePeak <- hikes |> #create new data set for average hike time for given pea
   group_by(peak) |> #Groups the data into categories
   summarize(mean(time))  #Allows for a number of summarizing methods such as median, mean, min, max, etc
 ```
+
 Making Plots:
+
 ```{r}
 ggplot(hikes, aes(x = rating)) +
   geom_bar(color = "orange", fill = "blue")  +
@@ -282,9 +286,10 @@ ggplot(hikes, aes(x = elevation)) +
 
 ggplot(hikes, aes(x = elevation)) +
   geom_density(color = "blue", fill = "orange")
-``` 
+```
 
-## Bivariate Practice 
+## Bivariate Practice {.unnumbered}
+
 ```{r}
 # Load data
 elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv")
@@ -329,7 +334,7 @@ ggplot(elections, aes(x = historical, fill = winner_20)) +
 
 ```
 
-## Multivariate Practice
+## Multivariate Practice {.unnumbered}
 
 ```{r}
 education <- read.csv("https://mac-stat.github.io/data/sat.csv")
@@ -346,7 +351,7 @@ ggplot(education, aes(x = expend, y = sat, color = fracCat)) +
   geom_smooth(method = "lm")
 ```
 
-## Spatial Practice
+## Spatial Practice {.unnumbered}
 
 ```{r}
 library(gplots)
@@ -495,7 +500,7 @@ ggplot(elections_by_counties, aes(map_id = county_fips, fill = repub_20_categori
 
 ```
 
-## Effective Practice
+## Effective Practice {.unnumbered}
 
 ```{r}
 #| echo: false
@@ -524,6 +529,7 @@ ggplot(hikes, aes(x = elevation)) +
       colour = "black", size = 10, face = "bold")
   )
 ```
+
 ```{r}
 #| echo: false
 #| warning: false
