@@ -5,11 +5,15 @@ format: html
 
 ### Exercise 1: Time slots {.unnumbered}
 
-The `courses` data includes *actual* data scraped from Mac's [class schedule](https://macadmsys.macalester.edu/macssb/customPage/page/classSchedule). (Thanks to Prof Leslie Myint for the scraping code!!)
+The `courses` data includes *actual* data scraped from Mac's [class schedule](https://macadmsys.macalester.edu/macssb/customPage/page/classSchedule).
+(Thanks to Prof Leslie Myint for the scraping code!!)
 
-If you want to learn how to scrape data, take COMP/STAT 212, Intermediate Data Science! NOTE: For simplicity, I removed classes that had "TBA" for the `days`.
+If you want to learn how to scrape data, take COMP/STAT 212, Intermediate Data Science!
+NOTE: For simplicity, I removed classes that had "TBA" for the `days`.
 
 ```{r}
+library(tidyverse)
+
 courses <- read.csv("https://mac-stat.github.io/data/registrar.csv")
 
 # Check it out
@@ -22,11 +26,12 @@ Use our more familiar wrangling tools to warm up.
 # Construct a table that indicates the number of classes offered in each day/time slot
 # Print only the 6 most popular time slots
 
-
+courses |>
+  count(days,time) |>
+  arrange(desc(n)) |>
+  head()
 
 ```
-
-
 
 ### Exercise 2: Prep the data {.unnumbered}
 
@@ -40,9 +45,14 @@ So that we can analyze it later, we want to wrangle the `courses` data:
 Store this as `courses_clean` so that you can use it later.
 
 ```{r}
+courses_clean <- courses |>
+  separate(avail_max, c("avail", "max"), sep="/") |>
+  mutate(enrollment = as.numeric(max)-as.numeric(avail)) |>
+  separate(number,c("dept","number","section"))
+
+head(courses_clean)
+  
 ```
-
-
 
 ### Exercise 3: Courses by department {.unnumbered}
 
@@ -50,13 +60,19 @@ Using `courses_clean`...
 
 ```{r}
 # Identify the 6 departments that offered the most sections
-
+courses_clean |>
+  count(dept) |>
+  arrange(desc(n)) |>
+  head()
 
 # Identify the 6 departments with the longest average course titles
-
+courses_clean |>
+  mutate(length = str_length(name)) |>
+  group_by(dept) |>
+  summarise(averageLength=mean(length)) |>
+  arrange(desc(averageLength)) |>
+  head()
 ```
-
-
 
 ### Exercise 4: STAT courses {.unnumbered}
 
@@ -65,11 +81,19 @@ Using `courses_clean`...
 Get a subset of `courses_clean` that only includes courses taught by Alicia Johnson.
 
 ```{r}
+## Both methods work I think:
+
+courses_clean |>
+  filter(instructor == "Alicia Johnson")
+
+courses_clean |>
+  filter(str_detect(instructor, "Alicia Johnson"))
 ```
 
 #### Part b {.unnumbered}
 
-Create a new dataset from `courses_clean`, named `stat`, that only includes STAT sections. In this dataset:
+Create a new dataset from `courses_clean`, named `stat`, that only includes STAT sections.
+In this dataset:
 
 -   In the course names:
 
@@ -83,41 +107,53 @@ Create a new dataset from `courses_clean`, named `stat`, that only includes STAT
 -   The result should have 18 rows and 4 columns.
 
 ```{r}
+
+stat <- courses_clean |> 
+  filter(dept == "STAT") |> 
+  mutate(name = str_replace(name, "Introduction to ", "")) |>
+  mutate(name = str_replace(name, "Statistical", "Stat")) |> 
+  mutate(start_time = str_sub(time, 1, 5)) |> 
+  select(number, name, start_time, enrollment)
+
+stat
+  
 ```
-
-
 
 ### Exercise 5: More cleaning {.unnumbered}
 
-In the next exercises, we'll dig into enrollments. Let's get the data ready for that analysis here. Make the following changes to the `courses_clean` data. Because they have different enrollment structures, and we don't want to compare apples and oranges, *remove* the following:
+In the next exercises, we'll dig into enrollments.
+Let's get the data ready for that analysis here.
+Make the following changes to the `courses_clean` data.
+Because they have different enrollment structures, and we don't want to compare apples and oranges, *remove* the following:
 
 -   all sections in `PE` and `INTD` (interdisciplinary studies courses)
 
--   all music ensembles and dance practicums, i.e. all MUSI and THDA classes with numbers less than 100. HINT: `!(dept == "MUSI" & as.numeric(number) < 100)`
+-   all music ensembles and dance practicums, i.e. all MUSI and THDA classes with numbers less than 100.
+    HINT: `!(dept == "MUSI" & as.numeric(number) < 100)`
 
--   all lab sections. Be careful which variable you use here. For example, you don't want to search by "Lab" and accidentally eliminate courses with words such as "Labor".
+-   all lab sections.
+    Be careful which variable you use here.
+    For example, you don't want to search by "Lab" and accidentally eliminate courses with words such as "Labor".
 
 Save the results as `enrollments` (don't overwrite `courses_clean`).
 
 ```{r}
 ```
 
-
-
 ### Exercise 6: Enrollment & departments {.unnumbered}
 
-Explore enrollments by department. *You* decide what research questions to focus on. Use both visual and numerical summaries.
-
-
+Explore enrollments by department.
+*You* decide what research questions to focus on.
+Use both visual and numerical summaries.
 
 ### Exercise 7: Enrollment & faculty {.unnumbered}
 
-Let's now explore enrollments by instructor. In doing so, we have to be cautious of cross-listed courses that are listed under multiple different departments. Uncomment the code lines in the chunk below for an example.
+Let's now explore enrollments by instructor.
+In doing so, we have to be cautious of cross-listed courses that are listed under multiple different departments.
+Uncomment the code lines in the chunk below for an example.
 
 ::: {.callout-tip title="Commenting/Uncommenting Code"}
-
 To comment/uncomment several lines of code at once, highlight them then click <kbd>ctrl/cmd+shift+c</kbd>.
-
 :::
 
 ```{r}
@@ -125,7 +161,9 @@ To comment/uncomment several lines of code at once, highlight them then click <k
 #   filter(dept %in% c("STAT", "COMP"), number == 112, section == "01")
 ```
 
-Notice that these are the exact same section! In order to not double count an instructor's enrollments, we can keep only the courses that have `distinct()` *combinations* of `days, time, instructor` values.  Uncomment the code lines in the chunk below.
+Notice that these are the exact same section!
+In order to not double count an instructor's enrollments, we can keep only the courses that have `distinct()` *combinations* of `days, time, instructor` values.
+Uncomment the code lines in the chunk below.
 
 ```{r}
 # enrollments_2 <- enrollments |> 
@@ -137,9 +175,13 @@ Notice that these are the exact same section! In order to not double count an in
 #   filter(instructor == "Brianna Heggeseth", name == "Introduction to Data Science")
 ```
 
-*Now*, explore enrollments by instructor. *You* decide what research questions to focus on. Use both visual and numerical summaries.
+*Now*, explore enrollments by instructor.
+*You* decide what research questions to focus on.
+Use both visual and numerical summaries.
 
-CAVEAT: The above code doesn't deal with *co-taught* courses that have more than one instructor. Thus instructors that co-taught are recorded as a pair, and their co-taught enrollments aren't added to their total enrollments. This is tough to get around with how the data were scraped as the instructor names are smushed together, not separated by a comma!
+CAVEAT: The above code doesn't deal with *co-taught* courses that have more than one instructor.
+Thus instructors that co-taught are recorded as a pair, and their co-taught enrollments aren't added to their total enrollments.
+This is tough to get around with how the data were scraped as the instructor names are smushed together, not separated by a comma!
 
 ```{r}
 ```
