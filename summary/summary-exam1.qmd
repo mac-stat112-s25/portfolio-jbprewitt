@@ -2,8 +2,8 @@
 title: "Exam 1 Summary"
 format: html
 ---
-
-# Exam 1 Summary
+ 
+# Exam 1 Summary {.unnumbered}
 
 Exam one covered setup, univariate, bivariate, multivariate, spatial, appropriate, and effective visualizations.
 
