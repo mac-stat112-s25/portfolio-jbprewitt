@@ -138,6 +138,13 @@ Because they have different enrollment structures, and we don't want to compare 
 Save the results as `enrollments` (don't overwrite `courses_clean`).
 
 ```{r}
+enrollments <- courses_clean |>
+  filter(dept != "PE", dept!="INTD") |>
+  filter(!(dept=="MUSI" & as.numeric(number)<100)) |>
+  filter(!(dept=="THDA" & as.numeric(number)<100)) |>
+  filter(!(str_detect(section, "L")))
+
+head(enrollments)
 ```
 
 ### Exercise 6: Enrollment & departments {.unnumbered}
@@ -145,6 +152,23 @@ Save the results as `enrollments` (don't overwrite `courses_clean`).
 Explore enrollments by department.
 *You* decide what research questions to focus on.
 Use both visual and numerical summaries.
+
+```{r}
+soci_data <- courses_clean |>
+  filter(dept == "SOCI") |>
+  group_by(instructor)
+
+head(soci_data)
+```
+```{r}
+## Needs work!!
+ggplot(soci_data, aes(y=enrollment, fill = instructor)) +
+  geom_bar() +
+  labs(title="Sociology Enrollment by Instructor",
+       x = "Enrolled Students",
+       y = "",
+       fill = "Instructor")
+```
 
 ### Exercise 7: Enrollment & faculty {.unnumbered}
 
@@ -157,8 +181,8 @@ To comment/uncomment several lines of code at once, highlight them then click <k
 :::
 
 ```{r}
-# enrollments |>
-#   filter(dept %in% c("STAT", "COMP"), number == 112, section == "01")
+enrollments |>
+  filter(dept %in% c("STAT", "COMP"), number == 112, section == "01")
 ```
 
 Notice that these are the exact same section!
@@ -166,13 +190,13 @@ In order to not double count an instructor's enrollments, we can keep only the c
 Uncomment the code lines in the chunk below.
 
 ```{r}
-# enrollments_2 <- enrollments |> 
-#   distinct(days, time, instructor, .keep_all = TRUE)
+enrollments_2 <- enrollments |>
+   distinct(days, time, instructor, .keep_all = TRUE)
 
 # NOTE: By default this keeps the first department alphabetically
 # That's fine because we won't use this to analyze department enrollments!
-# enrollments_2 |> 
-#   filter(instructor == "Brianna Heggeseth", name == "Introduction to Data Science")
+enrollments_2 |>
+   filter(instructor == "Brianna Heggeseth", name == "Introduction to Data Science")
 ```
 
 *Now*, explore enrollments by instructor.
