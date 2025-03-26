@@ -50,6 +50,7 @@ book:
     - part: "Summary"
       chapters:
       - summary/summary-exam1.qmd
+      - summary/summary-exam2.qmd
 
 format:
   html:

@@ -1,0 +1,32 @@
+---
+title: "Exam 2 Summary"
+format: html
+---
+ 
+# Exam 2 Summary {.unnumbered}
+
+Exam one covered wrangling, dates, reshaping, joining, factors, strings, data import, and EDA. 
+
+# Wrangling Content {.unnumbered}
+
+
+# Dates Content {.unnumbered}
+
+
+# Reshaping Content {.unnumbered}
+
+
+# Joining Content {.unnumbered}
+
+
+# Factors Content {.unnumbered}
+
+
+# Strings Content {.unnumbered}
+
+
+# Data Import Content {.unnumbered}
+
+
+# EDA Content {.unnumbered}
+

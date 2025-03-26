@@ -165,7 +165,7 @@ See later sections to view them in action!
 
     -   Creates labels
 
--   theme\_
+-   theme_
 
     -   Opens up a list of theme options
 

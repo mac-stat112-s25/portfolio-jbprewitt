@@ -33,10 +33,7 @@ https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
 
 After visiting that website, take some quick notes here on the data *source* and *creator*.
 
--   This data is metadata from IMDB, curated by Kaggle users The Movie Database (TMDb) (Owner) and chuan (Admin).
-    It was updated 7 years ago and does not seem like it will continue to update over time.
-    However, it was then taken down and replaced by Kaggle with information from The Movie Database.
-    They are unsure what currency revenue is listed in, and if it is global or domestic profit
+-   This data is metadata from IMDB, curated by Kaggle users The Movie Database (TMDb) (Owner) and chuan (Admin). It was updated 7 years ago and does not seem like it will continue to update over time. However, it was then taken down and replaced by Kaggle with information from The Movie Database. They are unsure what currency revenue is listed in, and if it is global or domestic profit
 
 ### Exercise 2: Import Data to RStudio {.unnumbered}
 
@@ -187,6 +184,8 @@ We *could* open the .csv file in, say, Excel or Google sheets, clean up the `col
 BUT that would be the wrong thing to do.
 Why is it important to use R code, which we then save inside this qmd, to clean our data?
 
+-   So others can see how we altered the source data
+
 #### Part b {.unnumbered}
 
 Let's use R code to change the `color` variable so that it appropriately combines the various categories into only 2: `Color` and `Black_White`.
@@ -199,6 +198,15 @@ Store your results in `imdb_temp` (don't overwrite `imdb_messy`).
 To check your work, print out a `count()` table of the `color` variable in `imdb_temp`.
 
 ```{r}
+imdb_temp <- imdb_temp |>
+  mutate(color = fct_recode(color,
+                            ""
+                            "B&W" = "Black_White",
+                            "Black and White" = "Black_White",
+                            "color" = "Color",
+                            "COLOR" = "Color"))
+
+count(imdb_temp$color)
 ```
 
 #### Part c {.unnumbered}
