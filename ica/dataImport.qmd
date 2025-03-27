@@ -198,15 +198,15 @@ Store your results in `imdb_temp` (don't overwrite `imdb_messy`).
 To check your work, print out a `count()` table of the `color` variable in `imdb_temp`.
 
 ```{r}
-imdb_temp <- imdb_temp |>
-  mutate(color = fct_recode(color,
-                            ""
-                            "B&W" = "Black_White",
-                            "Black and White" = "Black_White",
-                            "color" = "Color",
-                            "COLOR" = "Color"))
-
-count(imdb_temp$color)
+# imdb_temp <- imdb_temp |>
+#   mutate(color = fct_recode(color,
+#                             ""
+#                             "B&W" = "Black_White",
+#                             "Black and White" = "Black_White",
+#                             "color" = "Color",
+#                             "COLOR" = "Color"))
+# 
+# count(imdb_temp$color)
 ```
 
 #### Part c {.unnumbered}

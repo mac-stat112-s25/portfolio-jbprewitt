@@ -45,7 +45,7 @@ book:
       - ica/ica-joining.qmd
       - ica/ica-factors.qmd
       - ica/ica-strings.qmd
-      - ica/ica-dataImport.qmd
+      - ica/dataImport.qmd
       
     - part: "Summary"
       chapters:
