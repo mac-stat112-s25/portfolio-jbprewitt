@@ -2,31 +2,61 @@
 title: "Exam 2 Summary"
 format: html
 ---
- 
+
 # Exam 2 Summary {.unnumbered}
 
-Exam one covered wrangling, dates, reshaping, joining, factors, strings, data import, and EDA. 
+Exam one covered wrangling, dates, reshaping, joining, factors, strings, data import, and EDA.
 
 # Wrangling Content {.unnumbered}
 
+Goals of Data Wrangling:
+
+-   Get data into a tidy shape for analysis, such as keeping only certain observations or variables, make new variables, reformat existing variables, combine datasets, or process text
+
+-   Numerically explore and summarize data
+
+Tools of Data Wrangling:
+
+-   arrange - arrange rows according to some column
+
+    -   elections_small \|\> arrange(repub_pct_20)
+
+    -   elections_small \|\> arrange(desc(repub_pct_20))
+
+-   filter – filter out or obtain a subset of the rows
+
+    -   filter(elections, state_name == "Minnesota")
+
+    -   elections \|\> filter(state_name == "Minnesota")
+
+-   select - select a subset of columns
+
+    -   elections \|\> select(state_name, county_name, dem_pct_20, dem_pct_16)
+
+    -   select(elections, c(state_name, country_name, dem_pct_20, dem_pct_16))
+
+-   mutate - mutate or create a column
+
+    -   elections_small \|\> mutate(diff_20 = repub_pct_20 - dem_pct_20)
+
+-   summarize - calculate a numerical summary of a column
+
+    -   elections_small \|\> summarize(median(repub_pct_20))
+
+-   group_by - group the rows by a specified column
+
+    -   elections_small \|\> group_by(state_name)
 
 # Dates Content {.unnumbered}
 
-
 # Reshaping Content {.unnumbered}
-
 
 # Joining Content {.unnumbered}
 
-
 # Factors Content {.unnumbered}
-
 
 # Strings Content {.unnumbered}
 
-
 # Data Import Content {.unnumbered}
 
-
 # EDA Content {.unnumbered}
-
