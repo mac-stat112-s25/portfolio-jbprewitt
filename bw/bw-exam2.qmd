@@ -1,0 +1,116 @@
+---
+title: "Exam 2: Wrangling"
+output: html_document
+---
+
+# Background Processing {.unnumbered}
+
+```{r}
+# Load packages and data
+library(tidyverse)
+library(tidytuesdayR)
+library(rnaturalearth)
+library(sf)
+library(ggplot2)
+library(viridis)
+
+tuesdata <- tt_load('2020-02-18')
+fc <- tuesdata$food_consumption
+```
+
+```{r}
+# Inspect & begin to tidy data
+str(fc)
+
+unique(fc$food_category)
+
+fcc <- fc |>
+  mutate(food_category = case_when(
+    food_category == "Lamb & Goat" ~ "Lamb",
+    food_category == "Milk - inc. cheese" ~ "Dairy",
+    food_category == "Wheat and Wheat Products" ~ "Wheat",
+    food_category == "Nuts inc. Peanut Butter" ~ "Nuts",
+    TRUE ~ food_category  
+  ))
+
+unique(fcc$food_category)
+```
+# Research Question 1: Which 5 countries consume the most food?
+Goal: Show the answer as a 2 column table and as a graph. Sort countries based on consumption from largest to smallest. Use fcc dataframe.
+
+```{r}
+top_consumers <- fcc |>
+  group_by(country) |>
+  summarise(total_consumption = sum(consumption, na.rm = TRUE)) |> 
+  arrange(desc(total_consumption)) |>
+  slice_head(n=5)
+
+print(top_consumers)
+
+ggplot(top_consumers, aes(x = reorder(country, -total_consumption), y = total_consumption)) +
+  geom_col(fill = "steelblue") +
+  labs(title = "Top 5 Countries by Food Consumtion",
+       x = "Country",
+       y = "Total Food Consumption (kg/person/year)")
+```
+
+# Research Question 2: For each food category what are the top 5 consumer countries? 
+Show the answer as a 3 column table (show the food category as the first column followed by country and consumption) and as a graph. For each food, sort the countries based on consumption from largest to smallest. Use the fcc dataframe. 
+
+```{r}
+top_consumers_by_cat <- fcc |> 
+  group_by(food_category, country) |> 
+  summarise(total_consumption = sum(consumption, na.rm = TRUE), .groups = "drop") |> 
+  group_by(food_category) |>  
+  slice_max(order_by = total_consumption, n = 5, with_ties = FALSE) |>  
+  ungroup() 
+
+
+print(top_consumers_by_cat)
+
+ggplot(top_consumers_by_cat, aes(x = reorder(country, total_consumption), y = total_consumption, fill = food_category)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ food_category, scales = "free_y") +
+  coord_flip() + 
+  labs(title = "Top 5 Consumer Countries for Each Food Category",
+       x = "Country", y = "Total Consumption") +
+  theme_minimal()
+
+```
+
+# Research Question 3: What does the consumption of each food look like? 
+Show a choropleth map for each food using the fcc dataframe. 
+
+```{r}
+# Create the choropleth map with enhancements
+ne_countries(returnclass = "sf") |> 
+  select(name, geometry) |> 
+  mutate(name = ifelse(name == "United States of America", "USA", name)) |> 
+  mutate(name = ifelse(name == "Bosnia and Herz.", "Bosnia and Herzegovina", name)) |> 
+  mutate(name = ifelse(name == "Czechia", "Czech Republic", name)) |>  # Corrected typo
+  mutate(name = ifelse(name == "Taiwan", "Taiwan. ROC", name)) |> 
+  left_join(
+    fcc |> 
+      select(-co2_emmission) |> 
+      group_by(food_category) |> 
+      mutate(consumption = (consumption - mean(consumption))/sd(consumption)), 
+    by = c("name" = "country")
+  ) |> 
+  pivot_wider(names_from = food_category, values_from = consumption) |> 
+  select(-"NA") |>  # Remove any "NA" columns
+  pivot_longer(cols = c(-name, -geometry), names_to = "food_category", values_to = "consumption") |> 
+  ggplot() +
+  geom_sf(aes(fill = consumption), color = "gray90", size = 0.2) +  # Thinner boundary lines
+  scale_fill_viridis_c(option = "C", direction = 1, na.value = "gray90") +  # Colorblind-friendly palette
+  facet_wrap(~food_category) +
+  labs(
+    title = "Food Consumption by Country (Standardized)",
+    fill = "Consumption (Z-Score)",  # Label for the color scale
+    subtitle = "Each food category is visualized separately with standardized consumption values"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "bottom", 
+        strip.text = element_text(size = 10),
+        panel.spacing = unit(1, "lines")) 
+```
+
