@@ -12,8 +12,7 @@ library(rnaturalearth)
 
 ```{r}
 # Load in the data
-ufo_sightings_all <- read_csv("../data/UFOs_coord.csv")
-
+ufo_spottings <- read_csv("../data/ufo_spottings.csv")
 canada_shape = ne_states(country = "canada")
 ```
 
@@ -26,13 +25,13 @@ ggplot() +
 ```{r}
 # Clean data 
 
-ufo_sightings_canada <- ufo_sightings_all |>
-  filter(Country == "CANADA") |>
-  select(State, lat, lng) |>
-  group_by(State) |>
+ufo_spottings_ca <- ufo_spottings |>
+  filter(country == "ca") |>
+  select(state) |>
+  group_by(state) |>
   summarise(count = n())
 
-head(ufo_sightings_canada)
+head(ufo_spottings_ca)
 
 shape_data <- canada_shape |>
   select(name, geometry)
@@ -43,31 +42,45 @@ head(shape_data)
 ```{r}
 # Join Data 
 
-cleaned_ufo <- ufo_sightings_canada |>
-  mutate(State = case_when(
-    State == "AB" ~ "Alberta",
-    State == "BC" ~ "British Columbia",
-    State == "MB" ~ "Manitoba",
-    State == "NB" ~ "New Brunswick",
-    State == "NS" ~ "Nova Scotia",
-    State == "ON" ~ "Ontario",
-    State == "QC" ~ "Québec",
-    State == "SK" ~ "Saskatchewan",
-    State == "YT" ~ "Yukon",
-
-    TRUE ~ State  
+cleaned_ufo <- ufo_spottings_ca |>
+  mutate(state = case_when(
+    state == "pq" ~ "qc",
+    state == "sa" ~ "sk",
+    TRUE ~ state)) |>
+  mutate(state = case_when(
+    state == "ab" ~ "Alberta",
+    state == "bc" ~ "British Columbia",
+    state == "mb" ~ "Manitoba",
+    state == "nb" ~ "New Brunswick",
+    state == "nf" ~ "Newfoundland and Labrador",
+    state == "ns" ~ "Nova Scotia",
+    state == "nt" ~ "Northwest Territories",
+    state == "on" ~ "Ontario",
+    state == "pe" ~ "Prince Edward Island",
+    state == "qc" ~ "Québec",
+    state == "sk" ~ "Saskatchewan",
+    state == "yt" ~ "Yukon",
+    state == "yk" ~ "Nunavut",
+    TRUE ~ state  
   ))
 
+
 unified_data <- shape_data |> 
-  left_join(cleaned_ufo, join_by(name == State)) |>
+  left_join(cleaned_ufo, join_by(name == state)) |>
   filter(!is.na(count))
 ```
 
 ```{r}
-# Make plot of UFO sightings in Canadian Provinces (not including territories)
-ggplot(unified_data) +
-  geom_sf() 
+#|fig-cap: "UFO Sightings in CA over the last century - Data from National UFO Reporting Center, made by Julia Prewitt"
+#|fig-alt: "Choropleth map of Canada's provinces and territories illustrating UFO Sightings in CA over the last century. Provinces further north have few sightings in comparison to more southern provinces. "
 
+# Make plot of UFO sightings in Canadian Provinces & Territories
+ggplot(unified_data) +
+  geom_sf(aes(fill = count)) +
+  scale_fill_viridis_c(option = "plasma") +
+  labs(title = "UFO Sightings in Canada Over the Last Century",
+       fill = "Sightings") +
+  theme_minimal()
 
 ```
 
