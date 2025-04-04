@@ -1,0 +1,74 @@
+---
+title: "Solo Project"
+format: html
+---
+
+```{r}
+# Import needed packages
+library(sf)
+library(tidyverse)
+library(rnaturalearth)
+```
+
+```{r}
+# Load in the data
+ufo_sightings_all <- read_csv("../data/UFOs_coord.csv")
+
+canada_shape = ne_states(country = "canada")
+```
+
+```{r}
+# Test shape file 
+ggplot() +
+  geom_sf(data = canada_shape)
+```
+
+```{r}
+# Clean data 
+
+ufo_sightings_canada <- ufo_sightings_all |>
+  filter(Country == "CANADA") |>
+  select(State, lat, lng) |>
+  group_by(State) |>
+  summarise(count = n())
+
+head(ufo_sightings_canada)
+
+shape_data <- canada_shape |>
+  select(name, geometry)
+
+head(shape_data)
+```
+
+```{r}
+# Join Data 
+
+cleaned_ufo <- ufo_sightings_canada |>
+  mutate(State = case_when(
+    State == "AB" ~ "Alberta",
+    State == "BC" ~ "British Columbia",
+    State == "MB" ~ "Manitoba",
+    State == "NB" ~ "New Brunswick",
+    State == "NS" ~ "Nova Scotia",
+    State == "ON" ~ "Ontario",
+    State == "QC" ~ "Québec",
+    State == "SK" ~ "Saskatchewan",
+    State == "YT" ~ "Yukon",
+
+    TRUE ~ State  
+  ))
+
+unified_data <- shape_data |> 
+  left_join(cleaned_ufo, join_by(name == State)) |>
+  filter(!is.na(count))
+```
+
+```{r}
+# Make plot of UFO sightings in Canadian Provinces (not including territories)
+ggplot(unified_data) +
+  geom_sf() 
+
+
+```
+
+
