@@ -84,4 +84,4 @@ ggplot(unified_data) +
 
 ```
 
-
+We can see that there are more UFO sightings in more populated areas; this visualization is a good starting point for understanding how UFO sighting increase with people being present, and future investigation can and should examine UFO sightings per captia to understand if certain regions are more likely than others to experience UFO sightings. 

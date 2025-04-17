@@ -1,5 +1,5 @@
 ---
-title: "Exam 2: Wrangling"
+title: "Exam 2"
 output: html_document
 ---
 
