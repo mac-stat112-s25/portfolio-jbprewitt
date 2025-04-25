@@ -28,8 +28,6 @@ topReporters <- topReporters %>%
 #| echo: false
 #| warning: false
 #| error: false
-
-#| fig-cap: "A figure of whether agencies in 6 states report to NIBRS broken down by agency type - Made by Julia Prewitt"
 #| fig-alt: "A visual of government agencies of California, Illinois, Michigan, Missouri, Ohio, and Texas. It is called Number of NIBRS Reporting Agencies in High Reporting States. They are broken down into agency type for each bar. For all the states, of their government agencies, the majority do report, and it is typically the city agencies who do."
 
 ggplot(topReporters, aes(x = is_nibrs, fill = agency_type)) +
@@ -38,7 +36,8 @@ ggplot(topReporters, aes(x = is_nibrs, fill = agency_type)) +
   labs(x = "Does the agency report to NIBRS?", 
        y = "Number of Agencies", 
        title = "Number of NIBRS Reporting Agencies in High Reporting States", 
-       fill = "Agency Type") +
+       fill = "Agency Type",
+       caption = "A figure of whether agencies in 6 states report to NIBRS broken down by agency type - Data from TidyTuesday 2025-02-18 - Made by Julia Prewitt") +
   scale_fill_brewer(palette = "Set2", na.value="grey") +
   theme_bw() +
   theme(

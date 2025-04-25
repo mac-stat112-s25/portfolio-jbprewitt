@@ -35,8 +35,12 @@ fcc <- fc |>
 
 unique(fcc$food_category)
 ```
+
 # Research Question 1: Which 5 countries consume the most food?
-Goal: Show the answer as a 2 column table and as a graph. Sort countries based on consumption from largest to smallest. Use fcc dataframe.
+
+Goal: Show the answer as a 2 column table and as a graph.
+Sort countries based on consumption from largest to smallest.
+Use fcc dataframe.
 
 ```{r}
 top_consumers <- fcc |>
@@ -54,8 +58,11 @@ ggplot(top_consumers, aes(x = reorder(country, -total_consumption), y = total_co
        y = "Total Food Consumption (kg/person/year)")
 ```
 
-# Research Question 2: For each food category what are the top 5 consumer countries? 
-Show the answer as a 3 column table (show the food category as the first column followed by country and consumption) and as a graph. For each food, sort the countries based on consumption from largest to smallest. Use the fcc dataframe. 
+# Research Question 2: For each food category what are the top 5 consumer countries?
+
+Show the answer as a 3 column table (show the food category as the first column followed by country and consumption) and as a graph.
+For each food, sort the countries based on consumption from largest to smallest.
+Use the fcc dataframe.
 
 ```{r}
 top_consumers_by_cat <- fcc |> 
@@ -78,8 +85,9 @@ ggplot(top_consumers_by_cat, aes(x = reorder(country, total_consumption), y = to
 
 ```
 
-# Research Question 3: What does the consumption of each food look like? 
-Show a choropleth map for each food using the fcc dataframe. 
+# Research Question 3: What does the consumption of each food look like?
+
+Show a choropleth map for each food using the fcc dataframe.
 
 ```{r}
 # Create the choropleth map with enhancements
@@ -113,4 +121,3 @@ ne_countries(returnclass = "sf") |>
         strip.text = element_text(size = 10),
         panel.spacing = unit(1, "lines")) 
 ```
-

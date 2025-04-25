@@ -28,8 +28,6 @@ world_boundaries <- ne_countries(returnclass = "sf")
 #| echo: false
 #| warning: false
 #| error: false
-
-#| fig-cap: "A map of Starbucks Store locaitons accross the world - Made by Julia Prewitt"
 #| fig-alt: "A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia."
 
 ggplot(world_boundaries) + 
@@ -38,7 +36,8 @@ ggplot(world_boundaries) +
     data = starbucks,
     aes(x = Longitude, y = Latitude),
     alpha = 0.3, size = 0.2, color = "darkgreen") +
-  labs(title = "Starbucks Locations Across the World") +
+  labs(title = "Starbucks Locations Across the World",
+       caption =  "A map of Starbucks Store locaitons accross the world - Data from https://mac-stat.github.io/data/starbucks.csv - Made by Julia Prewitt") +
   theme_minimal() +
   theme(
     plot.title = element_text(size = 14, face = "bold", hjust = 0.5, color ="darkgreen"),

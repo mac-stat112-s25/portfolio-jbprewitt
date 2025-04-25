@@ -76,12 +76,13 @@ unified_data <- shape_data |>
 
 # Make plot of UFO sightings in Canadian Provinces & Territories
 ggplot(unified_data) +
-  geom_sf(aes(fill = count)) +
+  geom_sf(aes(fill = count), color = "white") +
+  theme_void() +
   scale_fill_viridis_c(option = "plasma") +
-  labs(title = "UFO Sightings in Canada Over the Last Century",
-       fill = "Sightings") +
-  theme_minimal()
+  labs(title = "UFO Sightings in Canada by Province Over the Last Century",
+       fill = "") 
 
+# maybe use white for boundaries
 ```
 
-We can see that there are more UFO sightings in more populated areas; this visualization is a good starting point for understanding how UFO sighting increase with people being present, and future investigation can and should examine UFO sightings per captia to understand if certain regions are more likely than others to experience UFO sightings. 
+We can see that there are more UFO sightings in more populated areas, such as Ontario, British Columbia, and Alberta. This visualization is a good starting point for understanding how UFO sighting increase with people being present, and future investigation can and should examine UFO sightings per captia to understand if certain regions are more likely than others to experience UFO sightings. 

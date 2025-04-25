@@ -48,7 +48,6 @@ There are 11 food categories, and 130 total countries in the data set.
 #| echo: false
 #| warning: false
 #| error: false
-#| fig-cap: "Food Consumption Across Countries by Category - Data from TidyTuesday - Made by Julia Prewitt"
 #| fig-alt: "A bar plot called Food Consumption Across Countries by Categories, using data from Tidy Tuesday. There are 11 food categories: beef, eggs, fish, lamb & goat, milk - includes cheese, Nuts - includes peanut butter, pork, poultry, rice, soybeans, wheat and wheat products. Each category has its own plot with consumption (measured by kilograms per person per year) on the x axis and country on the y axis. There are 130 countries, and they are ordered by consumption. The data shows that milk, wheat and wheat products, an rice seem to be the most consumed categories, with soybeans and lamb and goat being the least consumed regardless of country. "
 
 ggplot(fc, aes(x = consumption, y = reorder(country, consumption), fill = food_category)) +
@@ -59,7 +58,8 @@ ggplot(fc, aes(x = consumption, y = reorder(country, consumption), fill = food_c
   labs(title = "Food Consumption Across Countries by Category",
        x = "Consumption (kg/person/year)",
        y = "Country, Ordered by Consumption",
-       fill = "Food Category") +
+       fill = "Food Category",
+       caption = "Food Consumption Across Countries by Category - Data from TidyTuesday 2020-02-18 - Made by Julia Prewitt") +
   theme(strip.text = element_text(size = 12, face = "bold"),
         axis.text.y = element_text(size = 6),  
         legend.position = 'none')  

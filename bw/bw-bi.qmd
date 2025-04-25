@@ -21,7 +21,6 @@ elections <- read.csv("https://mac-stat.github.io/data/election_2020_county.csv"
 #| echo: false
 #| warning: false
 #| error: false
-#| fig-cap: "A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Made by Julia Prewitt"
 #| fig-alt: "A density plot showing percent of republican support by county in 2020 by state trends. On the X axis is republican support by county in 2020, on the Y axis is density, and there are three different plots on the graph, a blue one for democratic leaning state historical trends, a purple one for swing states, and a red one for republican leaning states. All three are left skewed and unimodal, with democratic leaning states having the lowest support, followed by swing states and republican leaning states. "
 
 ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
@@ -32,7 +31,8 @@ ggplot(elections, aes(x = repub_pct_20, fill = historical)) +
   labs(title ="Percent of Republican Support by County in 2020 by State Trends", 
        y = "Density", 
        x = "Republican Support in 2020 by County",
-        fill = "Historical State Voting Trends") +
+        fill = "Historical State Voting Trends",
+       caption = "A figure of Percent of Republican Support by County in 2020 by State Historical Trends - Data from https://mac-stat.github.io/data/election_2020_county.csv - Made by Julia Prewitt") +
   theme_minimal() +
   theme(
     plot.title = element_text(size = 14, face = "bold", hjust = 0.5),  
