@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.5.57">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>5&nbsp; Spatial Viz – COMP/STAT112 Notebook</title>
+<title>8&nbsp; Solo Project – COMP/STAT112 Notebook</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -59,8 +59,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../bw/bw-exam1.html" rel="next">
-<link href="../bw/bw-quad.html" rel="prev">
+<link href="../ica/ica-uni.html" rel="next">
+<link href="../bw/bw-exam2.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -106,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-spatial.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/soloProject.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Solo Project</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -176,7 +176,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bw/bw-spatial.html" class="sidebar-item-text sidebar-link active">
+  <a href="../bw/bw-spatial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></span></a>
   </div>
 </li>
@@ -194,7 +194,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../bw/soloProject.html" class="sidebar-item-text sidebar-link">
+  <a href="../bw/soloProject.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Solo Project</span></span></a>
   </div>
 </li>
@@ -314,9 +314,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/bw-spatial.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span></a></li></ol></nav><div class="quarto-title">
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../bw/bw-uni.html">Best Work</a></li><li class="breadcrumb-item"><a href="../bw/soloProject.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Solo Project</span></a></li></ol></nav><div class="quarto-title">
 <div class="quarto-title-block"><div><h1 class="title">
-<span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Spatial Viz</span>
+<span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Solo Project</span>
 </h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
@@ -331,15 +331,188 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p>Use this file to generate a professional looking <strong>spatial</strong> visualization. The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</p>
+</header><div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># Import needed packages</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">library</span>(sf)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'sf' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Linking to GEOS 3.13.0, GDAL 3.10.1, PROJ 9.5.1; sf_use_s2() is TRUE</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyverse' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tibble' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'tidyr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'purrr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'dplyr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'stringr' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'forcats' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.4.2</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+✔ dplyr     1.1.4     ✔ readr     2.1.5
+✔ forcats   1.0.0     ✔ stringr   1.5.1
+✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ lubridate 1.9.4     ✔ tidyr     1.3.1
+✔ purrr     1.0.2     </code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ dplyr::filter() masks stats::filter()
+✖ dplyr::lag()    masks stats::lag()
+ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">library</span>(rnaturalearth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'rnaturalearth' was built under R version 4.4.2</code></pre>
+</div>
+</div>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Load in the data</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>ufo_spottings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/ufo_spottings.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: One or more parsing issues, call `problems()` on your data frame for details,
+e.g.:
+  dat &lt;- vroom(...)
+  problems(dat)</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 88875 Columns: 11
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+chr (10): datetime, city, state, country, shape, duration (hours/min), comme...
+dbl  (1): duration (seconds)
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>canada_shape <span class="ot">=</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">"canada"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Test shape file </span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> canada_shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
-<figure class="figure"><p><img src="bw-spatial_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" alt="A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia." width="672"></p>
+<figure class="figure"><p><img src="soloProject_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="co"># Clean data </span></span>
+<span id="cb24-2"><a href="#cb24-2"></a></span>
+<span id="cb24-3"><a href="#cb24-3"></a>ufo_spottings_ca <span class="ot">&lt;-</span> ufo_spottings <span class="sc">|&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"ca"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb24-5"><a href="#cb24-5"></a>  <span class="fu">select</span>(state) <span class="sc">|&gt;</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb24-8"><a href="#cb24-8"></a></span>
+<span id="cb24-9"><a href="#cb24-9"></a><span class="fu">head</span>(ufo_spottings_ca)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 2
+  state count
+  &lt;chr&gt; &lt;int&gt;
+1 ab      318
+2 bc      771
+3 mb      137
+4 nb       93
+5 nf       16
+6 ns      116</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1"></a>shape_data <span class="ot">&lt;-</span> canada_shape <span class="sc">|&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a>  <span class="fu">select</span>(name, geometry)</span>
+<span id="cb26-3"><a href="#cb26-3"></a></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="fu">head</span>(shape_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Simple feature collection with 6 features and 1 field
+Geometry type: MULTIPOLYGON
+Dimension:     XY
+Bounding box:  xmin: -139.0602 ymin: 41.72947 xmax: -57.10033 ymax: 62.59382
+Geodetic CRS:  WGS 84
+                 name                       geometry
+1237 British Columbia MULTIPOLYGON (((-117.0382 4...
+1240          Alberta MULTIPOLYGON (((-109.9993 4...
+1241     Saskatchewan MULTIPOLYGON (((-104.0476 4...
+1243         Manitoba MULTIPOLYGON (((-97.22609 4...
+1245          Ontario MULTIPOLYGON (((-89.58175 4...
+1250           Québec MULTIPOLYGON (((-73.35134 4...</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1"></a><span class="co"># Join Data </span></span>
+<span id="cb28-2"><a href="#cb28-2"></a></span>
+<span id="cb28-3"><a href="#cb28-3"></a>cleaned_ufo <span class="ot">&lt;-</span> ufo_spottings_ca <span class="sc">|&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">case_when</span>(</span>
+<span id="cb28-5"><a href="#cb28-5"></a>    state <span class="sc">==</span> <span class="st">"pq"</span> <span class="sc">~</span> <span class="st">"qc"</span>,</span>
+<span id="cb28-6"><a href="#cb28-6"></a>    state <span class="sc">==</span> <span class="st">"sa"</span> <span class="sc">~</span> <span class="st">"sk"</span>,</span>
+<span id="cb28-7"><a href="#cb28-7"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> state)) <span class="sc">|&gt;</span></span>
+<span id="cb28-8"><a href="#cb28-8"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">case_when</span>(</span>
+<span id="cb28-9"><a href="#cb28-9"></a>    state <span class="sc">==</span> <span class="st">"ab"</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
+<span id="cb28-10"><a href="#cb28-10"></a>    state <span class="sc">==</span> <span class="st">"bc"</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
+<span id="cb28-11"><a href="#cb28-11"></a>    state <span class="sc">==</span> <span class="st">"mb"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
+<span id="cb28-12"><a href="#cb28-12"></a>    state <span class="sc">==</span> <span class="st">"nb"</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
+<span id="cb28-13"><a href="#cb28-13"></a>    state <span class="sc">==</span> <span class="st">"nf"</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
+<span id="cb28-14"><a href="#cb28-14"></a>    state <span class="sc">==</span> <span class="st">"ns"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
+<span id="cb28-15"><a href="#cb28-15"></a>    state <span class="sc">==</span> <span class="st">"nt"</span> <span class="sc">~</span> <span class="st">"Northwest Territories"</span>,</span>
+<span id="cb28-16"><a href="#cb28-16"></a>    state <span class="sc">==</span> <span class="st">"on"</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
+<span id="cb28-17"><a href="#cb28-17"></a>    state <span class="sc">==</span> <span class="st">"pe"</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
+<span id="cb28-18"><a href="#cb28-18"></a>    state <span class="sc">==</span> <span class="st">"qc"</span> <span class="sc">~</span> <span class="st">"Québec"</span>,</span>
+<span id="cb28-19"><a href="#cb28-19"></a>    state <span class="sc">==</span> <span class="st">"sk"</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
+<span id="cb28-20"><a href="#cb28-20"></a>    state <span class="sc">==</span> <span class="st">"yt"</span> <span class="sc">~</span> <span class="st">"Yukon"</span>,</span>
+<span id="cb28-21"><a href="#cb28-21"></a>    state <span class="sc">==</span> <span class="st">"yk"</span> <span class="sc">~</span> <span class="st">"Nunavut"</span>,</span>
+<span id="cb28-22"><a href="#cb28-22"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> state  </span>
+<span id="cb28-23"><a href="#cb28-23"></a>  ))</span>
+<span id="cb28-24"><a href="#cb28-24"></a></span>
+<span id="cb28-25"><a href="#cb28-25"></a></span>
+<span id="cb28-26"><a href="#cb28-26"></a>unified_data <span class="ot">&lt;-</span> shape_data <span class="sc">|&gt;</span> </span>
+<span id="cb28-27"><a href="#cb28-27"></a>  <span class="fu">left_join</span>(cleaned_ufo, <span class="fu">join_by</span>(name <span class="sc">==</span> state)) <span class="sc">|&gt;</span></span>
+<span id="cb28-28"><a href="#cb28-28"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="co">#|fig-cap: "UFO Sightings in CA over the last century - Data from National UFO Reporting Center, made by Julia Prewitt"</span></span>
+<span id="cb29-2"><a href="#cb29-2"></a><span class="co">#|fig-alt: "Choropleth map of Canada's provinces and territories illustrating UFO Sightings in CA over the last century. Provinces further north have few sightings in comparison to more southern provinces. "</span></span>
+<span id="cb29-3"><a href="#cb29-3"></a></span>
+<span id="cb29-4"><a href="#cb29-4"></a><span class="co"># Make plot of UFO sightings in Canadian Provinces &amp; Territories</span></span>
+<span id="cb29-5"><a href="#cb29-5"></a><span class="fu">ggplot</span>(unified_data) <span class="sc">+</span></span>
+<span id="cb29-6"><a href="#cb29-6"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> count), <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb29-7"><a href="#cb29-7"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb29-8"><a href="#cb29-8"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"plasma"</span>) <span class="sc">+</span></span>
+<span id="cb29-9"><a href="#cb29-9"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"UFO Sightings in Canada by Province Over the Last Century"</span>,</span>
+<span id="cb29-10"><a href="#cb29-10"></a>       <span class="at">fill =</span> <span class="st">""</span>,</span>
+<span id="cb29-11"><a href="#cb29-11"></a>       <span class="at">caption =</span> <span class="st">"Data from National UFO Reporting Center, made by Julia Prewitt"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure"><p><img src="soloProject_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1"></a><span class="co"># maybe use white for boundaries</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can see that there are more UFO sightings in more populated areas, such as Ontario, British Columbia, and Alberta. This visualization is a good starting point for understanding how UFO sighting increase with people being present, and future investigation can and should examine UFO sightings per captia to understand if certain regions are more likely than others to experience UFO sightings.</p>
 
 
 <!-- -->
@@ -965,67 +1138,105 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><nav class="page-navigation"><div class="nav-page nav-page-previous">
-      <a href="../bw/bw-quad.html" class="pagination-link" aria-label="Quadvariate Viz">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Quadvariate Viz</span></span>
+      <a href="../bw/bw-exam2.html" class="pagination-link" aria-label="Exam 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Exam 2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../bw/bw-exam1.html" class="pagination-link" aria-label="Exam 1">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Exam 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../ica/ica-uni.html" class="pagination-link" aria-label="Univariate Viz">
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Univariate Viz</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="an">title:</span><span class="co"> "Spatial Viz"</span></span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="an">output:</span><span class="co"> html_document</span></span>
-<span id="cb1-4"><a href="#cb1-4"></a><span class="co">---</span></span>
-<span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a>Use this file to generate a professional looking **spatial** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.</span>
-<span id="cb1-7"><a href="#cb1-7"></a></span>
-<span id="cb1-10"><a href="#cb1-10"></a><span class="in">```{r}</span></span>
-<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#| warning: false</span></span>
-<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#| error: false</span></span>
-<span id="cb1-14"><a href="#cb1-14"></a></span>
-<span id="cb1-15"><a href="#cb1-15"></a></span>
-<span id="cb1-16"><a href="#cb1-16"></a><span class="fu">library</span>(mosaic)</span>
-<span id="cb1-17"><a href="#cb1-17"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-18"><a href="#cb1-18"></a><span class="fu">library</span>(leaflet)</span>
-<span id="cb1-19"><a href="#cb1-19"></a><span class="fu">library</span>(gplots)</span>
-<span id="cb1-20"><a href="#cb1-20"></a><span class="fu">library</span>(rnaturalearth)</span>
-<span id="cb1-21"><a href="#cb1-21"></a></span>
-<span id="cb1-22"><a href="#cb1-22"></a></span>
-<span id="cb1-23"><a href="#cb1-23"></a>starbucks <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"https://mac-stat.github.io/data/starbucks.csv"</span>)</span>
-<span id="cb1-24"><a href="#cb1-24"></a></span>
-<span id="cb1-25"><a href="#cb1-25"></a>world_boundaries <span class="ot">&lt;-</span> <span class="fu">ne_countries</span>(<span class="at">returnclass =</span> <span class="st">"sf"</span>)</span>
-<span id="cb1-26"><a href="#cb1-26"></a></span>
-<span id="cb1-27"><a href="#cb1-27"></a><span class="in">```</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a></span>
-<span id="cb1-31"><a href="#cb1-31"></a><span class="in">```{r}</span></span>
-<span id="cb1-32"><a href="#cb1-32"></a><span class="co">#| echo: false</span></span>
-<span id="cb1-33"><a href="#cb1-33"></a><span class="co">#| warning: false</span></span>
-<span id="cb1-34"><a href="#cb1-34"></a><span class="co">#| error: false</span></span>
-<span id="cb1-35"><a href="#cb1-35"></a><span class="co">#| fig-alt: "A map of the world with green dots which represent starbucks locations. The title is statbucks locations across the world. Most of the points are centered on the United states on each coast, north western europe, and east asia."</span></span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
-<span id="cb1-37"><a href="#cb1-37"></a><span class="fu">ggplot</span>(world_boundaries) <span class="sc">+</span> </span>
-<span id="cb1-38"><a href="#cb1-38"></a>  <span class="fu">geom_sf</span>(<span class="at">fill =</span> <span class="st">"lightgray"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">0.2</span>)  <span class="sc">+</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a>  <span class="fu">geom_point</span>(</span>
-<span id="cb1-40"><a href="#cb1-40"></a>    <span class="at">data =</span> starbucks,</span>
-<span id="cb1-41"><a href="#cb1-41"></a>    <span class="fu">aes</span>(<span class="at">x =</span> Longitude, <span class="at">y =</span> Latitude),</span>
-<span id="cb1-42"><a href="#cb1-42"></a>    <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">0.2</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
-<span id="cb1-43"><a href="#cb1-43"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Starbucks Locations Across the World"</span>,</span>
-<span id="cb1-44"><a href="#cb1-44"></a>       <span class="at">caption =</span>  <span class="st">"A map of Starbucks Store locaitons accross the world - Data from https://mac-stat.github.io/data/starbucks.csv - Made by Julia Prewitt"</span>) <span class="sc">+</span></span>
-<span id="cb1-45"><a href="#cb1-45"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-46"><a href="#cb1-46"></a>  <span class="fu">theme</span>(</span>
-<span id="cb1-47"><a href="#cb1-47"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">color =</span><span class="st">"darkgreen"</span>),</span>
-<span id="cb1-48"><a href="#cb1-48"></a>    <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),  </span>
-<span id="cb1-49"><a href="#cb1-49"></a>    <span class="at">axis.text =</span> <span class="fu">element_blank</span>(),  </span>
-<span id="cb1-50"><a href="#cb1-50"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),  </span>
-<span id="cb1-51"><a href="#cb1-51"></a>    <span class="at">panel.border =</span> <span class="fu">element_blank</span>(),  </span>
-<span id="cb1-52"><a href="#cb1-52"></a>    <span class="at">legend.position =</span> <span class="st">"none"</span></span>
-<span id="cb1-53"><a href="#cb1-53"></a>    )</span>
-<span id="cb1-54"><a href="#cb1-54"></a></span>
-<span id="cb1-55"><a href="#cb1-55"></a><span class="in">```</span></span>
+<div class="sourceCode" id="cb31" data-shortcodes="false"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1"></a><span class="co">---</span></span>
+<span id="cb31-2"><a href="#cb31-2"></a><span class="an">title:</span><span class="co"> "Solo Project"</span></span>
+<span id="cb31-3"><a href="#cb31-3"></a><span class="an">format:</span><span class="co"> html</span></span>
+<span id="cb31-4"><a href="#cb31-4"></a><span class="co">---</span></span>
+<span id="cb31-5"><a href="#cb31-5"></a></span>
+<span id="cb31-8"><a href="#cb31-8"></a><span class="in">```{r}</span></span>
+<span id="cb31-9"><a href="#cb31-9"></a><span class="co"># Import needed packages</span></span>
+<span id="cb31-10"><a href="#cb31-10"></a><span class="fu">library</span>(sf)</span>
+<span id="cb31-11"><a href="#cb31-11"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb31-12"><a href="#cb31-12"></a><span class="fu">library</span>(rnaturalearth)</span>
+<span id="cb31-13"><a href="#cb31-13"></a><span class="in">```</span></span>
+<span id="cb31-14"><a href="#cb31-14"></a></span>
+<span id="cb31-17"><a href="#cb31-17"></a><span class="in">```{r}</span></span>
+<span id="cb31-18"><a href="#cb31-18"></a><span class="co"># Load in the data</span></span>
+<span id="cb31-19"><a href="#cb31-19"></a>ufo_spottings <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"../data/ufo_spottings.csv"</span>)</span>
+<span id="cb31-20"><a href="#cb31-20"></a>canada_shape <span class="ot">=</span> <span class="fu">ne_states</span>(<span class="at">country =</span> <span class="st">"canada"</span>)</span>
+<span id="cb31-21"><a href="#cb31-21"></a><span class="in">```</span></span>
+<span id="cb31-22"><a href="#cb31-22"></a></span>
+<span id="cb31-25"><a href="#cb31-25"></a><span class="in">```{r}</span></span>
+<span id="cb31-26"><a href="#cb31-26"></a><span class="co"># Test shape file </span></span>
+<span id="cb31-27"><a href="#cb31-27"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb31-28"><a href="#cb31-28"></a>  <span class="fu">geom_sf</span>(<span class="at">data =</span> canada_shape)</span>
+<span id="cb31-29"><a href="#cb31-29"></a><span class="in">```</span></span>
+<span id="cb31-30"><a href="#cb31-30"></a></span>
+<span id="cb31-33"><a href="#cb31-33"></a><span class="in">```{r}</span></span>
+<span id="cb31-34"><a href="#cb31-34"></a><span class="co"># Clean data </span></span>
+<span id="cb31-35"><a href="#cb31-35"></a></span>
+<span id="cb31-36"><a href="#cb31-36"></a>ufo_spottings_ca <span class="ot">&lt;-</span> ufo_spottings <span class="sc">|&gt;</span></span>
+<span id="cb31-37"><a href="#cb31-37"></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"ca"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb31-38"><a href="#cb31-38"></a>  <span class="fu">select</span>(state) <span class="sc">|&gt;</span></span>
+<span id="cb31-39"><a href="#cb31-39"></a>  <span class="fu">group_by</span>(state) <span class="sc">|&gt;</span></span>
+<span id="cb31-40"><a href="#cb31-40"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span>
+<span id="cb31-41"><a href="#cb31-41"></a></span>
+<span id="cb31-42"><a href="#cb31-42"></a><span class="fu">head</span>(ufo_spottings_ca)</span>
+<span id="cb31-43"><a href="#cb31-43"></a></span>
+<span id="cb31-44"><a href="#cb31-44"></a>shape_data <span class="ot">&lt;-</span> canada_shape <span class="sc">|&gt;</span></span>
+<span id="cb31-45"><a href="#cb31-45"></a>  <span class="fu">select</span>(name, geometry)</span>
+<span id="cb31-46"><a href="#cb31-46"></a></span>
+<span id="cb31-47"><a href="#cb31-47"></a><span class="fu">head</span>(shape_data)</span>
+<span id="cb31-48"><a href="#cb31-48"></a><span class="in">```</span></span>
+<span id="cb31-49"><a href="#cb31-49"></a></span>
+<span id="cb31-52"><a href="#cb31-52"></a><span class="in">```{r}</span></span>
+<span id="cb31-53"><a href="#cb31-53"></a><span class="co"># Join Data </span></span>
+<span id="cb31-54"><a href="#cb31-54"></a></span>
+<span id="cb31-55"><a href="#cb31-55"></a>cleaned_ufo <span class="ot">&lt;-</span> ufo_spottings_ca <span class="sc">|&gt;</span></span>
+<span id="cb31-56"><a href="#cb31-56"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">case_when</span>(</span>
+<span id="cb31-57"><a href="#cb31-57"></a>    state <span class="sc">==</span> <span class="st">"pq"</span> <span class="sc">~</span> <span class="st">"qc"</span>,</span>
+<span id="cb31-58"><a href="#cb31-58"></a>    state <span class="sc">==</span> <span class="st">"sa"</span> <span class="sc">~</span> <span class="st">"sk"</span>,</span>
+<span id="cb31-59"><a href="#cb31-59"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> state)) <span class="sc">|&gt;</span></span>
+<span id="cb31-60"><a href="#cb31-60"></a>  <span class="fu">mutate</span>(<span class="at">state =</span> <span class="fu">case_when</span>(</span>
+<span id="cb31-61"><a href="#cb31-61"></a>    state <span class="sc">==</span> <span class="st">"ab"</span> <span class="sc">~</span> <span class="st">"Alberta"</span>,</span>
+<span id="cb31-62"><a href="#cb31-62"></a>    state <span class="sc">==</span> <span class="st">"bc"</span> <span class="sc">~</span> <span class="st">"British Columbia"</span>,</span>
+<span id="cb31-63"><a href="#cb31-63"></a>    state <span class="sc">==</span> <span class="st">"mb"</span> <span class="sc">~</span> <span class="st">"Manitoba"</span>,</span>
+<span id="cb31-64"><a href="#cb31-64"></a>    state <span class="sc">==</span> <span class="st">"nb"</span> <span class="sc">~</span> <span class="st">"New Brunswick"</span>,</span>
+<span id="cb31-65"><a href="#cb31-65"></a>    state <span class="sc">==</span> <span class="st">"nf"</span> <span class="sc">~</span> <span class="st">"Newfoundland and Labrador"</span>,</span>
+<span id="cb31-66"><a href="#cb31-66"></a>    state <span class="sc">==</span> <span class="st">"ns"</span> <span class="sc">~</span> <span class="st">"Nova Scotia"</span>,</span>
+<span id="cb31-67"><a href="#cb31-67"></a>    state <span class="sc">==</span> <span class="st">"nt"</span> <span class="sc">~</span> <span class="st">"Northwest Territories"</span>,</span>
+<span id="cb31-68"><a href="#cb31-68"></a>    state <span class="sc">==</span> <span class="st">"on"</span> <span class="sc">~</span> <span class="st">"Ontario"</span>,</span>
+<span id="cb31-69"><a href="#cb31-69"></a>    state <span class="sc">==</span> <span class="st">"pe"</span> <span class="sc">~</span> <span class="st">"Prince Edward Island"</span>,</span>
+<span id="cb31-70"><a href="#cb31-70"></a>    state <span class="sc">==</span> <span class="st">"qc"</span> <span class="sc">~</span> <span class="st">"Québec"</span>,</span>
+<span id="cb31-71"><a href="#cb31-71"></a>    state <span class="sc">==</span> <span class="st">"sk"</span> <span class="sc">~</span> <span class="st">"Saskatchewan"</span>,</span>
+<span id="cb31-72"><a href="#cb31-72"></a>    state <span class="sc">==</span> <span class="st">"yt"</span> <span class="sc">~</span> <span class="st">"Yukon"</span>,</span>
+<span id="cb31-73"><a href="#cb31-73"></a>    state <span class="sc">==</span> <span class="st">"yk"</span> <span class="sc">~</span> <span class="st">"Nunavut"</span>,</span>
+<span id="cb31-74"><a href="#cb31-74"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> state  </span>
+<span id="cb31-75"><a href="#cb31-75"></a>  ))</span>
+<span id="cb31-76"><a href="#cb31-76"></a></span>
+<span id="cb31-77"><a href="#cb31-77"></a></span>
+<span id="cb31-78"><a href="#cb31-78"></a>unified_data <span class="ot">&lt;-</span> shape_data <span class="sc">|&gt;</span> </span>
+<span id="cb31-79"><a href="#cb31-79"></a>  <span class="fu">left_join</span>(cleaned_ufo, <span class="fu">join_by</span>(name <span class="sc">==</span> state)) <span class="sc">|&gt;</span></span>
+<span id="cb31-80"><a href="#cb31-80"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(count))</span>
+<span id="cb31-81"><a href="#cb31-81"></a><span class="in">```</span></span>
+<span id="cb31-82"><a href="#cb31-82"></a></span>
+<span id="cb31-85"><a href="#cb31-85"></a><span class="in">```{r}</span></span>
+<span id="cb31-86"><a href="#cb31-86"></a><span class="co">#|fig-cap: "UFO Sightings in CA over the last century - Data from National UFO Reporting Center, made by Julia Prewitt"</span></span>
+<span id="cb31-87"><a href="#cb31-87"></a><span class="co">#|fig-alt: "Choropleth map of Canada's provinces and territories illustrating UFO Sightings in CA over the last century. Provinces further north have few sightings in comparison to more southern provinces. "</span></span>
+<span id="cb31-88"><a href="#cb31-88"></a></span>
+<span id="cb31-89"><a href="#cb31-89"></a><span class="co"># Make plot of UFO sightings in Canadian Provinces &amp; Territories</span></span>
+<span id="cb31-90"><a href="#cb31-90"></a><span class="fu">ggplot</span>(unified_data) <span class="sc">+</span></span>
+<span id="cb31-91"><a href="#cb31-91"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> count), <span class="at">color =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb31-92"><a href="#cb31-92"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb31-93"><a href="#cb31-93"></a>  <span class="fu">scale_fill_viridis_c</span>(<span class="at">option =</span> <span class="st">"plasma"</span>) <span class="sc">+</span></span>
+<span id="cb31-94"><a href="#cb31-94"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"UFO Sightings in Canada by Province Over the Last Century"</span>,</span>
+<span id="cb31-95"><a href="#cb31-95"></a>       <span class="at">fill =</span> <span class="st">""</span>,</span>
+<span id="cb31-96"><a href="#cb31-96"></a>       <span class="at">caption =</span> <span class="st">"Data from National UFO Reporting Center, made by Julia Prewitt"</span>) </span>
+<span id="cb31-97"><a href="#cb31-97"></a></span>
+<span id="cb31-98"><a href="#cb31-98"></a><span class="co"># maybe use white for boundaries</span></span>
+<span id="cb31-99"><a href="#cb31-99"></a><span class="in">```</span></span>
+<span id="cb31-100"><a href="#cb31-100"></a></span>
+<span id="cb31-101"><a href="#cb31-101"></a>We can see that there are more UFO sightings in more populated areas, such as Ontario, British Columbia, and Alberta. This visualization is a good starting point for understanding how UFO sighting increase with people being present, and future investigation can and should examine UFO sightings per captia to understand if certain regions are more likely than others to experience UFO sightings. </span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
