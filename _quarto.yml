@@ -33,6 +33,11 @@ book:
       - bw/bw-exam1.qmd
       - bw/bw-exam2.qmd
       - bw/soloProject.qmd
+      
+    - part: "Summary"
+      chapters:
+      - summary/summary-exam1.qmd
+      - summary/summary-exam2.qmd
 
     - part: "In-class Activities"
       chapters: 
@@ -48,11 +53,6 @@ book:
       - ica/ica-factors.qmd
       - ica/ica-strings.qmd
       - ica/dataImport.qmd
-      
-    - part: "Summary"
-      chapters:
-      - summary/summary-exam1.qmd
-      - summary/summary-exam2.qmd
 
 format:
   html:

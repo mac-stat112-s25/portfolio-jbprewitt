@@ -1,6 +1,12 @@
 ---
 title: "Exam 2"
-output: html_document
+execute: 
+  echo: true
+  warning: false
+  error: false
+format: 
+  html:
+    code-fold: true
 ---
 
 # Background Processing {.unnumbered}

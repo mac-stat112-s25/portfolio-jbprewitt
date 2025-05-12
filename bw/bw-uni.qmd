@@ -1,6 +1,12 @@
 ---
 title: "Univariate Viz"
-output: html_document
+execute: 
+  echo: true
+  warning: false
+  error: false
+format: 
+  html:
+    code-fold: true
 ---
 
 Use this file to generate a professional looking **univariate** visualization.

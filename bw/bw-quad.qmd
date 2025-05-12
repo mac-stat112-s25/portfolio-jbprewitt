@@ -1,8 +1,13 @@
 ---
 title: "Quadvariate Viz"
-output: html_document
+execute: 
+  echo: true
+  warning: false
+  error: false
+format: 
+  html:
+    code-fold: true
 ---
-
 Use this file to generate a professional looking **quadvariate** visualization.  The visualization will not perfect the first time but you are expected to improve on it throughout the semester especially after covering advanced topics such as effective viz.
 ```{r}
 #| echo: false
